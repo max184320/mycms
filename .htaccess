@@ -1,0 +1,19 @@
+DirectoryIndex index.php
+
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteRule \.(php|jpg|jpeg|gif|ico|png|svg|webp|avif|js|css|mp3|ogg|mp4|mkv|avi|zip|rar|woff|woff2)(\?|$) - [L,NC,R=404]
+
+	RewriteRule ^sitemap.xml$ uploads/sitemap.xml [L]
+	RewriteRule ^google_news.xml$ uploads/google_news.xml [L]
+	RewriteRule ^static_pages.xml$ uploads/static_pages.xml [L]
+	RewriteRule ^category_pages.xml$ uploads/category_pages.xml [L]
+	RewriteRule ^tags_pages.xml$ uploads/tags_pages.xml [L]
+	RewriteRule ^news_pages(\d*?).xml$ uploads/news_pages$1.xml [L]
+
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule . index.php [L]
+</IfModule>
