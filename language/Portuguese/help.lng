@@ -1,0 +1,109 @@
+<?php
+
+$help_sections['title']['templates'] ="Modelos";
+$help_sections['body']['templates'] = <<<HTML
+Os modelos são usados para alterar facilmente a exibição das notícias. Você pode modificar várias partes do modelo que são utilizadas para diferentes seções da exibição das notícias. Por exemplo, a parte do modelo &#39;Resumo&#39; é usada para alterar a aparência das notícias ativas, &#39;Artigo Completo&#39; para alterar a aparência do artigo completo, &#39;Comentário&#39; para alterar a aparência dos comentários, e assim por diante.<br><br>
+Ao editar partes do modelo, você pode usar HTML para alterar várias estruturas, etc. Além disso, você deverá adicionar algumas marcações especiais em seus modelos para definir o local onde será exibido o título da notícia, o nome do autor, a data, etc. Cada parte do modelo corresponde a uma marcação específica.<br>
+Os valores das variáveis podem ser visualizados na página de edição de modelos ao clicar no nome da parte do modelo. Por exemplo, <b>{title}</b> exibirá o título do artigo, e <b>{author}</b> o autor do artigo, etc.<br><br>
+Você pode usar vários modelos diferentes.
+HTML;
+
+$help_sections['title']['xfields'] ="Campos Adicionais";
+$help_sections['body']['xfields'] = <<<HTML
+A conexão de campos adicionais é feita através do menu <b>Configurações</b> &gt; <b>Campos Adicionais</b>. Esta função é útil ao publicar, junto com o artigo, por exemplo, links para a fonte original.<br>
+Você pode adicionar um novo campo clicando no botão &#34;Adicionar campo&#34;. Na página que se abre, você deve inserir um nome único para o campo, uma descrição do campo e o conteúdo padrão do campo. Você também deve escolher se deseja usar os campos opcionalmente. Ou seja, se você não quiser usar um campo adicional para algum artigo, basta deixar o campo vazio ao adicionar/editar a notícia e o módulo não será ativado.<br><br>
+Para usar o campo na página de notícias, você deve adicionar a variável <b>[xfvalue_X]</b> ao modelo, onde <b>X</b> é o valor do campo (o nome que você inseriu ao adicionar o novo campo). Também é possível usar a combinação <b>[xfgiven_X]...[/xfgiven_X]</b>, que exibe o texto indicado dentro delas se o campo adicional foi preenchido. Além disso, pode-se usar a combinação <b>[xfnotgiven_X]...[/xfnotgiven_X]</b>, que exibe o texto indicado se o campo adicional não foi preenchido.<br><br>
+Exemplo de funcionamento dos campos:
+<div class="code">
+<b>1)</b>- Nome: stit<br>
+&nbsp;&nbsp;- Descrição: Fonte de informação<br>
+&nbsp;&nbsp;- Valor padrão: Eu<br>
+&nbsp;&nbsp;- Opcional: sim<br>
+<b>2)</b>- Nome: source<br>
+&nbsp;&nbsp;- Descrição: Link para a fonte de informação<br>
+&nbsp;&nbsp;- Valor padrão: http://server.com/<br>
+&nbsp;&nbsp;- Opcional: sim<br><br>
+<b>No modelo escrevemos:</b><br>
+[xfgiven_source]Fonte - &lt;a href=[xfvalue_source] target=_blank&gt;[xfvalue_stit]&lt;/a&gt;.[/xfgiven_source]<br>
+[xfnotgiven_source]Fonte não especificada[/xfnotgiven_source]</div>
+Caso o campo tenha sido preenchido na publicação, o resultado será o seguinte código HTML:
+<div class="code">Fonte - &lt;a href=http://server.com/ target=_blank&gt;Eu&lt;/a&gt;.</div>
+Caso a fonte não tenha sido especificada, o resultado será a mensagem:
+<div class="code">Fonte não especificada</div>
+Lembre-se de que para o nome do campo você deve usar apenas letras latinas e números.
+HTML;
+
+$help_sections['title']['xprofile'] ="Campos Adicionais no Perfil do Usuário";
+$help_sections['body']['xprofile'] = <<<HTML
+Esta função destina-se a adicionar novos campos ao perfil dos usuários, além dos campos básicos existentes.<br><br>
+Você pode adicionar um novo campo clicando no link &#34;Adicionar campo&#34;. Na página que se abre, você deve inserir um nome único para o campo e uma descrição do campo. Você também deve escolher se deseja que o usuário possa adicionar informações adicionais durante o registro, se este campo é estritamente privado e se o usuário pode editar o conteúdo deste campo posteriormente.<br><br>
+Campos adicionais estão disponíveis ao visualizar comentários e o perfil do usuário; você deve adicionar a tag [xfvalue_X] aos modelos necessários, onde X é o valor do campo (o nome que você inseriu ao adicionar o novo campo). Também é possível usar a combinação [xfgiven_X]...[/xfgiven_X].<br><br>
+Exemplo de funcionamento dos campos:
+<div class="code">
+&nbsp;&nbsp;- Nome: city<br>
+&nbsp;&nbsp;- Descrição: Cidade<br>
+&nbsp;&nbsp;- Tipo de campo: Uma linha<br>
+&nbsp;&nbsp;- Adicionar à página de registro: sim<br>
+&nbsp;&nbsp;- O campo pode ser alterado pelo usuário: sim<br>
+&nbsp;&nbsp;- Tornar este campo privado: não<br><br>
+nos modelos comments.tpl e userinfo.tpl adicionar<br>
+[xfgiven_city] Cidade: [xfvalue_city] [/xfgiven_city]</div>
+Se o usuário adicionou em seu perfil a cidade, por exemplo, &#34;Moscou&#34;, o resultado será o seguinte código HTML:
+<div class="code">Cidade: Moscou</div>
+Lembre-se de que para o nome do campo você deve usar apenas letras latinas e números.
+HTML;
+
+$help_sections['title']['banners'] ="Gerenciamento de Publicidade no Site";
+$help_sections['body']['banners'] = <<<HTML
+Este módulo destina-se ao posicionamento e gerenciamento rápido e conveniente de seus materiais publicitários no site. Para colocar seu banner no site, basta adicionar a tag do banner ao modelo uma vez, após o que você pode alterar ou editar o código do banner no painel de administração sem problemas, sem afetar os modelos.<br /><br />
+Após adicionar seu banner, você pode colocar a tag dele nos modelos <b>main.tpl</b> ou <b>fullstory.tpl</b>. Se você estiver adicionando um banner para exibição entre notícias curtas, não é necessário adicionar a tag ao modelo; o banner será adicionado entre as notícias automaticamente.
+<br />Exemplo de funcionamento:
+<div class="code">
+&nbsp;&nbsp;- Nome: header<br>
+&nbsp;&nbsp;- Descrição: Banner superior<br>
+&nbsp;&nbsp;- Habilitar exibição do banner: Sim<br>
+&nbsp;&nbsp;- Mostrar apenas na página inicial: Não<br>
+&nbsp;&nbsp;- Fixar na localização: Não<br>
+&nbsp;&nbsp;- Localização em notícias curtas: Não<br><br>
+Depois disso, você pode adicionar ao seu modelo em <b>main.tpl</b> ou <b>fullstory.tpl</b> a tag para exibir o banner: <b>{banner_header}</b><br />
+</div>
+Você pode usar HTML e JavaScript ao adicionar o código do banner.
+HTML;
+
+$help_sections['title']['date'] ="Formatos de Hora e Data Locais";
+$help_sections['body']['date'] = <<<HTML
+Os seguintes caracteres são reconhecidos na string de formato: 
+<ul>
+<li><b>a</b> - &#34;am&#34; ou &#34;pm&#34;</li>
+<li><b>A</b> - &#34;AM&#34; ou &#34;PM&#34;</li>
+<li><b>B</b> - hora Swatch Internet </li>
+<li><b>d</b> - dia (número) do mês, 2 dígitos com zero à esquerda, se necessário; ou seja, de &#34;01&#34; a &#34;31&#34;</li>
+<li><b>D</b> - dia da semana, textual, 3 letras; por exemplo, &#34;Fri&#34; (Sex)</li>
+<li><b>F</b> - mês, textual, longo; por exemplo, &#34;January&#34; (Janeiro)</li>
+<li><b>g</b> - hora, formato de 12 horas sem zeros à esquerda; ou seja, de &#34;1&#34; a &#34;12&#34;</li>
+<li><b>G</b> - hora, formato de 24 horas sem zeros à esquerda; ou seja, de &#34;0&#34; a &#34;23&#34;</li>
+<li><b>h</b> - hora, formato de 12 horas; ou seja, de &#34;01&#34; a &#34;12&#34;</li>
+<li><b>H</b> - hora, formato de 24 horas; ou seja, de &#34;00&#34; a &#34;23&#34;</li>
+<li><b>i</b> - minutos; ou seja, de &#34;00&#34; a &#34;59&#34;</li>
+<li><b>I</b> (i maiúsculo) - &#34;1&#34;, se for Horário de Verão (Daylight Savings Time), &#34;0&#34; caso contrário.</li>
+<li><b>j</b> - dia (número) do mês sem zeros à esquerda; ou seja, de &#34;1&#34; a &#34;31&#34; </li>
+<li><b>l</b> (&#39;L&#39; em minúsculo) - dia da semana, textual, longo; por exemplo, &#34;Friday&#34; (Sexta-feira) </li>
+<li><b>L</b> - booleano, indicando se é ano bissexto; ou seja, &#34;0&#34; ou &#34;1&#34;</li> 
+<li><b>m</b> - mês; ou seja, de &#34;01&#34; a &#34;12&#34;</li>
+<li><b>M</b> - mês, textual, 3 letras; por exemplo, &#34;Jan&#34; </li>
+<li><b>n</b> - mês sem zeros à esquerda; ou seja, de &#34;1&#34; a &#34;12&#34; </li>
+<li><b>O</b> - Diferença em relação ao Horário de Greenwich (GMT), em horas; por exemplo, &#34;+0200&#34; </li>
+<li><b>r</b> - formato de data RFC 822; por exemplo, &#34;Thu, 21 Dec 2000 16:01:07 +0200&#34; (introduzido no PHP 4.0.4) </li>
+<li><b>s</b> - segundos; ou seja, de &#34;00&#34; a &#34;59&#34;</li>
+<li><b>S</b> - sufixo ordinal em inglês para o dia (número) do mês, 2 caracteres; ou seja, &#34;st&#34;, &#34;nd&#34;, &#34;rd&#34; ou &#34;th&#34;</li>
+<li><b>t</b> - quantidade de dias no mês atual; ou seja, de &#34;28&#34; a &#34;31&#34; </li>
+<li><b>T</b> - configuração de Fuso Horário (Timezone) na máquina atual; por exemplo, &#34;EST&#34; ou &#34;MDT&#34; </li>
+<li><b>U</b> - segundos desde a Época Unix (January 1 1970 00:00:00 GMT) </li>
+<li><b>w</b> - dia da semana, numérico, ou seja, de &#34;0&#34; (Domingo) a &#34;6&#34; (Sábado) </li>
+<li><b>W</b> - número da semana do ano ISO-8601, semanas começam na Segunda-feira/Monday (introduzido no PHP 4.1.0) </li>
+<li><b>Y</b> - ano, 4 dígitos; por exemplo, &#34;1999&#34;</li>
+<li><b>y</b> - ano, 2 dígitos; por exemplo, &#34;99&#34; </li>
+<li><b>z</b> - dia do ano; ou seja, de &#34;0&#34; a &#34;365&#34;</li>
+<li><b>Z</b> - deslocamento do fuso horário em segundos (ou seja, de &#34;-43200&#34; a &#34;43200&#34;). </li>
+O deslocamento dos fusos horários a oeste do UTC é sempre negativo, e para os fusos a leste do UTC é sempre positivo.</li></ul>
+HTML;

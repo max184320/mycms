@@ -1,0 +1,109 @@
+<?php
+
+$help_sections['title']['templates'] = "模板";
+$help_sections['body']['templates'] = <<<HTML
+模板用于轻松更改新闻的显示方式。您可以修改用于新闻显示不同环节的模板各部分。例如，“内容摘要”部分用于更改活动新闻的外观，“文章全文”用于更改完整文章的外观，“评论”用于更改评论的外观等。<br><br>
+在编辑模板部分时，您可以使用 HTML 来更改各种结构等。此外，您还必须在模板中添加一些特殊的标签，以确定显示新闻标题、作者姓名、日期等的位置。模板的每个部分都对应一个特定的标签。<br>
+变量的值可以在点击模板部分名称时的模板编辑页面上查看。例如，<b>{title}</b> 将输出文章标题，而 <b>{author}</b> 将输出文章作者等。<br><br>
+您可以使用多个不同的模板。
+HTML;
+
+$help_sections['title']['xfields'] = "额外字段";
+$help_sections['body']['xfields'] = <<<HTML
+额外字段的连接通过菜单 <b>设置</b> &gt; <b>额外字段</b> 进行。此功能在发布文章时非常方便，例如，可以包含指向原始来源的链接。<br>
+点击“添加字段”按钮可以添加新字段。在打开的页面上，您需要输入唯一的字段名称、字段描述和默认字段内容。此外，您还需要选择是否可选使用该字段。也就是说，如果您不想在某些文章中使用额外字段，只需在添加/编辑新闻时将该字段留空，该模块将不会启用。<br><br>
+要在新闻页面上使用该字段，您需要在模板中添加变量 <b>[xfvalue_X]</b>，其中 <b>X</b> 是字段名称（您在添加新字段时输入的名称）。此外，还可以使用标签 <b>[xfgiven_X]...[/xfgiven_X]</b>，如果指定了额外字段，它们将输出其中包含的文本。还可以使用标签 <b>[xfnotgiven_X]...[/xfnotgiven_X]</b>，如果未指定额外字段，它们将输出其中包含的文本。<br><br>
+字段工作示例：
+<div class="code">
+<b>1)</b>- 名称：stit<br>
+&nbsp;&nbsp;- 描述：信息来源<br>
+&nbsp;&nbsp;- 默认值：我<br>
+&nbsp;&nbsp;- 可选：是<br>
+<b>2)</b>- 名称：source<br>
+&nbsp;&nbsp;- 描述：指向信息来源的链接<br>
+&nbsp;&nbsp;- 默认值：http://server.com/<br>
+&nbsp;&nbsp;- 可选：是<br><br>
+<b>在模板中编写：</b><br>
+[xfgiven_source]来源 - &lt;a href=[xfvalue_source] target=_blank&gt;[xfvalue_stit]&lt;/a&gt;.[/xfgiven_source]<br>
+[xfnotgiven_source]未指定来源[/xfnotgiven_source]</div>
+如果在发布中指定了字段，则结果将是以下 HTML 代码：
+<div class="code">来源 - &lt;a href=http://server.com/ target=_blank&gt;我&lt;/a&gt;.</div>
+如果未指定来源，则结果将是消息：
+<div class="code">未指定来源</div>
+请记住，字段名称只能使用拉丁字母和数字。
+HTML;
+
+$help_sections['title']['xprofile'] = "用户个人资料中的额外字段";
+$help_sections['body']['xprofile'] = <<<HTML
+此功能旨在为用户个人资料添加除现有基本字段之外的新字段。<br><br>
+点击“添加字段”链接可以添加新字段。在打开的页面上，您需要输入唯一的字段名称和字段描述。此外，您还需要选择是否希望用户在注册时能够添加额外信息、该字段是否为私密字段，以及用户将来是否可以编辑该字段的内容。<br><br>
+额外字段可在查看评论和用户个人资料时使用，您需要在相应的模板中添加标签 [xfvalue_X]，其中 X 是字段名称（您在添加新字段时输入的名称）。还可以使用标签 [xfgiven_X]...[/xfgiven_X]。<br><br>
+字段工作示例：
+<div class="code">
+&nbsp;&nbsp;- 名称：city<br>
+&nbsp;&nbsp;- 描述：城市<br>
+&nbsp;&nbsp;- 字段类型：单行文本<br>
+&nbsp;&nbsp;- 添加到注册页面：是<br>
+&nbsp;&nbsp;- 字段可由用户修改：是<br>
+&nbsp;&nbsp;- 将此字段设为私有：否<br><br>
+在模板 comments.tpl 和 userinfo.tpl 中添加<br>
+[xfgiven_city] 城市: [xfvalue_city] [/xfgiven_city]</div>
+如果用户在其个人资料中添加了城市，例如“北京”，则结果将是以下 HTML 代码：
+<div class="code">城市: 北京</div>
+请记住，字段名称只能使用拉丁字母和数字。
+HTML;
+
+$help_sections['title']['banners'] = "网站广告管理";
+$help_sections['body']['banners'] = <<<HTML
+此模块旨在快速方便地在网站上放置和管理您的广告材料。要在网站上放置横幅，您只需将横幅标签添加到模板一次，之后您就可以在后台管理面板中轻松更改或编辑横幅代码，而无需修改模板。<br /><br />
+添加横幅后，您可以将其标签放置在 <b>main.tpl</b> 或 <b>fullstory.tpl</b> 模板中。如果您添加横幅是为了在短新闻之间显示，则无需将标签添加到模板，横幅将自动插入到新闻之间。
+<br />工作示例：
+<div class="code">
+&nbsp;&nbsp;- 名称：header<br>
+&nbsp;&nbsp;- 描述：顶部横幅<br>
+&nbsp;&nbsp;- 启用横幅显示：是<br>
+&nbsp;&nbsp;- 仅在首页显示：否<br>
+&nbsp;&nbsp;- 固定位置：否<br>
+&nbsp;&nbsp;- 在短新闻中的位置：否<br><br>
+之后，您可以在 <b>main.tpl</b> 或 <b>fullstory.tpl</b> 模板中添加用于输出横幅的标签：<b>{banner_header}</b><br />
+</div>
+您在添加横幅代码时可以使用 HTML 和 JavaScript。
+HTML;
+
+$help_sections['title']['date'] = "本地时间和日期格式";
+$help_sections['body']['date'] = <<<HTML
+在格式字符串中可以识别以下字符： 
+<ul>
+<li><b>a</b> - "am" 或 "pm"</li>
+<li><b>A</b> - "AM" 或 "PM"</li>
+<li><b>B</b> - Swatch Internet 时间 </li>
+<li><b>d</b> - 月份中的第几天（数字），2 位数字，必要时补零；即从 "01" 到 "31"</li>
+<li><b>D</b> - 星期几，文本缩写，3 个字母；例如，"Fri"</li>
+<li><b>F</b> - 月份，全称文本；例如，"January"</li>
+<li><b>g</b> - 小时，12 小时格式，不补零；即从 "1" 到 "12"</li>
+<li><b>G</b> - 小时，24 小时格式，不补零；即从 "0" 到 "23"</li>
+<li><b>h</b> - 小时，12 小时格式；即从 "01" 到 "12"</li>
+<li><b>H</b> - 小时，24 小时格式；即从 "00" 到 "23"</li>
+<li><b>i</b> - 分钟；即从 "00" 到 "59"</li>
+<li><b>I</b> (大写 i) - "1"（如果是夏令时），否则为 "0"。</li>
+<li><b>j</b> - 月份中的第几天，不补零；即从 "1" 到 "31" </li>
+<li><b>l</b> (&#39;L&#39; 的小写形式) - 星期几，全称文本；例如，"Friday" </li>
+<li><b>L</b> - 布尔值，指示是否为闰年；即 "0" 或 "1"</li> 
+<li><b>m</b> - 月份；即从 "01" 到 "12"</li>
+<li><b>M</b> - 月份，文本缩写，3 个字母；例如，"Jan" </li>
+<li><b>n</b> - 月份，不补零；即从 "1" 到 "12" </li>
+<li><b>O</b> - 与格林威治标准时间 (GMT) 的时差，以小时为单位；例如，"+0200" </li>
+<li><b>r</b> - RFC 822 格式日期；例如，"Thu, 21 Dec 2000 16:01:07 +0200"（自 PHP 4.0.4 起引入） </li>
+<li><b>s</b> - 秒；即从 "00" 到 "59"</li>
+<li><b>S</b> - 英文日期序数后缀，2 个字符；即 "st", "nd", "rd" 或 "th"</li>
+<li><b>t</b> - 指定月份的天数；即从 "28" 到 "31" </li>
+<li><b>T</b> - 此机器上的时区设置；例如，"EST" 或 "MDT" </li>
+<li><b>U</b> - Unix 时间戳（自 1970 年 1 月 1 日 00:00:00 GMT 起的秒数） </li>
+<li><b>w</b> - 星期几，数字表示，即从 "0"（星期日）到 "6"（星期六） </li>
+<li><b>W</b> - ISO-8601 格式的一年中的第几周，周从周一开始 (自 PHP 4.1.0 起引入) </li>
+<li><b>Y</b> - 年份，4 位数字；例如，"1999"</li>
+<li><b>y</b> - 年份，2 位数字；例如，"99" </li>
+<li><b>z</b> - 一年中的第几天；即从 "0" 到 "365"</li>
+<li><b>Z</b> - 时区偏移量（秒）（即从 "-43200" 到 "43200"）。 </li>
+UTC 以西的时区偏移量始终为负，以东的时区偏移量始终为正。</li></ul>
+HTML;

@@ -1,0 +1,204 @@
+<?php
+
+$lang_logs = array (
+
+// 19.1
+'admin_logs_action_149'	    =>	"Zusatzfeld deaktiviert:",
+'admin_logs_action_150'	    =>	"Zusatzfeld aktiviert:",
+// 19.1
+
+// 19.0
+'admin_logs_action_138'	    =>	"Löschen der Vorlagendatei:",
+'admin_logs_action_139'	    =>	"Erstellen des Vorlagenordners:",
+'admin_logs_action_140'	    =>	"Sortierung der SEF-URL-Regeln",
+'admin_logs_action_141'	    =>	"Hinzufügen einer neuen SEF-URL-Regel:",
+'admin_logs_action_142'	    =>	"Bearbeiten der SEF-URL-Regel:",
+'admin_logs_action_143'	    =>	"Zurücksetzen der SEF-URL-Regeln",
+'admin_logs_action_144'	    =>	"Löschen der SEF-URL-Regel:",
+'admin_logs_action_145'	    =>	"Verschieben der Vorlagendatei an einen neuen Speicherort:",
+'admin_logs_action_146'	    =>	"Neuer Tab für Zusatzfelder hinzugefügt:",
+'admin_logs_action_147'	    =>	"Bearbeiten des Tabs für Zusatzfelder:",
+'admin_logs_action_148'	    =>	"Tab für Zusatzfelder gelöscht:",
+// 19.0
+
+// 17.0
+'admin_logs_action_122'		=>	"Deaktivieren von Links im Modul &#39;Weiterleitungen&#39;",
+'admin_logs_action_123'		=>	"Aktivieren von Links im Modul &#39;Weiterleitungen&#39;",
+'admin_logs_action_124'		=>	"Deaktivieren von Links im Modul &#39;Metatags&#39;",
+'admin_logs_action_125'		=>	"Aktivieren von Links im Modul &#39;Metatags&#39;",
+'admin_logs_action_126'		=>	"Deaktivieren von Links im Modul &#39;Querverweise&#39;",
+'admin_logs_action_127'		=>	"Aktivieren von Links im Modul &#39;Querverweise&#39;",
+'admin_logs_action_128'		=>	"Hinzufügen eines neuen Speichers:",
+'admin_logs_action_129'		=>	"Bearbeiten des Speichers:",
+'admin_logs_action_130'		=>	"Deaktivieren des externen Speichers",
+'admin_logs_action_131'		=>	"Aktivieren des externen Speichers",
+'admin_logs_action_132'		=>	"Massenlöschung von externen Speichern",
+'admin_logs_action_133'		=>	"Massenaktivierung von externen Speichern",
+'admin_logs_action_134'		=>	"Massendeaktivierung von externen Speichern",
+'admin_logs_action_135'		=>	"Ändern des Standardspeichers",
+'admin_logs_action_136'		=>	"Löschen des Speichers:",
+'admin_logs_action_137'		=>	"Selbstständiges Löschen des eigenen Kontos",
+// 17.0
+
+// 14.0
+'admin_logs_action_120'		=>	"Deaktivieren der Kategorie, ID:",
+'admin_logs_action_121'		=>	"Aktivieren der Kategorie, ID:",
+// 14.0
+
+// 13.3
+'admin_logs_action_119'		=>	"Ändern der Plugin-Sortierung",
+// 13.3
+
+// 13.1
+'admin_logs_action_118'		=>	"Bearbeiten der Sperre im Benutzerfilter:",
+// 13.1
+
+// 13.0
+'admin_logs_action_116'		=>	"Hinzufügen eines neuen Plugins:",
+'admin_logs_action_117'		=>	"Bearbeiten des Plugins:",
+'admin_logs_action_115'		=>	"Löschen des Plugins, ID:",
+'admin_logs_action_1140'	=>	"Plugin deaktiviert, ID:",
+'admin_logs_action_1141'	=>	"Plugin aktiviert, ID:",
+// 13.0
+
+// 12.1
+'admin_logs_action_109'	=>	"Bereinigen der Banneransichten, ID:",
+'admin_logs_action_110'	=>	"Bereinigen der Bannerklicks, ID:",
+'admin_logs_action_111'	=>	"Hinzufügen einer Kategorie für Werbematerialien:",
+'admin_logs_action_112'	=>	"Bearbeiten einer Kategorie in Werbematerialien:",
+'admin_logs_action_113'	=>	"Löschen einer Kategorie in Werbematerialien, ID:",
+// 12.1
+
+// 12.0
+'admin_logs_action_105'	=>	"Hinzufügen von Metatags für den Link:",
+'admin_logs_action_106'	=>	"Bearbeiten von Metatags für den Link:",
+'admin_logs_action_107'	=>	"Löschen von Links im Modul &#39;Metatags&#39;",
+'admin_logs_action_108'	=>	"Exportieren von Benutzern",
+// 12.0
+
+// 11.3
+'admin_logs_action_102'	=>	"Hinzufügen einer Weiterleitung für den Link:",
+'admin_logs_action_103'	=>	"Bearbeiten einer Weiterleitung für den Link:",
+'admin_logs_action_104'	=>	"Löschen von Links im Modul &#39;Weiterleitungen&#39;",
+// 11.3
+
+// 11.2
+'admin_logs_action_99'	=>	"Falsche Eingabe des PIN-Codes nach der Anmeldung",
+'admin_logs_action_100'	=>	"Anmeldung mit PIN-Code bestätigt",
+'admin_logs_action_101'	=>	"Anmeldung auf der Website (Eingabe von Benutzername und Passwort).",
+// 11.2
+
+// 10.4
+'admin_logs_action_96'	=>	"Automatisches Löschen des Beitrags nach Ablauf der in den Beitragseinstellungen festgelegten Frist:",
+'admin_logs_action_97'	=>	"Löschen aller Kommentare eines Benutzers:",
+'admin_logs_action_98'	=>	"Löschen aller Beiträge eines Benutzers:",
+// 10.4
+
+// 10.1
+'admin_logs_action_93'	=>	"Hinzufügen eines neuen Querverweises für das Schlüsselwort:",
+'admin_logs_action_94'	=>	"Bearbeiten des Querverweises für das Schlüsselwort:",
+'admin_logs_action_95'	=>	"Bearbeiten von Links im Modul &#39;Querverweise&#39;",
+// 10.1
+
+// 10.0
+'admin_logs_action_89'	=>	"Fehlgeschlagener Anmeldeversuch im Adminbereich mit falschem Passwort.",
+'admin_logs_action_90'	=>	"Fehlgeschlagener Anmeldeversuch im Adminbereich mit ungültigen Browser-Cookies.",
+'admin_logs_action_91'	=>	"Fehlgeschlagener Anmeldeversuch auf der Website mit falschem Passwort.",
+'admin_logs_action_92'	=>	"Fehlgeschlagener Anmeldeversuch auf der Website mit ungültigen Browser-Cookies.",
+// 10.0
+
+// 9.8
+'admin_logs_action_87'	=>	"Benutzer als Spammer markiert:",
+'admin_logs_action_88'	=>	"Unregistrierter Gast als Spammer markiert:",
+// 9.8
+
+// 9.4
+'admin_logs_action_1'	=>	"Hinzufügen eines neuen Beitrags:",
+'admin_logs_action_2'	=>	"Hinzufügen einer neuen Umfrage zur Website:",
+'admin_logs_action_3'	=>	"Bearbeiten der Umfrage:",
+'admin_logs_action_4'	=>	"Hinzufügen eines neuen Werbebanners:",
+'admin_logs_action_5'	=>	"Bearbeiten des Werbebanners:",
+'admin_logs_action_6'	=>	"Deaktivieren des Werbebanners, ID:",
+'admin_logs_action_7'	=>	"Aktivieren des Werbebanners, ID:",
+'admin_logs_action_8'	=>	"Löschen des Werbebanners, ID:",
+'admin_logs_action_9'	=>	"Hinzufügen von Sperren im Benutzerfilter.",
+'admin_logs_action_10'	=>	"Löschen der Sperre im Benutzerfilter.",
+'admin_logs_action_11'	=>	"Ändern der Kategoriesortierung.",
+'admin_logs_action_12'	=>	"Hinzufügen einer Kategorie:",
+'admin_logs_action_13'	=>	"Löschen der Kategorie, ID:",
+'admin_logs_action_14'	=>	"Bearbeiten der Kategorie:",
+'admin_logs_action_15'	=>	"Löschen von Beiträgen im Optimierungsassistenten älter als:",
+'admin_logs_action_16'	=>	"Löschen von Kommentaren im Optimierungsassistenten älter als:",
+'admin_logs_action_17'	=>	"Bereinigen persönlicher Nachrichten im Optimierungsassistenten.",
+'admin_logs_action_18'	=>	"Bereinigen der Protokolle im Optimierungsassistenten.",
+'admin_logs_action_19'	=>	"Moderation von Kommentaren.",
+'admin_logs_action_20'	=>	"Löschen aller Kommentare eines Beitrags, ID:",
+'admin_logs_action_21'	=>	"Löschen von Kommentaren von der Website.",
+'admin_logs_action_22'	=>	"Löschen einer Beschwerde.",
+'admin_logs_action_23'	=>	"Optimierung/Reparatur der Datenbank.",
+'admin_logs_action_24'	=>	"Erstellen eines Datenbank-Backups.",
+'admin_logs_action_25'	=>	"Bearbeiten des Beitrags:",
+'admin_logs_action_26'	=>	"Löschen des Beitrags:",
+'admin_logs_action_27'	=>	"Löschen der Umfrage auf der Website, ID:",
+'admin_logs_action_28'	=>	"Bereinigen der Abstimmungsergebnisse für Umfrage-ID:",
+'admin_logs_action_29'	=>	"Anhalten der Umfrage, ID:",
+'admin_logs_action_30'	=>	"Aktivieren der Umfrage, ID:",
+'admin_logs_action_31'	=>	"Bearbeiten der E-Mail-Nachrichtenvorlagen.",
+'admin_logs_action_32'	=>	"Löschen hochgeladener Bilder eines Beitrags, ID:",
+'admin_logs_action_33'	=>	"Löschen hochgeladener Bilder und Dateien einer statischen Seite, ID:",
+'admin_logs_action_34'	=>	"Löschen hochgeladener Dateien eines Beitrags, ID:",
+'admin_logs_action_36'	=>	"Hochladen einer Datei:",
+'admin_logs_action_37'	=>	"Datei löschen:",
+'admin_logs_action_38'	=>	"Sitemap-Erstellung.",
+'admin_logs_action_39'	=>	"Massenbearbeitung statischer Seiten verwendet.",
+'admin_logs_action_40'	=>	"Massenlöschung statischer Seiten verwendet.",
+'admin_logs_action_41'	=>	"Benutzer löschen:",
+'admin_logs_action_42'	=>	"Kommentare des Benutzers mit ID löschen:",
+'admin_logs_action_43'	=>	"Benutzergruppe ändern:",
+'admin_logs_action_44'	=>	"Benutzer sperren:",
+'admin_logs_action_45'	=>	"Private Nachrichten des Benutzers löschen:",
+'admin_logs_action_46'	=>	"Massenbearbeitung von Nachrichten verwendet.",
+'admin_logs_action_47'	=>	"Massenversand von Nachrichten",
+'admin_logs_action_48'	=>	"Skripteinstellungen ändern",
+'admin_logs_action_49'	=>	"Mögliche Beitragsreindexierung",
+'admin_logs_action_50'	=>	"RSS-Kanal löschen, ID:",
+'admin_logs_action_51'	=>	"RSS-Kanal hinzufügen:",
+'admin_logs_action_52'	=>	"RSS-Kanal bearbeiten:",
+'admin_logs_action_53'	=>	"RSS-Informer hinzufügen:",
+'admin_logs_action_54'	=>	"RSS-Informer bearbeiten:",
+'admin_logs_action_55'	=>	"RSS-Informer deaktivieren, ID:",
+'admin_logs_action_56'	=>	"RSS-Informer aktivieren, ID:",
+'admin_logs_action_57'	=>	"RSS-Informer löschen, ID:",
+'admin_logs_action_58'	=>	"Suchen und Ersetzen in der Datenbank:",
+'admin_logs_action_59'	=>	"Statische Seite hinzufügen:",
+'admin_logs_action_60'	=>	"Statische Seite bearbeiten:",
+'admin_logs_action_61'	=>	"Tag aus der Tag-Cloud löschen:",
+'admin_logs_action_62'	=>	"Tag in der Tag-Cloud bearbeiten:",
+'admin_logs_action_63'	=>	"Neuen Benutzer hinzufügen:",
+'admin_logs_action_64'	=>	"Benutzer bearbeiten:",
+'admin_logs_action_65'	=>	"Benutzer löschen:",
+'admin_logs_action_66'	=>	"Sprachpaket für Vorlage ändern:",
+'admin_logs_action_67'	=>	"Neue Vorlage erstellen:",
+'admin_logs_action_68'	=>	"Vorlage löschen:",
+'admin_logs_action_69'	=>	"Vorlagendatei erstellen:",
+'admin_logs_action_70'	=>	"Vorlagendatei bearbeiten:",
+'admin_logs_action_71'	=>	"Zusatzfeld für Benutzerprofile löschen:",
+'admin_logs_action_72'	=>	"Zusatzfeld für Benutzerprofile hinzufügen/bearbeiten:",
+'admin_logs_action_73'	=>	"Zusatzfeld für Nachrichten löschen:",
+'admin_logs_action_74'	=>	"Zusatzfeld für Nachrichten hinzufügen/bearbeiten:",
+'admin_logs_action_75'	=>	"Benutzergruppe löschen, ID:",
+'admin_logs_action_76'	=>	"Neue Benutzergruppe hinzufügen:",
+'admin_logs_action_77'	=>	"Benutzergruppe bearbeiten:",
+'admin_logs_action_78'	=>	"Videoplayer-Einstellungen bearbeiten.",
+'admin_logs_action_79'	=>	"Neues Wort zum Wortfilter hinzufügen:",
+'admin_logs_action_80'	=>	"Wörter aus dem Filter löschen.",
+'admin_logs_action_81'	=>	"Wort im Wortfilter bearbeiten:",
+'admin_logs_action_82'	=>	"Anmeldung im Administrationsbereich (Login und Passwort).",
+'admin_logs_action_83'	=>	"Frage im Bereich Fragen & Antworten bearbeiten:",
+'admin_logs_action_84'	=>	"Frage im Bereich Fragen & Antworten hinzufügen:",
+'admin_logs_action_85'	=>	"Frage im Bereich Fragen & Antworten löschen, ID:",
+'admin_logs_action_86'	=>	"Anmeldung im Administrationsbereich (Cookie-Authentifizierung). Aufruf von Seite:",
+// 9.4
+
+);
+?>

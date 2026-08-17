@@ -1,0 +1,204 @@
+<?php
+
+$lang_logs = array (
+
+// 19.1
+'admin_logs_action_149'	    =>	"Ek alan devre dışı bırakıldı:",
+'admin_logs_action_150'	    =>	"Ek alan etkinleştirildi:",
+// 19.1
+
+// 19.0
+'admin_logs_action_138'	    =>	"Şablon dosyası silme:",
+'admin_logs_action_139'	    =>	"Şablon klasörü oluşturma:",
+'admin_logs_action_140'	    =>	"SEO URL kurallarını sıralama",
+'admin_logs_action_141'	    =>	"Yeni SEO URL kuralı ekleme:",
+'admin_logs_action_142'	    =>	"SEO URL kuralını düzenleme:",
+'admin_logs_action_143'	    =>	"SEO URL kurallarını sıfırlama",
+'admin_logs_action_144'	    =>	"SEO URL kuralını silme:",
+'admin_logs_action_145'	    =>	"Şablon dosyasını yeni konuma taşıma:",
+'admin_logs_action_146'	    =>	"Ek alanlar için yeni sekme eklendi:",
+'admin_logs_action_147'	    =>	"Ek alan sekmesini düzenleme:",
+'admin_logs_action_148'	    =>	"Ek alan sekmesi silindi:",
+// 19.0
+
+// 17.0
+'admin_logs_action_122'		=>	"'Yönlendirmeler' modülünde bağlantıları devre dışı bırakma",
+'admin_logs_action_123'		=>	"'Yönlendirmeler' modülünde bağlantıları etkinleştirme",
+'admin_logs_action_124'		=>	"'Meta etiketler' modülünde bağlantıları devre dışı bırakma",
+'admin_logs_action_125'		=>	"'Meta etiketler' modülünde bağlantıları etkinleştirme",
+'admin_logs_action_126'		=>	"'Çapraz bağlantılar' modülünde bağlantıları devre dışı bırakma",
+'admin_logs_action_127'		=>	"'Çapraz bağlantılar' modülünde bağlantıları etkinleştirme",
+'admin_logs_action_128'		=>	"Yeni depolama alanı ekleme:",
+'admin_logs_action_129'		=>	"Depolama alanını düzenleme:",
+'admin_logs_action_130'		=>	"Harici depolamayı devre dışı bırakma",
+'admin_logs_action_131'		=>	"Harici depolamayı etkinleştirme",
+'admin_logs_action_132'		=>	"Harici depolamaları toplu silme",
+'admin_logs_action_133'		=>	"Harici depolamaları toplu etkinleştirme",
+'admin_logs_action_134'		=>	"Harici depolamaları toplu devre dışı bırakma",
+'admin_logs_action_135'		=>	"Varsayılan depolama alanını değiştirme",
+'admin_logs_action_136'		=>	"Depolama alanını silme:",
+'admin_logs_action_137'		=>	"Kendi hesabını silme",
+// 17.0
+
+// 14.0
+'admin_logs_action_120'		=>	"Kategoriyi devre dışı bırakma, ID:",
+'admin_logs_action_121'		=>	"Kategoriyi etkinleştirme, ID:",
+// 14.0
+
+// 13.3
+'admin_logs_action_119'		=>	"Eklenti sıralamasını değiştirme",
+// 13.3
+
+// 13.1
+'admin_logs_action_118'		=>	"Kullanıcı filtresindeki engeli düzenleme:",
+// 13.1
+
+
+// 13.0
+'admin_logs_action_116'		=>	"Yeni eklenti ekleme:",
+'admin_logs_action_117'		=>	"Eklentiyi düzenleme:",
+'admin_logs_action_115'		=>	"Eklentiyi silme, ID:",
+'admin_logs_action_1140'	=>	"Eklentiyi devre dışı bırakma, ID:",
+'admin_logs_action_1141'	=>	"Eklentiyi etkinleştirme, ID:",
+// 13.0
+
+// 12.1
+'admin_logs_action_109'	=>	"Reklam bannerı görüntülenmelerini temizleme, ID:",
+'admin_logs_action_110'	=>	"Reklam bannerı tıklamalarını temizleme, ID:",
+'admin_logs_action_111'	=>	"Reklam materyalleri için rubrik ekleme:",
+'admin_logs_action_112'	=>	"Reklam materyallerindeki rubriği düzenleme:",
+'admin_logs_action_113'	=>	"Reklam materyallerindeki rubriği silme, ID:",
+// 12.1
+
+// 12.0
+'admin_logs_action_105'	=>	"Bağlantı için meta etiket ekleme:",
+'admin_logs_action_106'	=>	"Bağlantı için meta etiketleri düzenleme:",
+'admin_logs_action_107'	=>	"'Meta etiketler' modülündeki bağlantıları silme",
+'admin_logs_action_108'	=>	"Kullanıcıları dışa aktarma",
+// 12.0
+
+// 11.3
+'admin_logs_action_102'	=>	"Bağlantı için yönlendirme ekleme:",
+'admin_logs_action_103'	=>	"Bağlantı yönlendirmesini düzenleme:",
+'admin_logs_action_104'	=>	"'Yönlendirmeler' modülündeki bağlantıları silme",
+// 11.3
+
+// 11.2
+'admin_logs_action_99'	=>	"Yetkilendirme sonrası yanlış PIN kodu girişi",
+'admin_logs_action_100'	=>	"Yetkilendirme PIN koduyla doğrulandı",
+'admin_logs_action_101'	=>	"Sitede yetkilendirme (kullanıcı adı ve şifre girişi).",
+// 11.2
+
+// 10.4
+'admin_logs_action_96'	=>	"Haber ayarlarında belirtilen süre dolduktan sonra haberin otomatik silinmesi:",
+'admin_logs_action_97'	=>	"Kullanıcının tüm yorumlarını silme:",
+'admin_logs_action_98'	=>	"Kullanıcının tüm haberlerini silme:",
+// 10.4
+
+// 10.1
+'admin_logs_action_93'	=>	"Anahtar kelime için yeni çapraz bağlantı ekleme:",
+'admin_logs_action_94'	=>	"Anahtar kelime için çapraz bağlantıyı düzenleme:",
+'admin_logs_action_95'	=>	"'Çapraz bağlantılar' modülündeki bağlantıları düzenleme",
+// 10.1
+
+// 10.0
+'admin_logs_action_89'	=>	"Yanlış şifre kullanılarak yönetim paneline başarısız giriş denemesi.",
+'admin_logs_action_90'	=>	"Tarayıcıda geçersiz çerezler kullanılarak yönetim paneline başarısız giriş denemesi.",
+'admin_logs_action_91'	=>	"Yanlış şifre kullanılarak siteye başarısız giriş denemesi.",
+'admin_logs_action_92'	=>	"Tarayıcıda geçersiz çerezler kullanılarak siteye başarısız giriş denemesi.",
+// 10.0
+
+// 9.8
+'admin_logs_action_87'	=>	"Kullanıcı spammer olarak işaretlendi:",
+'admin_logs_action_88'	=>	"Kayıtlı olmayan misafir spammer olarak işaretlendi:",
+// 9.8
+
+// 9.4
+'admin_logs_action_1'	=>	"Yeni haber ekleme:",
+'admin_logs_action_2'	=>	"Siteye yeni anket ekleme:",
+'admin_logs_action_3'	=>	"Anketi düzenleme:",
+'admin_logs_action_4'	=>	"Yeni reklam bannerı ekleme:",
+'admin_logs_action_5'	=>	"Reklam bannerını düzenleme:",
+'admin_logs_action_6'	=>	"Reklam bannerını devre dışı bırakma, ID:",
+'admin_logs_action_7'	=>	"Reklam bannerını etkinleştirme, ID:",
+'admin_logs_action_8'	=>	"Reklam bannerını silme, ID:",
+'admin_logs_action_9'	=>	"Kullanıcı filtresine engel ekleme.",
+'admin_logs_action_10'	=>	"Kullanıcı filtresindeki engeli silme.",
+'admin_logs_action_11'	=>	"Kategori sıralamasını değiştirme.",
+'admin_logs_action_12'	=>	"Kategori ekleme:",
+'admin_logs_action_13'	=>	"Kategoriyi silme, ID:",
+'admin_logs_action_14'	=>	"Kategoriyi düzenleme:",
+'admin_logs_action_15'	=>	"Optimizasyon sihirbazında önceki haberleri silme:",
+'admin_logs_action_16'	=>	"Optimizasyon sihirbazında önceki yorumları silme:",
+'admin_logs_action_17'	=>	"Optimizasyon sihirbazında özel mesajları temizleme.",
+'admin_logs_action_18'	=>	"Optimizasyon sihirbazında günlükleri temizleme.",
+'admin_logs_action_19'	=>	"Yorum moderasyonu.",
+'admin_logs_action_20'	=>	"Habere ait tüm yorumları silme, ID:",
+'admin_logs_action_21'	=>	"Sitedeki yorumları silme.",
+'admin_logs_action_22'	=>	"Şikayeti silme.",
+'admin_logs_action_23'	=>	"Veritabanını optimize etme/onarma.",
+'admin_logs_action_24'	=>	"Veritabanı yedeği oluşturma.",
+'admin_logs_action_25'	=>	"Haberi düzenleme:",
+'admin_logs_action_26'	=>	"Haberi silme:",
+'admin_logs_action_27'	=>	"Sitedeki anketi silme, ID:",
+'admin_logs_action_28'	=>	"Anket ID için oylama sonuçlarını temizleme:",
+'admin_logs_action_29'	=>	"Anketi duraklatma, ID:",
+'admin_logs_action_30'	=>	"Anketi etkinleştirme, ID:",
+'admin_logs_action_31'	=>	"E-mail mesaj şablonlarını düzenleme.",
+'admin_logs_action_32'	=>	"Habere ait yüklenen resimleri silme, ID:",
+'admin_logs_action_33'	=>	"Statik sayfaya ait yüklenen resim ve dosyaları silme, ID:",
+'admin_logs_action_34'	=>	"Habere ait yüklenen dosyaları silme, ID:",
+'admin_logs_action_36'	=>	"Dosya yükleme:",
+'admin_logs_action_37'	=>	"Dosya silme:",
+'admin_logs_action_38'	=>	"Site haritası oluşturma.",
+'admin_logs_action_39'	=>	"Statik sayfaları toplu düzenlemeyi kullanma.",
+'admin_logs_action_40'	=>	"Statik sayfaları toplu silmeyi kullanma.",
+'admin_logs_action_41'	=>	"Kullanıcıyı silme:",
+'admin_logs_action_42'	=>	"ID numaralı kullanıcının yorumlarını silme:",
+'admin_logs_action_43'	=>	"Kullanıcının grubunu değiştirme:",
+'admin_logs_action_44'	=>	"Kullanıcıyı yasaklama:",
+'admin_logs_action_45'	=>	"Kullanıcının özel mesajlarını silme:",
+'admin_logs_action_46'	=>	"Haberleri toplu düzenlemeyi kullanma.",
+'admin_logs_action_47'	=>	"Toplu mesaj gönderimi",
+'admin_logs_action_48'	=>	"Betik ayarlarını değiştirme",
+'admin_logs_action_49'	=>	"Yayınları yeniden oluşturma olasılığı",
+'admin_logs_action_50'	=>	"RSS kanalını silme, ID:",
+'admin_logs_action_51'	=>	"RSS kanalı ekleme:",
+'admin_logs_action_52'	=>	"RSS kanalını düzenleme:",
+'admin_logs_action_53'	=>	"RSS bilgilendiricisi ekleme:",
+'admin_logs_action_54'	=>	"RSS bilgilendiricisini düzenleme:",
+'admin_logs_action_55'	=>	"RSS bilgilendiricisini devre dışı bırakma, ID:",
+'admin_logs_action_56'	=>	"RSS bilgilendiricisini etkinleştirme, ID:",
+'admin_logs_action_57'	=>	"RSS bilgilendiricisini silme, ID:",
+'admin_logs_action_58'	=>	"Veritabanında ara ve değiştir:",
+'admin_logs_action_59'	=>	"Statik sayfa ekleme:",
+'admin_logs_action_60'	=>	"Statik sayfayı düzenleme:",
+'admin_logs_action_61'	=>	"Etiket bulutundan etiketi silme:",
+'admin_logs_action_62'	=>	"Etiket bulutunu düzenleme, etiket:",
+'admin_logs_action_63'	=>	"Yeni kullanıcı ekleme:",
+'admin_logs_action_64'	=>	"Kullanıcıyı düzenleme:",
+'admin_logs_action_65'	=>	"Kullanıcıyı silme:",
+'admin_logs_action_66'	=>	"Şablon için dil paketini değiştirme:",
+'admin_logs_action_67'	=>	"Yeni şablon oluşturma:",
+'admin_logs_action_68'	=>	"Şablonu silme:",
+'admin_logs_action_69'	=>	"Şablon dosyası oluşturma:",
+'admin_logs_action_70'	=>	"Şablon dosyasını düzenleme:",
+'admin_logs_action_71'	=>	"Kullanıcı profilleri için ek alanı silme:",
+'admin_logs_action_72'	=>	"Kullanıcı profilleri için ek alan ekleme/düzenleme:",
+'admin_logs_action_73'	=>	"Haberler için ek alanı silme:",
+'admin_logs_action_74'	=>	"Haberler için ek alan ekleme/düzenleme:",
+'admin_logs_action_75'	=>	"Kullanıcı grubunu silme, ID:",
+'admin_logs_action_76'	=>	"Yeni kullanıcı grubu ekleme:",
+'admin_logs_action_77'	=>	"Kullanıcı grubunu düzenleme:",
+'admin_logs_action_78'	=>	"Video oynatıcı ayarlarını düzenleme.",
+'admin_logs_action_79'	=>	"Kelime filtresine yeni kelime ekleme:",
+'admin_logs_action_80'	=>	"Filtreden kelimeleri silme.",
+'admin_logs_action_81'	=>	"Kelime filtresindeki kelimeyi düzenleme:",
+'admin_logs_action_82'	=>	"Site yönetim panelinde yetkilendirme (kullanıcı adı ve şifre girişi).",
+'admin_logs_action_83'	=>	"Soru-Cevap bölümündeki soruyu düzenleme:",
+'admin_logs_action_84'	=>	"Soru-Cevap bölümüne soru ekleme:",
+'admin_logs_action_85'	=>	"Soru-Cevap bölümündeki soruyu silme, ID:",
+'admin_logs_action_86'	=>	"Site yönetim panelinde yetkilendirme (çerezle giriş). Şu sayfadan geçiş:",
+// 9.4
+
+);

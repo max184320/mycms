@@ -1,0 +1,205 @@
+<?php
+
+$lang_logs = array (
+
+// 19.1
+'admin_logs_action_149'	    =>	"Wyłączono dodatkowe pole:",
+'admin_logs_action_150'	    =>	"Włączono dodatkowe pole:",
+// 19.1
+
+// 19.0
+'admin_logs_action_138'	    =>	"Usuwanie pliku szablonu:",
+'admin_logs_action_139'	    =>	"Tworzenie folderu szablonu:",
+'admin_logs_action_140'	    =>	"Sortowanie reguł SEO URL",
+'admin_logs_action_141'	    =>	"Dodawanie nowej reguły SEO URL:",
+'admin_logs_action_142'	    =>	"Edycja reguły SEO URL:",
+'admin_logs_action_143'	    =>	"Resetowanie reguł SEO URL",
+'admin_logs_action_144'	    =>	"Usuwanie reguły SEO URL:",
+'admin_logs_action_145'	    =>	"Przenoszenie pliku szablonu do nowej lokalizacji:",
+'admin_logs_action_146'	    =>	"Dodano nową zakładkę dla dodatkowych pól:",
+'admin_logs_action_147'	    =>	"Edycja zakładki dla dodatkowych pól:",
+'admin_logs_action_148'	    =>	"Usunięto zakładkę dla dodatkowych pól:",
+// 19.0
+
+// 17.0
+'admin_logs_action_122'		=>	"Wyłączanie linków w module &#39;Przekierowania&#39;",
+'admin_logs_action_123'		=>	"Włączanie linków w module &#39;Przekierowania&#39;",
+'admin_logs_action_124'		=>	"Wyłączanie linków w module &#39;Meta tagi&#39;",
+'admin_logs_action_125'		=>	"Włączanie linków w module &#39;Meta tagi&#39;",
+'admin_logs_action_126'		=>	"Wyłączanie linków w module &#39;Linki krzyżowe&#39;",
+'admin_logs_action_127'		=>	"Włączanie linków w module &#39;Linki krzyżowe&#39;",
+'admin_logs_action_128'		=>	"Dodawanie nowego magazynu danych:",
+'admin_logs_action_129'		=>	"Edycja magazynu danych:",
+'admin_logs_action_130'		=>	"Wyłączanie zewnętrznego magazynu danych",
+'admin_logs_action_131'		=>	"Włączanie zewnętrznego magazynu danych",
+'admin_logs_action_132'		=>	"Masowe usuwanie zewnętrznych magazynów danych",
+'admin_logs_action_133'		=>	"Masowe włączanie zewnętrznych magazynów danych",
+'admin_logs_action_134'		=>	"Masowe wyłączanie zewnętrznych magazynów danych",
+'admin_logs_action_135'		=>	"Zmiana domyślnego magazynu danych",
+'admin_logs_action_136'		=>	"Usuwanie magazynu danych:",
+'admin_logs_action_137'		=>	"Samodzielne usunięcie własnego konta",
+// 17.0
+
+// 14.0
+'admin_logs_action_120'		=>	"Wyłączanie kategorii, ID:",
+'admin_logs_action_121'		=>	"Włączanie kategorii, ID:",
+// 14.0
+
+// 13.3
+'admin_logs_action_119'		=>	"Zmiana sortowania wtyczek",
+// 13.3
+
+// 13.1
+'admin_logs_action_118'		=>	"Edycja blokady w filtrze użytkowników:",
+// 13.1
+
+// 13.0
+'admin_logs_action_116'		=>	"Dodawanie nowej wtyczki:",
+'admin_logs_action_117'		=>	"Edycja wtyczki:",
+'admin_logs_action_115'		=>	"Usuwanie wtyczki, ID:",
+'admin_logs_action_1140'	=>	"Wyłączanie wtyczki, ID:",
+'admin_logs_action_1141'	=>	"Włączanie wtyczki, ID:",
+// 13.0
+
+// 12.1
+'admin_logs_action_109'	=>	"Czyszczenie wyświetleń banera reklamowego, ID:",
+'admin_logs_action_110'	=>	"Czyszczenie kliknięć banera reklamowego, ID:",
+'admin_logs_action_111'	=>	"Dodawanie kategorii dla materiałów reklamowych:",
+'admin_logs_action_112'	=>	"Edycja kategorii w materiałach reklamowych:",
+'admin_logs_action_113'	=>	"Usuwanie kategorii w materiałach reklamowych, ID:",
+// 12.1
+
+// 12.0
+'admin_logs_action_105'	=>	"Dodawanie meta tagów dla linku:",
+'admin_logs_action_106'	=>	"Edycja meta tagów dla linku:",
+'admin_logs_action_107'	=>	"Usuwanie linków w module &#39;Meta tagi&#39;",
+'admin_logs_action_108'	=>	"Eksport użytkowników",
+// 12.0
+
+// 11.3
+'admin_logs_action_102'	=>	"Dodawanie przekierowania dla linku:",
+'admin_logs_action_103'	=>	"Edycja przekierowania dla linku:",
+'admin_logs_action_104'	=>	"Usuwanie linków w module &#39;Przekierowania&#39;",
+// 11.3
+
+// 11.2
+'admin_logs_action_99'	=>	"Nieprawidłowe wprowadzenie kodu PIN po autoryzacji",
+'admin_logs_action_100'	=>	"Autoryzacja potwierdzona kodem PIN",
+'admin_logs_action_101'	=>	"Autoryzacja na stronie (wprowadzenie loginu i hasła).",
+// 11.2
+
+// 10.4
+'admin_logs_action_96'	=>	"Automatyczne usuwanie newsa po upływie terminu określonego w ustawieniach newsa:",
+'admin_logs_action_97'	=>	"Usuwanie wszystkich komentarzy użytkownika:",
+'admin_logs_action_98'	=>	"Usuwanie wszystkich newsów użytkownika:",
+// 10.4
+
+// 10.1
+'admin_logs_action_93'	=>	"Dodawanie nowego linku krzyżowego dla słowa kluczowego:",
+'admin_logs_action_94'	=>	"Edycja linku krzyżowego dla słowa kluczowego:",
+'admin_logs_action_95'	=>	"Edycja linków w module &#39;Linki krzyżowe&#39;",
+// 10.1
+
+// 10.0
+'admin_logs_action_89'	=>	"Nieudana próba autoryzacji w panelu administracyjnym przy użyciu błędnego hasła.",
+'admin_logs_action_90'	=>	"Nieudana próba autoryzacji w panelu administracyjnym przy użyciu błędnych plików cookie w przeglądarce.",
+'admin_logs_action_91'	=>	"Nieudana próba autoryzacji na stronie przy użyciu błędnego hasła.",
+'admin_logs_action_92'	=>	"Nieudana próba autoryzacji na stronie przy użyciu błędnych plików cookie w przeglądarce.",
+// 10.0
+
+// 9.8
+'admin_logs_action_87'	=>	"Oznaczono użytkownika jako spamera:",
+'admin_logs_action_88'	=>	"Oznaczono niezarejestrowanego gościa jako spamera:",
+// 9.8
+
+// 9.4
+'admin_logs_action_1'	=>	"Dodawanie nowego newsa:",
+'admin_logs_action_2'	=>	"Dodawanie nowej ankiety na stronę:",
+'admin_logs_action_3'	=>	"Edycja ankiety:",
+'admin_logs_action_4'	=>	"Dodawanie nowego banera reklamowego:",
+'admin_logs_action_5'	=>	"Edycja banera reklamowego:",
+'admin_logs_action_6'	=>	"Wyłączanie banera reklamowego, ID:",
+'admin_logs_action_7'	=>	"Włączanie banera reklamowego, ID:",
+'admin_logs_action_8'	=>	"Usuwanie banera reklamowego, ID:",
+'admin_logs_action_9'	=>	"Dodawanie blokad w filtrze użytkowników.",
+'admin_logs_action_10'	=>	"Usuwanie blokady w filtrze użytkowników.",
+'admin_logs_action_11'	=>	"Zmiana sortowania kategorii.",
+'admin_logs_action_12'	=>	"Dodawanie kategorii:",
+'admin_logs_action_13'	=>	"Usuwanie kategorii, ID:",
+'admin_logs_action_14'	=>	"Edycja kategorii:",
+'admin_logs_action_15'	=>	"Usuwanie newsów w kreatorze optymalizacji starszych niż:",
+'admin_logs_action_16'	=>	"Usuwanie komentarzy w kreatorze optymalizacji starszych niż:",
+'admin_logs_action_17'	=>	"Czyszczenie wiadomości prywatnych w kreatorze optymalizacji.",
+'admin_logs_action_18'	=>	"Czyszczenie logów w kreatorze optymalizacji.",
+'admin_logs_action_19'	=>	"Moderacja komentarzy.",
+'admin_logs_action_20'	=>	"Usuwanie wszystkich komentarzy w newsie, ID:",
+'admin_logs_action_21'	=>	"Usuwanie komentarzy ze strony.",
+'admin_logs_action_22'	=>	"Usuwanie zgłoszenia.",
+'admin_logs_action_23'	=>	"Optymalizacja/Naprawa bazy danych.",
+'admin_logs_action_24'	=>	"Tworzenie kopii zapasowej bazy danych.",
+'admin_logs_action_25'	=>	"Edycja newsa:",
+'admin_logs_action_26'	=>	"Usuwanie newsa:",
+'admin_logs_action_27'	=>	"Usuwanie ankiety na stronie, ID:",
+'admin_logs_action_28'	=>	"Czyszczenie wyników głosowania dla ankiety ID:",
+'admin_logs_action_29'	=>	"Zawieszenie ankiety, ID:",
+'admin_logs_action_30'	=>	"Włączenie ankiety, ID:",
+'admin_logs_action_31'	=>	"Edycja szablonów wiadomości e-mail.",
+'admin_logs_action_32'	=>	"Usuwanie przesłanych obrazów w newsie, ID:",
+'admin_logs_action_33'	=>	"Usuwanie przesłanych obrazów i plików dla strony statycznej, ID:",
+'admin_logs_action_34'	=>	"Usuwanie przesłanych plików w newsie, ID:",
+'admin_logs_action_36'	=>	"Przesyłanie pliku:",
+'admin_logs_action_37'	=>	"Usuwanie pliku:",
+'admin_logs_action_38'	=>	"Tworzenie mapy witryny.",
+'admin_logs_action_39'	=>	"Korzystanie z masowej edycji stron statycznych.",
+'admin_logs_action_40'	=>	"Korzystanie z masowego usuwania stron statycznych.",
+'admin_logs_action_41'	=>	"Usuwanie użytkownika:",
+'admin_logs_action_42'	=>	"Usuwanie komentarzy użytkownika o ID:",
+'admin_logs_action_43'	=>	"Zmiana grupy użytkownika:",
+'admin_logs_action_44'	=>	"Banowanie użytkownika:",
+'admin_logs_action_45'	=>	"Usuwanie wiadomości prywatnych użytkownika:",
+'admin_logs_action_46'	=>	"Korzystanie z masowej edycji wiadomości.",
+'admin_logs_action_47'	=>	"Masowa wysyłka wiadomości",
+'admin_logs_action_48'	=>	"Zmiana ustawień skryptu",
+'admin_logs_action_49'	=>	"Możliwa przebudowa publikacji",
+'admin_logs_action_50'	=>	"Usuwanie kanału RSS, ID:",
+'admin_logs_action_51'	=>	"Dodawanie kanału RSS:",
+'admin_logs_action_52'	=>	"Edycja kanału RSS:",
+'admin_logs_action_53'	=>	"Dodawanie informatora RSS:",
+'admin_logs_action_54'	=>	"Edycja informatora RSS:",
+'admin_logs_action_55'	=>	"Wyłączanie informatora RSS, ID:",
+'admin_logs_action_56'	=>	"Włączanie informatora RSS, ID:",
+'admin_logs_action_57'	=>	"Usuwanie informatora RSS, ID:",
+'admin_logs_action_58'	=>	"Wyszukiwanie i zamiana w bazie danych:",
+'admin_logs_action_59'	=>	"Dodawanie strony statycznej:",
+'admin_logs_action_60'	=>	"Edycja strony statycznej:",
+'admin_logs_action_61'	=>	"Usuwanie tagu z chmury tagów:",
+'admin_logs_action_62'	=>	"Edycja tagu w chmurze tagów:",
+'admin_logs_action_63'	=>	"Dodawanie nowego użytkownika:",
+'admin_logs_action_64'	=>	"Edycja użytkownika:",
+'admin_logs_action_65'	=>	"Usuwanie użytkownika:",
+'admin_logs_action_66'	=>	"Zmiana pakietu językowego dla szablonu:",
+'admin_logs_action_67'	=>	"Tworzenie nowego szablonu:",
+'admin_logs_action_68'	=>	"Usuwanie szablonu:",
+'admin_logs_action_69'	=>	"Tworzenie pliku szablonu:",
+'admin_logs_action_70'	=>	"Edycja pliku szablonu:",
+'admin_logs_action_71'	=>	"Usuwanie dodatkowego pola dla profili użytkowników:",
+'admin_logs_action_72'	=>	"Dodawanie/edycja dodatkowego pola dla profili użytkowników:",
+'admin_logs_action_73'	=>	"Usuwanie dodatkowego pola dla wiadomości:",
+'admin_logs_action_74'	=>	"Dodawanie/edycja dodatkowego pola dla wiadomości:",
+'admin_logs_action_75'	=>	"Usuwanie grupy użytkowników, ID:",
+'admin_logs_action_76'	=>	"Dodawanie nowej grupy użytkowników:",
+'admin_logs_action_77'	=>	"Edycja grupy użytkowników:",
+'admin_logs_action_78'	=>	"Edycja ustawień odtwarzaczy wideo.",
+'admin_logs_action_79'	=>	"Dodawanie nowego słowa do filtra słów:",
+'admin_logs_action_80'	=>	"Usuwanie słów z filtra.",
+'admin_logs_action_81'	=>	"Edycja słowa w filtrze słów:",
+'admin_logs_action_82'	=>	"Autoryzacja w panelu administracyjnym witryny (login i hasło).",
+'admin_logs_action_83'	=>	"Edycja pytania w sekcji Pytania i Odpowiedzi:",
+'admin_logs_action_84'	=>	"Dodawanie pytania w sekcji Pytania i Odpowiedzi:",
+'admin_logs_action_85'	=>	"Usuwanie pytania w sekcji Pytania i Odpowiedzi, ID:",
+'admin_logs_action_86'	=>	"Autoryzacja w panelu administracyjnym witryny (autoryzacja przez cookies). Przejście ze strony:",
+// 9.4
+
+);
+
+?>

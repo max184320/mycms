@@ -1,0 +1,109 @@
+<?php
+
+$help_sections['title']['templates'] = "Modèles";
+$help_sections['body']['templates'] = <<<HTML
+Les modèles sont utilisés pour modifier facilement l&#39;affichage des actualités. Vous pouvez modifier différentes parties du modèle utilisées pour différentes sections de l&#39;affichage des actualités. Par exemple, la partie du modèle &#34;Résumé&#34; est utilisée pour modifier l&#39;apparence des actualités actives, &#34;Article complet&#34; pour modifier l&#39;apparence de l&#39;article complet, &#34;Commentaire&#34; pour modifier l&#39;apparence des commentaires, etc.<br><br>
+Lors de l&#39;édition des parties du modèle, vous pouvez utiliser du HTML pour modifier les différentes structures, etc. Vous devrez également ajouter certaines balises spéciales dans vos modèles pour définir l&#39;emplacement où seront affichés le titre de l&#39;actualité, le nom de l&#39;auteur, la date, etc. Chaque partie du modèle correspond à une balise spécifique.<br>
+Les valeurs des variables peuvent être consultées sur la page d&#39;édition des modèles en cliquant sur le nom de la partie du modèle. Par exemple, <b>{title}</b> affichera le titre de l&#39;article, tandis que <b>{author}</b> affichera l&#39;auteur de l&#39;article, etc.<br><br>
+Vous pouvez utiliser plusieurs modèles différents.
+HTML;
+
+$help_sections['title']['xfields'] = "Champs personnalisés";
+$help_sections['body']['xfields'] = <<<HTML
+La configuration des champs personnalisés s&#39;effectue via le menu <b>Paramètres</b> &gt; <b>Champs personnalisés</b>. Cette fonction est pratique lors de la publication d&#39;un article, par exemple, pour ajouter un lien vers la source originale.<br>
+Vous pouvez ajouter un nouveau champ en cliquant sur le bouton &#34;Ajouter un champ&#34;. Sur la page qui s&#39;ouvre, vous devez saisir un nom de champ unique, une description du champ et le contenu par défaut du champ. Vous devez également choisir si vous souhaitez que l&#39;utilisation du champ soit facultative. C&#39;est-à-dire que si vous ne souhaitez pas utiliser de champ personnalisé pour un article particulier, il vous suffit de laisser le champ vide lors de l&#39;ajout/édition de l&#39;actualité et le module ne sera pas activé.<br><br>
+Pour utiliser le champ sur la page des actualités, vous devez ajouter la variable <b>[xfvalue_X]</b> au modèle, où <b>X</b> est la valeur du champ (le nom que vous avez saisi lors de l&#39;ajout du nouveau champ). Vous pouvez également utiliser la balise <b>[xfgiven_X]...[/xfgiven_X]</b>, qui affiche le texte spécifié à l&#39;intérieur si le champ personnalisé a été défini. De même, vous pouvez utiliser la balise <b>[xfnotgiven_X]...[/xfnotgiven_X]</b>, qui affiche le texte spécifié si le champ personnalisé n&#39;a pas été défini.<br><br>
+Exemple de fonctionnement des champs :
+<div class="code">
+<b>1)</b>- Nom : stit<br>
+&nbsp;&nbsp;- Description : Source d&#39;information<br>
+&nbsp;&nbsp;- Valeur par défaut : Moi<br>
+&nbsp;&nbsp;- Facultatif : oui<br>
+<b>2)</b>- Nom : source<br>
+&nbsp;&nbsp;- Description : Lien vers la source d&#39;information<br>
+&nbsp;&nbsp;- Valeur par défaut : http://server.com/<br>
+&nbsp;&nbsp;- Facultatif : oui<br><br>
+<b>Dans le modèle, nous écrivons :</b><br>
+[xfgiven_source]Source - &lt;a href=[xfvalue_source] target=_blank&gt;[xfvalue_stit]&lt;/a&gt;.[/xfgiven_source]<br>
+[xfnotgiven_source]Source non indiquée[/xfnotgiven_source]</div>
+Si le champ a été défini dans la publication, le code HTML résultant sera le suivant :
+<div class="code">Source - &lt;a href=http://server.com/ target=_blank&gt;Moi&lt;/a&gt;.</div>
+Si la source n&#39;a pas été définie, le résultat sera le message suivant :
+<div class="code">Source non indiquée</div>
+N&#39;oubliez pas que pour le nom du champ, vous ne devez utiliser que des lettres latines et des chiffres.
+HTML;
+
+$help_sections['title']['xprofile'] = "Champs personnalisés dans le profil utilisateur";
+$help_sections['body']['xprofile'] = <<<HTML
+Cette fonction est conçue pour ajouter de nouveaux champs au profil des utilisateurs, en plus des champs principaux existants.<br><br>
+Vous pouvez ajouter un nouveau champ en cliquant sur le lien &#34;Ajouter un champ&#34;. Sur la page qui s&#39;ouvre, vous devez saisir un nom de champ unique et une description du champ. Vous devez également choisir si vous souhaitez que l&#39;utilisateur puisse ajouter des informations supplémentaires lors de l&#39;inscription, si ce champ est strictement privé, et si l&#39;utilisateur peut modifier ultérieurement le contenu de ce champ.<br><br>
+Les champs personnalisés sont disponibles lors de la consultation des commentaires et du profil utilisateur. Vous devez ajouter la balise [xfvalue_X] aux modèles appropriés, où X est la valeur du champ (le nom que vous avez saisi lors de l&#39;ajout du nouveau champ). Vous pouvez également utiliser la balise [xfgiven_X]...[/xfgiven_X].<br><br>
+Exemple de fonctionnement des champs :
+<div class="code">
+&nbsp;&nbsp;- Nom : city<br>
+&nbsp;&nbsp;- Description : Ville<br>
+&nbsp;&nbsp;- Type de champ : Une seule ligne<br>
+&nbsp;&nbsp;- Ajouter à la page d&#39;inscription : oui<br>
+&nbsp;&nbsp;- Le champ peut être modifié par l&#39;utilisateur : oui<br>
+&nbsp;&nbsp;- Rendre ce champ privé : non<br><br>
+ajouter dans les modèles comments.tpl et userinfo.tpl<br>
+[xfgiven_city] Ville : [xfvalue_city] [/xfgiven_city]</div>
+Si l&#39;utilisateur a ajouté dans son profil la ville par exemple &#34;Moscou&#34;, le code HTML résultant sera le suivant :
+<div class="code">Ville : Moscou</div>
+N&#39;oubliez pas que pour le nom du champ, vous ne devez utiliser que des lettres latines et des chiffres.
+HTML;
+
+$help_sections['title']['banners'] = "Gestion de la publicité sur le site";
+$help_sections['body']['banners'] = <<<HTML
+Ce module est conçu pour un placement et une gestion rapides et pratiques de vos supports publicitaires sur le site. Pour placer votre bannière sur le site, il vous suffit d&#39;ajouter une seule fois la balise de la bannière dans le modèle, après quoi vous pourrez facilement modifier ou éditer le code de la bannière dans le panneau d&#39;administration sans affecter les modèles.<br /><br />
+Après avoir ajouté votre bannière, vous pouvez placer sa balise dans les modèles <b>main.tpl</b> ou <b>fullstory.tpl</b>. Si vous ajoutez une bannière à afficher entre les actualités courtes, il n&#39;est pas nécessaire d&#39;ajouter la balise au modèle, la bannière sera automatiquement insérée entre les actualités.
+<br />Exemple de fonctionnement :
+<div class="code">
+&nbsp;&nbsp;- Nom : header<br>
+&nbsp;&nbsp;- Description : Bannière supérieure<br>
+&nbsp;&nbsp;- Activer l&#39;affichage de la bannière : Oui<br>
+&nbsp;&nbsp;- Afficher uniquement sur la page d&#39;accueil : Non<br>
+&nbsp;&nbsp;- Fixer l&#39;emplacement : Non<br>
+&nbsp;&nbsp;- Emplacement dans les actualités courtes : Non<br><br>
+Après cela, vous pouvez ajouter dans votre modèle <b>main.tpl</b> ou <b>fullstory.tpl</b> la balise pour afficher la bannière : <b>{banner_header}</b><br />
+</div>
+Vous pouvez utiliser du HTML et du JavaScript lors de l&#39;ajout du code de la bannière.
+HTML;
+
+$help_sections['title']['date'] = "Formats de l&#39;heure locale et de la date";
+$help_sections['body']['date'] = <<<HTML
+Les caractères suivants sont reconnus dans la chaîne de format : 
+<ul>
+<li><b>a</b> - &#34;am&#34; ou &#34;pm&#34;</li>
+<li><b>A</b> - &#34;AM&#34; ou &#34;PM&#34;</li>
+<li><b>B</b> - temps Internet Swatch </li>
+<li><b>d</b> - jour (nombre) du mois, 2 chiffres avec un zéro non significatif si nécessaire ; c&#39;est-à-dire de &#34;01&#34; à &#34;31&#34;</li>
+<li><b>D</b> - jour de la semaine, textuel, 3 lettres ; par exemple, &#34;Fri&#34;</li>
+<li><b>F</b> - mois, textuel, long ; par exemple, &#34;January&#34;</li>
+<li><b>g</b> - heure, format 12 heures sans zéros non significatifs ; c&#39;est-à-dire de &#34;1&#34; à &#34;12&#34;</li>
+<li><b>G</b> - heure, format 24 heures sans zéros non significatifs ; c&#39;est-à-dire de &#34;0&#34; à &#34;23&#34;</li>
+<li><b>h</b> - heure, format 12 heures ; c&#39;est-à-dire de &#34;01&#34; à &#34;12&#34;</li>
+<li><b>H</b> - heure, format 24 heures ; c&#39;est-à-dire de &#34;00&#34; à &#34;23&#34;</li>
+<li><b>i</b> - minutes ; c&#39;est-à-dire de &#34;00&#34; à &#34;59&#34;</li>
+<li><b>I</b> (majuscule i) - &#34;1&#34; si l&#39;heure d&#39;été (Daylight Savings Time) est activée, &#34;0&#34; sinon.</li>
+<li><b>j</b> - jour (nombre) du mois sans zéros non significatifs ; c&#39;est-à-dire de &#34;1&#34; à &#34;31&#34; </li>
+<li><b>l</b> (&#39;L&#39; en minuscule) - jour de la semaine, textuel, long ; par exemple, &#34;Friday&#34; </li>
+<li><b>L</b> - booléen indiquant si l&#39;année est bissextile ; c&#39;est-à-dire &#34;0&#34; ou &#34;1&#34;</li> 
+<li><b>m</b> - mois ; c&#39;est-à-dire de &#34;01&#34; à &#34;12&#34;</li>
+<li><b>M</b> - mois, textuel, 3 lettres ; par exemple, &#34;Jan&#34; </li>
+<li><b>n</b> - mois sans zéros non significatifs ; c&#39;est-à-dire de &#34;1&#34; à &#34;12&#34; </li>
+<li><b>O</b> - Différence avec l&#39;heure de Greenwich (GMT), en heures ; par exemple, &#34;+0200&#34; </li>
+<li><b>r</b> - format de date RFC 822 ; par exemple, &#34;Thu, 21 Dec 2000 16:01:07 +0200&#34; (introduit en PHP 4.0.4) </li>
+<li><b>s</b> - secondes ; c&#39;est-à-dire de &#34;00&#34; à &#34;59&#34;</li>
+<li><b>S</b> - suffixe anglais simple pour le jour (nombre) du mois, 2 caractères ; c&#39;est-à-dire &#34;st&#34;, &#34;nd&#34;, &#34;rd&#34; ou &#34;th&#34;</li>
+<li><b>t</b> - nombre de jours dans le mois donné ; c&#39;est-à-dire de &#34;28&#34; à &#34;31&#34; </li>
+<li><b>T</b> - réglage du fuseau horaire (Timezone) sur cette machine ; par exemple, &#34;EST&#34; ou &#34;MDT&#34; </li>
+<li><b>U</b> - secondes de l&#39;époque Unix (Unix Epoch, depuis le 1er janvier 1970 00:00:00 GMT) </li>
+<li><b>w</b> - jour de la semaine, numérique, c&#39;est-à-dire de &#34;0&#34; (Sunday) à &#34;6&#34; (Saturday) </li>
+<li><b>W</b> - numéro de semaine de l&#39;année ISO-8601, les semaines commencent le lundi (introduit en PHP 4.1.0) </li>
+<li><b>Y</b> - année, 4 chiffres ; par exemple, &#34;1999&#34;</li>
+<li><b>y</b> - année, 2 chiffres ; par exemple, &#34;99&#34; </li>
+<li><b>z</b> - jour de l&#39;année ; c&#39;est-à-dire de &#34;0&#34; à &#34;365&#34;</li>
+<li><b>Z</b> - décalage du fuseau horaire, en secondes (c&#39;est-à-dire de &#34;-43200&#34; à &#34;43200&#34;). </li>
+Le décalage des fuseaux horaires à l&#39;ouest de l&#39;UTC est toujours négatif, et pour les fuseaux à l&#39;est de l&#39;UTC, il est toujours positif.</li></ul>
+HTML;

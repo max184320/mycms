@@ -1,0 +1,110 @@
+$help_sections['title']['templates'] ="Template";
+$help_sections['body']['templates'] = <<<HTML
+I template vengono utilizzati per modificare facilmente la visualizzazione delle notizie. È possibile modificare diverse parti del template utilizzate per varie sezioni della visualizzazione delle notizie. Ad esempio, la parte del template &#39;Riassunto breve&#39; viene utilizzata per cambiare l&#39;aspetto delle notizie attive, &#39;Articolo completo&#39; per cambiare l&#39;aspetto dell&#39;articolo intero, &#39;Commento&#39; per cambiare l&#39;aspetto dei commenti, ecc.<br><br>
+Durante la modifica delle parti del template, è possibile utilizzare l&#39;HTML per modificare varie strutture, ecc. Inoltre, dovrai aggiungere alcune designazioni speciali nei tuoi template per definire il punto in cui verranno visualizzati il titolo della notizia, il nome dell&#39;autore, la data, ecc. Ogni parte del template corrisponde a una designazione specifica.<br>
+I valori delle variabili possono essere visualizzati nella pagina di modifica dei template facendo clic sul nome della parte del template. Ad esempio, <b>{title}</b> visualizzerà il titolo dell&#39;articolo, mentre <b>{author}</b> l&#39;autore dell&#39;articolo, ecc.<br><br>
+È possibile utilizzare diversi template.
+HTML;
+
+$help_sections['title']['xfields'] ="Campi aggiuntivi";
+$help_sections['body']['xfields'] = <<<HTML
+Il collegamento dei campi aggiuntivi viene effettuato tramite il menu <b>Impostazioni</b> &gt; <b>Campi aggiuntivi</b>. Questa funzione è utile per pubblicare, insieme all&#39;articolo, ad esempio, link alla fonte originale.<br>
+È possibile aggiungere un nuovo campo facendo clic sul pulsante &#34;Aggiungi campo&#34;. Nella pagina che si apre, è necessario inserire un nome univoco per il campo, una descrizione del campo e il contenuto predefinito del campo. Inoltre, è necessario scegliere se si desidera utilizzare i campi come opzionali. Cioè, se non si desidera utilizzare un campo aggiuntivo per un articolo, è sufficiente lasciare il campo vuoto durante l&#39;aggiunta/modifica della notizia e il modulo non verrà incluso.<br><br>
+Per utilizzare il campo nella pagina delle notizie, è necessario aggiungere al template la variabile <b>[xfvalue_X]</b>, dove <b>X</b> è il valore del campo (il nome inserito al momento dell&#39;aggiunta del nuovo campo). È anche possibile utilizzare la combinazione <b>[xfgiven_X]...[/xfgiven_X]</b>, che visualizza il testo specificato al loro interno se il campo aggiuntivo è stato impostato. Inoltre, è possibile utilizzare la combinazione <b>[xfnotgiven_X]...[/xfnotgiven_X]</b>, che visualizza il testo specificato al loro interno se il campo aggiuntivo non è stato impostato.<br><br>
+Esempio di funzionamento dei campi:
+<div class="code">
+<b>1)</b>- Nome: stit<br>
+&nbsp;&nbsp;- Descrizione: Fonte dell&#39;informazione<br>
+&nbsp;&nbsp;- Valore predefinito: Io<br>
+&nbsp;&nbsp;- Opzionale: sì<br>
+<b>2)</b>- Nome: source<br>
+&nbsp;&nbsp;- Descrizione: Link alla fonte dell&#39;informazione<br>
+&nbsp;&nbsp;- Valore predefinito: http://server.com/<br>
+&nbsp;&nbsp;- Opzionale: sì<br><br>
+<b>Nel template scriviamo:</b><br>
+[xfgiven_source]Fonte - &lt;a href=[xfvalue_source] target=_blank&gt;[xfvalue_stit]&lt;/a&gt;.[/xfgiven_source]<br>
+[xfnotgiven_source]Fonte non specificata[/xfnotgiven_source]</div>
+Se il campo è stato impostato nella pubblicazione, il risultato del codice HTML sarà il seguente:
+<div class="code">Fonte - &lt;a href=http://server.com/ target=_blank&gt;Io&lt;/a&gt;.</div>
+Se la fonte non è stata impostata, il risultato sarà il messaggio:
+<div class="code">Fonte non specificata</div>
+Ricorda che per il nome del campo devono essere utilizzate solo lettere latine e numeri.
+HTML;
+
+$help_sections['title']['xprofile'] ="Campi aggiuntivi nel profilo utente";
+$help_sections['body']['xprofile'] = <<<HTML
+Questa funzione è progettata per aggiungere nuovi campi al profilo utente, oltre a quelli principali esistenti.<br><br>
+È possibile aggiungere un nuovo campo facendo clic sul link &#34;Aggiungi campo&#34;. Nella pagina che si apre, è necessario inserire un nome univoco per il campo e una descrizione del campo. Inoltre, è necessario scegliere se si desidera che l&#39;utente possa aggiungere informazioni aggiuntive durante la registrazione, se questo campo è strettamente privato e se l&#39;utente può modificare il contenuto di questo campo in futuro.<br><br>
+I campi aggiuntivi sono disponibili durante la visualizzazione dei commenti e del profilo utente; è necessario aggiungere ai template richiesti il tag [xfvalue_X], dove X è il valore del campo (il nome inserito al momento dell&#39;aggiunta del nuovo campo). È anche possibile utilizzare la combinazione [xfgiven_X]...[/xfgiven_X].<br><br>
+Esempio di funzionamento dei campi:
+<div class="code">
+&nbsp;&nbsp;- Nome: city<br>
+&nbsp;&nbsp;- Descrizione: Città<br>
+&nbsp;&nbsp;- Tipo di campo: Riga singola<br>
+&nbsp;&nbsp;- Aggiungi alla pagina di registrazione: sì<br>
+&nbsp;&nbsp;- Il campo può essere modificato dall&#39;utente: sì<br>
+&nbsp;&nbsp;- Rendi questo campo privato: no<br><br>
+aggiungere ai template comments.tpl e userinfo.tpl<br>
+[xfgiven_city] Città: [xfvalue_city] [/xfgiven_city]</div>
+Se l&#39;utente ha aggiunto nel suo profilo la città, ad esempio &#34;Mosca&#34;, il risultato del codice HTML sarà il seguente:
+<div class="code">Città: Mosca</div>
+Ricorda che per il nome del campo devono essere utilizzate solo lettere latine e numeri.
+HTML;
+
+$help_sections['title']['banners'] ="Gestione della pubblicità sul sito";
+$help_sections['body']['banners'] = <<<HTML
+Questo modulo è progettato per il posizionamento e la gestione rapida e comoda dei tuoi materiali pubblicitari sul sito. Per inserire il tuo banner sul sito, è sufficiente aggiungere una volta il tag del banner nel template, dopodiché potrai cambiare o modificare il codice del banner nel pannello di amministrazione senza problemi, senza influire sui template.<br /><br />
+Dopo aver aggiunto il tuo banner, puoi inserire il suo tag nei template <b>main.tpl</b> o <b>fullstory.tpl</b>. Se aggiungi un banner da visualizzare tra le brevi notizie, non è necessario aggiungere il tag nel template; il banner verrà aggiunto automaticamente tra le notizie.
+<br />Esempio di funzionamento:
+<div class="code">
+&nbsp;&nbsp;- Nome: header<br>
+&nbsp;&nbsp;- Descrizione: Banner superiore<br>
+&nbsp;&nbsp;- Abilita la visualizzazione del banner: Sì<br>
+&nbsp;&nbsp;- Mostra solo nella home page: No<br>
+&nbsp;&nbsp;- Fissa in posizione: No<br>
+&nbsp;&nbsp;- Posizionamento nelle notizie brevi: No<br><br>
+Successivamente, puoi aggiungere al tuo template in <b>main.tpl</b> o <b>fullstory.tpl</b> il tag per l&#39;output del banner: <b>{banner_header}</b><br />
+</div>
+È possibile utilizzare HTML e JavaScript quando si aggiunge il codice del banner.
+HTML;
+
+$help_sections['title']['date'] ="Formati dell&#39;ora locale e della data";
+$help_sections['body']['date'] = <<<HTML
+Nella stringa di formato vengono riconosciuti i seguenti caratteri: 
+<ul>
+<li><b>a</b> - &#34;am&#34; o &#34;pm&#34;</li>
+<li><b>A</b> - &#34;AM&#34; o &#34;PM&#34;</li>
+<li><b>B</b> - ora Swatch Internet </li>
+<li><b>d</b> - giorno (numero) del mese, 2 cifre con zero iniziale se necessario; cioè da &#34;01&#34; a &#34;31&#34;</li>
+<li><b>D</b> - giorno della settimana, testuale, 3 lettere; ad esempio, &#34;Fri&#34;</li>
+<li><b>F</b> - mese, testuale, lungo; ad esempio, &#34;January&#34;</li>
+<li><b>g</b> - ora, formato a 12 ore senza zeri iniziali; cioè da &#34;1&#34; a &#34;12&#34;</li>
+<li><b>G</b> - ora, formato a 24 ore senza zeri iniziali; cioè da &#34;0&#34; a &#34;23&#34;</li>
+<li><b>h</b> - ora, formato a 12 ore; cioè da &#34;01&#34; a &#34;12&#34;</li>
+<li><b>H</b> - ora, formato a 24 ore; cioè da &#34;00&#34; a &#34;23&#34;</li>
+<li><b>i</b> - minuti; cioè da &#34;00&#34; a &#34;59&#34;</li>
+<li><b>I</b> (i maiuscola) - &#34;1&#34; se Daylight Savings Time, &#34;0&#34; altrimenti.</li>
+<li><b>j</b> - giorno (numero) del mese senza zeri iniziali; cioè da &#34;1&#34; a &#34;31&#34; </li>
+<li><b>l</b> (&#39;L&#39; in minuscolo) - giorno della settimana, testuale, lungo; ad esempio, &#34;Friday&#34; </li>
+<li><b>L</b> - booleano, che indica se l&#39;anno è bisestile; cioè &#34;0&#34; o &#34;1&#34;</li> 
+<li><b>m</b> - mese; cioè da &#34;01&#34; a &#34;12&#34;</li>
+<li><b>M</b> - mese, testuale, 3 lettere; ad esempio, &#34;Jan&#34; </li>
+<li><b>n</b> - mese senza zeri iniziali; cioè da &#34;1&#34; a &#34;12&#34; </li>
+<li><b>O</b> - Differenza dall&#39;ora di Greenwich, in ore; ad esempio, &#34;+0200&#34; </li>
+<li><b>r</b> - Formato data RFC 822; ad esempio, &#34;Thu, 21 Dec 2000 16:01:07 +0200&#34; (introdotto in PHP 4.0.4) </li>
+<li><b>s</b> - secondi; cioè da &#34;00&#34; a &#34;59&#34;</li>
+<li><b>S</b> - suffisso inglese semplice per il giorno (numero) del mese, 2 caratteri; cioè &#34;st&#34;, &#34;nd&#34;, &#34;rd&#34; o &#34;th&#34;</li>
+<li><b>t</b> - numero di giorni nel mese dato; cioè da &#34;28&#34; a &#34;31&#34; </li>
+<li><b>T</b> - impostazione Timezone/Fuso orario su questa macchina; ad esempio, &#34;EST&#34; o 
+&#34;MDT&#34; </li>
+<li><b>U</b> - secondi dell&#39;epoca Unix Epoch (a partire dal 1 gennaio 1970 00:00:00 GMT) </li>
+<li><b>w</b> - giorno della settimana, numerico, cioè da &#34;0&#34; (Domenica) a &#34;6&#34; (Sabato) </li>
+<li><b>W</b> - Numero della settimana dell&#39;anno ISO-8601, le settimane iniziano di lunedì 
+(introdotto in PHP 4.1.0) </li>
+<li><b>Y</b> - anno, 4 cifre; ad esempio, &#34;1999&#34;</li>
+<li><b>y</b> - anno, 2 cifre; ad esempio, &#34;99&#34; </li>
+<li><b>z</b> - giorno dell&#39;anno; cioè da &#34;0&#34; a &#34;365&#34;</li>
+<li><b>Z</b> - offset del fuso orario, in secondi (cioè da &#34;-43200&#34; a &#34;43200&#34;). </li>
+L&#39;offset per i fusi orari a ovest di UTC è sempre negativo, mentre per i fusi orari a 
+est di UTC è sempre positivo.</li></ul>
+HTML;

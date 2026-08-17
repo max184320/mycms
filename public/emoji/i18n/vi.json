@@ -1,0 +1,29 @@
+{
+  "search": "Tìm kiếm",
+  "search_no_results_1": "Ôi không!",
+  "search_no_results_2": "Không thể tìm thấy biểu tượng cảm xúc",
+  "pick": "Chọn biểu tượng cảm xúc…",
+  "add_custom": "Thêm biểu tượng cảm xúc",
+  "categories": {
+    "activity": "Hoạt động",
+    "custom": "Chỉnh sửa",
+    "flags": "Cờ",
+    "foods": "Đồ Ăn & Thức Uống",
+    "frequent": "Dùng thường xuyên",
+    "nature": "Động Vật & Thiên Nhiên",
+    "objects": "Đồ Vật",
+    "people": "Mặt Cười & Con Người",
+    "places": "Du Lịch & Địa Điểm",
+    "search": "Kết quả tìm kiếm",
+    "symbols": "Ký Hiệu"
+  },
+  "skins": {
+    "choose": "Chọn tông da mặc định",
+    "1": "Mặc định",
+    "2": "Sáng",
+    "3": "Trung bình sáng",
+    "4": "Trung bình",
+    "5": "Trung bình tối",
+    "6": "Tối"
+  }
+}

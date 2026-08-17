@@ -1,0 +1,203 @@
+<?php
+
+$lang_logs = array (
+
+// 19.1
+'admin_logs_action_149'	    =>	"已禁用扩展字段：",
+'admin_logs_action_150'	    =>	"已启用扩展字段：",
+// 19.1
+
+// 19.0
+'admin_logs_action_138'	    =>	"删除模板文件：",
+'admin_logs_action_139'	    =>	"创建模板文件夹：",
+'admin_logs_action_140'	    =>	"SEO URL 规则排序",
+'admin_logs_action_141'	    =>	"添加新 SEO URL 规则：",
+'admin_logs_action_142'	    =>	"编辑 SEO URL 规则：",
+'admin_logs_action_143'	    =>	"重置 SEO URL 规则",
+'admin_logs_action_144'	    =>	"删除 SEO URL 规则：",
+'admin_logs_action_145'	    =>	"将模板文件移动到新位置：",
+'admin_logs_action_146'	    =>	"为扩展字段添加了新标签页：",
+'admin_logs_action_147'	    =>	"编辑扩展字段标签页：",
+'admin_logs_action_148'	    =>	"删除了扩展字段标签页：",
+// 19.0
+
+// 17.0
+'admin_logs_action_122'		=>	"禁用&#39;重定向&#39;模块中的链接",
+'admin_logs_action_123'		=>	"启用&#39;重定向&#39;模块中的链接",
+'admin_logs_action_124'		=>	"禁用&#39;元标签&#39;模块中的链接",
+'admin_logs_action_125'		=>	"启用&#39;元标签&#39;模块中的链接",
+'admin_logs_action_126'		=>	"禁用&#39;交叉引用&#39;模块中的链接",
+'admin_logs_action_127'		=>	"启用&#39;交叉引用&#39;模块中的链接",
+'admin_logs_action_128'		=>	"添加新存储：",
+'admin_logs_action_129'		=>	"编辑存储：",
+'admin_logs_action_130'		=>	"禁用外部存储",
+'admin_logs_action_131'		=>	"启用外部存储",
+'admin_logs_action_132'		=>	"批量删除外部存储",
+'admin_logs_action_133'		=>	"批量启用外部存储",
+'admin_logs_action_134'		=>	"批量禁用外部存储",
+'admin_logs_action_135'		=>	"更改默认存储",
+'admin_logs_action_136'		=>	"删除存储：",
+'admin_logs_action_137'		=>	"自行删除自己的账号",
+// 17.0
+
+// 14.0
+'admin_logs_action_120'		=>	"禁用分类，ID：",
+'admin_logs_action_121'		=>	"启用分类，ID：",
+// 14.0
+
+// 13.3
+'admin_logs_action_119'		=>	"更改插件排序",
+// 13.3
+
+// 13.1
+'admin_logs_action_118'		=>	"编辑用户过滤器中的屏蔽规则：",
+// 13.1
+
+// 13.0
+'admin_logs_action_116'		=>	"添加新插件：",
+'admin_logs_action_117'		=>	"编辑插件：",
+'admin_logs_action_115'		=>	"删除插件，ID：",
+'admin_logs_action_1140'	=>	"禁用插件，ID：",
+'admin_logs_action_1141'	=>	"启用插件，ID：",
+// 13.0
+
+// 12.1
+'admin_logs_action_109'	=>	"清除广告横幅浏览次数，ID：",
+'admin_logs_action_110'	=>	"清除广告横幅点击次数，ID：",
+'admin_logs_action_111'	=>	"为广告材料添加类目：",
+'admin_logs_action_112'	=>	"编辑广告材料类目：",
+'admin_logs_action_113'	=>	"删除广告材料类目，ID：",
+// 12.1
+
+// 12.0
+'admin_logs_action_105'	=>	"为链接添加元标签：",
+'admin_logs_action_106'	=>	"编辑链接元标签：",
+'admin_logs_action_107'	=>	"删除&#39;元标签&#39;模块中的链接",
+'admin_logs_action_108'	=>	"导出用户",
+// 12.0
+
+// 11.3
+'admin_logs_action_102'	=>	"为链接添加重定向：",
+'admin_logs_action_103'	=>	"编辑链接重定向：",
+'admin_logs_action_104'	=>	"删除&#39;重定向&#39;模块中的链接",
+// 11.3
+
+// 11.2
+'admin_logs_action_99'	=>	"登录后 PIN 码输入错误",
+'admin_logs_action_100'	=>	"已通过 PIN 码确认登录",
+'admin_logs_action_101'	=>	"在网站上登录（输入用户名和密码）。",
+// 11.2
+
+// 10.4
+'admin_logs_action_96'	=>	"根据新闻设置中设定的过期时间自动删除新闻：",
+'admin_logs_action_97'	=>	"删除用户的所有评论：",
+'admin_logs_action_98'	=>	"删除用户的所有新闻：",
+// 10.4
+
+// 10.1
+'admin_logs_action_93'	=>	"为关键词添加新交叉引用：",
+'admin_logs_action_94'	=>	"编辑关键词交叉引用：",
+'admin_logs_action_95'	=>	"编辑&#39;交叉引用&#39;模块中的链接",
+// 10.1
+
+// 10.0
+'admin_logs_action_89'	=>	"尝试使用错误密码登录管理面板失败。",
+'admin_logs_action_90'	=>	"尝试使用浏览器中的无效 Cookie 登录管理面板失败。",
+'admin_logs_action_91'	=>	"尝试使用错误密码登录网站失败。",
+'admin_logs_action_92'	=>	"尝试使用浏览器中的无效 Cookie 登录网站失败。",
+// 10.0
+
+// 9.8
+'admin_logs_action_87'	=>	"标记为垃圾信息发送者的用户：",
+'admin_logs_action_88'	=>	"标记为垃圾信息发送者的未注册访客：",
+// 9.8
+
+// 9.4
+'admin_logs_action_1'	=>	"添加新新闻：",
+'admin_logs_action_2'	=>	"在网站上添加新投票：",
+'admin_logs_action_3'	=>	"编辑投票：",
+'admin_logs_action_4'	=>	"添加新广告横幅：",
+'admin_logs_action_5'	=>	"编辑广告横幅：",
+'admin_logs_action_6'	=>	"禁用广告横幅，ID：",
+'admin_logs_action_7'	=>	"启用广告横幅，ID：",
+'admin_logs_action_8'	=>	"删除广告横幅，ID：",
+'admin_logs_action_9'	=>	"在用户过滤器中添加屏蔽规则。",
+'admin_logs_action_10'	=>	"删除用户过滤器中的屏蔽规则。",
+'admin_logs_action_11'	=>	"更改分类排序。",
+'admin_logs_action_12'	=>	"添加分类：",
+'admin_logs_action_13'	=>	"删除分类，ID：",
+'admin_logs_action_14'	=>	"编辑分类：",
+'admin_logs_action_15'	=>	"在优化向导中删除较早的新闻：",
+'admin_logs_action_16'	=>	"在优化向导中删除较早的评论：",
+'admin_logs_action_17'	=>	"在优化向导中清除私信。",
+'admin_logs_action_18'	=>	"在优化向导中清除日志。",
+'admin_logs_action_19'	=>	"审核评论。",
+'admin_logs_action_20'	=>	"删除新闻的所有评论，ID：",
+'admin_logs_action_21'	=>	"从网站删除评论。",
+'admin_logs_action_22'	=>	"删除投诉。",
+'admin_logs_action_23'	=>	"优化/修复数据库。",
+'admin_logs_action_24'	=>	"创建数据库备份。",
+'admin_logs_action_25'	=>	"编辑新闻：",
+'admin_logs_action_26'	=>	"删除新闻：",
+'admin_logs_action_27'	=>	"删除网站上的投票，ID：",
+'admin_logs_action_28'	=>	"清除投票结果，投票 ID：",
+'admin_logs_action_29'	=>	"暂停投票，ID：",
+'admin_logs_action_30'	=>	"启用投票，ID：",
+'admin_logs_action_31'	=>	"编辑电子邮件模板。",
+'admin_logs_action_32'	=>	"删除新闻中上传的图片，ID：",
+'admin_logs_action_33'	=>	"删除静态页面中上传的图片和文件，ID：",
+'admin_logs_action_34'	=>	"删除新闻中上传的文件，ID：",
+'admin_logs_action_36'	=>	"上传文件：",
+'admin_logs_action_37'	=>	"删除文件：",
+'admin_logs_action_38'	=>	"创建站点地图。",
+'admin_logs_action_39'	=>	"使用静态页面批量编辑。",
+'admin_logs_action_40'	=>	"使用静态页面批量删除。",
+'admin_logs_action_41'	=>	"删除用户：",
+'admin_logs_action_42'	=>	"删除 ID 为以下的用户评论：",
+'admin_logs_action_43'	=>	"更改用户组：",
+'admin_logs_action_44'	=>	"封禁用户：",
+'admin_logs_action_45'	=>	"删除用户的个人消息：",
+'admin_logs_action_46'	=>	"使用文章批量编辑。",
+'admin_logs_action_47'	=>	"批量发送消息",
+'admin_logs_action_48'	=>	"更改脚本设置",
+'admin_logs_action_49'	=>	"可能重新构建发布内容",
+'admin_logs_action_50'	=>	"删除 RSS 频道，ID：",
+'admin_logs_action_51'	=>	"添加 RSS 频道：",
+'admin_logs_action_52'	=>	"编辑 RSS 频道：",
+'admin_logs_action_53'	=>	"添加 RSS 通知器：",
+'admin_logs_action_54'	=>	"编辑 RSS 通知器：",
+'admin_logs_action_55'	=>	"禁用 RSS 通知器，ID：",
+'admin_logs_action_56'	=>	"启用 RSS 通知器，ID：",
+'admin_logs_action_57'	=>	"删除 RSS 通知器，ID：",
+'admin_logs_action_58'	=>	"数据库查找并替换：",
+'admin_logs_action_59'	=>	"添加静态页面：",
+'admin_logs_action_60'	=>	"编辑静态页面：",
+'admin_logs_action_61'	=>	"从标签云中删除标签：",
+'admin_logs_action_62'	=>	"编辑标签云中的标签：",
+'admin_logs_action_63'	=>	"添加新用户：",
+'admin_logs_action_64'	=>	"编辑用户：",
+'admin_logs_action_65'	=>	"删除用户：",
+'admin_logs_action_66'	=>	"更改模板的语言包：",
+'admin_logs_action_67'	=>	"创建新模板：",
+'admin_logs_action_68'	=>	"删除模板：",
+'admin_logs_action_69'	=>	"创建模板文件：",
+'admin_logs_action_70'	=>	"编辑模板文件：",
+'admin_logs_action_71'	=>	"删除用户资料的扩展字段：",
+'admin_logs_action_72'	=>	"添加/编辑用户资料的扩展字段：",
+'admin_logs_action_73'	=>	"删除文章的扩展字段：",
+'admin_logs_action_74'	=>	"添加/编辑文章的扩展字段：",
+'admin_logs_action_75'	=>	"删除用户组，ID：",
+'admin_logs_action_76'	=>	"添加新用户组：",
+'admin_logs_action_77'	=>	"编辑用户组：",
+'admin_logs_action_78'	=>	"编辑视频播放器设置。",
+'admin_logs_action_79'	=>	"在词语过滤中添加新词：",
+'admin_logs_action_80'	=>	"从过滤中删除词语。",
+'admin_logs_action_81'	=>	"在词语过滤中编辑词语：",
+'admin_logs_action_82'	=>	"登录网站管理面板（输入用户名和密码）。",
+'admin_logs_action_83'	=>	"编辑问答环节中的问题：",
+'admin_logs_action_84'	=>	"在问答环节中添加问题：",
+'admin_logs_action_85'	=>	"删除问答环节中的问题，ID：",
+'admin_logs_action_86'	=>	"登录网站管理面板（通过 Cookie 登录）。来自页面：",
+// 9.4
+
+);

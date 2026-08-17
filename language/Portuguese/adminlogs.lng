@@ -1,0 +1,203 @@
+<?php
+
+$lang_logs = array (
+
+// 19.1
+'admin_logs_action_149'	    =>	"Campo extra desativado:",
+'admin_logs_action_150'	    =>	"Campo extra ativado:",
+// 19.1
+
+// 19.0
+'admin_logs_action_138'	    =>	"Exclusão do arquivo de modelo:",
+'admin_logs_action_139'	    =>	"Criação da pasta de modelo:",
+'admin_logs_action_140'	    =>	"Ordenação das regras de URL amigável (SEF)",
+'admin_logs_action_141'	    =>	"Adição de nova regra de URL amigável (SEF):",
+'admin_logs_action_142'	    =>	"Edição da regra de URL amigável (SEF):",
+'admin_logs_action_143'	    =>	"Redefinição das regras de URL amigável (SEF)",
+'admin_logs_action_144'	    =>	"Exclusão da regra de URL amigável (SEF):",
+'admin_logs_action_145'	    =>	"Movimentação do arquivo de modelo para um novo local:",
+'admin_logs_action_146'	    =>	"Nova aba adicionada para campos extras:",
+'admin_logs_action_147'	    =>	"Edição da aba para campos extras:",
+'admin_logs_action_148'	    =>	"Aba para campos extras excluída:",
+// 19.0
+
+// 17.0
+'admin_logs_action_122'		=>	"Desativação de links no módulo &#39;Redirecionamentos&#39;",
+'admin_logs_action_123'		=>	"Ativação de links no módulo &#39;Redirecionamentos&#39;",
+'admin_logs_action_124'		=>	"Desativação de links no módulo &#39;Metatags&#39;",
+'admin_logs_action_125'		=>	"Ativação de links no módulo &#39;Metatags&#39;",
+'admin_logs_action_126'		=>	"Desativação de links no módulo &#39;Links cruzados&#39;",
+'admin_logs_action_127'		=>	"Ativação de links no módulo &#39;Links cruzados&#39;",
+'admin_logs_action_128'		=>	"Adição de novo armazenamento:",
+'admin_logs_action_129'		=>	"Edição de armazenamento:",
+'admin_logs_action_130'		=>	"Desativação de armazenamento externo",
+'admin_logs_action_131'		=>	"Ativação de armazenamento externo",
+'admin_logs_action_132'		=>	"Exclusão em massa de armazenamentos externos",
+'admin_logs_action_133'		=>	"Ativação em massa de armazenamentos externos",
+'admin_logs_action_134'		=>	"Desativação em massa de armazenamentos externos",
+'admin_logs_action_135'		=>	"Alteração do armazenamento padrão",
+'admin_logs_action_136'		=>	"Exclusão de armazenamento:",
+'admin_logs_action_137'		=>	"Autoexclusão da própria conta",
+// 17.0
+
+// 14.0
+'admin_logs_action_120'		=>	"Desativação de categoria, ID:",
+'admin_logs_action_121'		=>	"Ativação de categoria, ID:",
+// 14.0
+
+// 13.3
+'admin_logs_action_119'		=>	"Alteração da ordenação de plugins",
+// 13.3
+
+// 13.1
+'admin_logs_action_118'		=>	"Edição de bloqueio no filtro de usuários:",
+// 13.1
+
+// 13.0
+'admin_logs_action_116'		=>	"Adição de novo plugin:",
+'admin_logs_action_117'		=>	"Edição de plugin:",
+'admin_logs_action_115'		=>	"Exclusão de plugin, ID:",
+'admin_logs_action_1140'	=>	"Desativação de plugin, ID:",
+'admin_logs_action_1141'	=>	"Ativação de plugin, ID:",
+// 13.0
+
+// 12.1
+'admin_logs_action_109'	=>	"Limpeza de visualizações do banner publicitário, ID:",
+'admin_logs_action_110'	=>	"Limpeza de cliques do banner publicitário, ID:",
+'admin_logs_action_111'	=>	"Adição de categoria para materiais publicitários:",
+'admin_logs_action_112'	=>	"Edição de categoria em materiais publicitários:",
+'admin_logs_action_113'	=>	"Exclusão de categoria em materiais publicitários, ID:",
+// 12.1
+
+// 12.0
+'admin_logs_action_105'	=>	"Adição de metatags para o link:",
+'admin_logs_action_106'	=>	"Edição de metatags para o link:",
+'admin_logs_action_107'	=>	"Exclusão de links no módulo &#39;Metatags&#39;",
+'admin_logs_action_108'	=>	"Exportação de usuários",
+// 12.0
+
+// 11.3
+'admin_logs_action_102'	=>	"Adição de redirecionamento para o link:",
+'admin_logs_action_103'	=>	"Edição de redirecionamento para o link:",
+'admin_logs_action_104'	=>	"Exclusão de links no módulo &#39;Redirecionamentos&#39;",
+// 11.3
+
+// 11.2
+'admin_logs_action_99'	=>	"Entrada incorreta de código PIN após autorização",
+'admin_logs_action_100'	=>	"Autorização confirmada por código PIN",
+'admin_logs_action_101'	=>	"Autorização no site (entrada de login e senha).",
+// 11.2
+
+// 10.4
+'admin_logs_action_96'	=>	"Exclusão automática da notícia após o término do prazo definido nas configurações da notícia:",
+'admin_logs_action_97'	=>	"Exclusão de todos os comentários do usuário:",
+'admin_logs_action_98'	=>	"Exclusão de todas as notícias do usuário:",
+// 10.4
+
+// 10.1
+'admin_logs_action_93'	=>	"Adição de novo link cruzado para a palavra-chave:",
+'admin_logs_action_94'	=>	"Edição de link cruzado para a palavra-chave:",
+'admin_logs_action_95'	=>	"Edição de links no módulo &#39;Links cruzados&#39;",
+// 10.1
+
+// 10.0
+'admin_logs_action_89'	=>	"Tentativa frustrada de autorização no painel de administração usando uma senha incorreta.",
+'admin_logs_action_90'	=>	"Tentativa frustrada de autorização no painel de administração usando cookies incorretos no navegador.",
+'admin_logs_action_91'	=>	"Tentativa frustrada de autorização no site usando uma senha incorreta.",
+'admin_logs_action_92'	=>	"Tentativa frustrada de autorização no site usando cookies incorretos no navegador.",
+// 10.0
+
+// 9.8
+'admin_logs_action_87'	=>	"Usuário marcado como spammer:",
+'admin_logs_action_88'	=>	"Visitante não registrado marcado como spammer:",
+// 9.8
+
+// 9.4
+'admin_logs_action_1'	=>	"Adição de nova notícia:",
+'admin_logs_action_2'	=>	"Adição de nova enquete ao site:",
+'admin_logs_action_3'	=>	"Edição da enquete:",
+'admin_logs_action_4'	=>	"Adição de novo banner publicitário:",
+'admin_logs_action_5'	=>	"Edição do banner publicitário:",
+'admin_logs_action_6'	=>	"Desativação do banner publicitário, ID:",
+'admin_logs_action_7'	=>	"Ativação do banner publicitário, ID:",
+'admin_logs_action_8'	=>	"Exclusão do banner publicitário, ID:",
+'admin_logs_action_9'	=>	"Adição de bloqueios no filtro de usuários.",
+'admin_logs_action_10'	=>	"Exclusão de bloqueio no filtro de usuários.",
+'admin_logs_action_11'	=>	"Alteração da ordenação de categorias.",
+'admin_logs_action_12'	=>	"Adição de categoria:",
+'admin_logs_action_13'	=>	"Exclusão de categoria, ID:",
+'admin_logs_action_14'	=>	"Edição de categoria:",
+'admin_logs_action_15'	=>	"Exclusão de notícias no assistente de otimização anteriores a:",
+'admin_logs_action_16'	=>	"Exclusão de comentários no assistente de otimização anteriores a:",
+'admin_logs_action_17'	=>	"Limpeza de mensagens pessoais no assistente de otimização.",
+'admin_logs_action_18'	=>	"Limpeza de logs no assistente de otimização.",
+'admin_logs_action_19'	=>	"Moderação de comentários.",
+'admin_logs_action_20'	=>	"Exclusão de todos os comentários da notícia, ID:",
+'admin_logs_action_21'	=>	"Exclusão de comentários do site.",
+'admin_logs_action_22'	=>	"Exclusão de denúncia.",
+'admin_logs_action_23'	=>	"Otimização/Reparo do banco de dados.",
+'admin_logs_action_24'	=>	"Criação de backup do banco de dados.",
+'admin_logs_action_25'	=>	"Edição de notícia:",
+'admin_logs_action_26'	=>	"Exclusão de notícia:",
+'admin_logs_action_27'	=>	"Exclusão de enquete no site, ID:",
+'admin_logs_action_28'	=>	"Limpeza dos resultados da votação para a enquete ID:",
+'admin_logs_action_29'	=>	"Suspensão da enquete, ID:",
+'admin_logs_action_30'	=>	"Ativação da enquete, ID:",
+'admin_logs_action_31'	=>	"Edição de modelos de mensagens de E-mail.",
+'admin_logs_action_32'	=>	"Exclusão de imagens enviadas da notícia, ID:",
+'admin_logs_action_33'	=>	"Exclusão de imagens e arquivos enviados para a página estática, ID:",
+'admin_logs_action_34'	=>	"Exclusão de arquivos enviados da notícia, ID:",
+'admin_logs_action_36'	=>	"Upload de arquivo:",
+'admin_logs_action_37'	=>	"Eliminação do ficheiro:",
+'admin_logs_action_38'	=>	"Criação do sitemap.",
+'admin_logs_action_39'	=>	"Uso da edição em massa de páginas estáticas.",
+'admin_logs_action_40'	=>	"Uso da eliminação em massa de páginas estáticas.",
+'admin_logs_action_41'	=>	"Eliminação do utilizador:",
+'admin_logs_action_42'	=>	"Eliminação de comentários do utilizador com ID:",
+'admin_logs_action_43'	=>	"Alteração do grupo do utilizador:",
+'admin_logs_action_44'	=>	"Banimento do utilizador:",
+'admin_logs_action_45'	=>	"Eliminação das mensagens privadas do utilizador:",
+'admin_logs_action_46'	=>	"Uso da edição em massa de notícias.",
+'admin_logs_action_47'	=>	"Envio em massa de mensagens",
+'admin_logs_action_48'	=>	"Alteração das definições do script",
+'admin_logs_action_49'	=>	"Possível reconstrução das publicações",
+'admin_logs_action_50'	=>	"Eliminação de canal RSS, ID:",
+'admin_logs_action_51'	=>	"Adição de canal RSS:",
+'admin_logs_action_52'	=>	"Edição de canal RSS:",
+'admin_logs_action_53'	=>	"Adição de informador RSS:",
+'admin_logs_action_54'	=>	"Edição de informador RSS:",
+'admin_logs_action_55'	=>	"Desativação de informador RSS, ID:",
+'admin_logs_action_56'	=>	"Ativação de informador RSS, ID:",
+'admin_logs_action_57'	=>	"Eliminação de informador RSS, ID:",
+'admin_logs_action_58'	=>	"Procura e substituição na base de dados:",
+'admin_logs_action_59'	=>	"Adição de página estática:",
+'admin_logs_action_60'	=>	"Edição de página estática:",
+'admin_logs_action_61'	=>	"Eliminação de tag da nuvem de tags:",
+'admin_logs_action_62'	=>	"Edição de tag na nuvem de tags:",
+'admin_logs_action_63'	=>	"Adição de novo utilizador:",
+'admin_logs_action_64'	=>	"Edição do utilizador:",
+'admin_logs_action_65'	=>	"Eliminação do utilizador:",
+'admin_logs_action_66'	=>	"Alteração do pacote de idioma para o template:",
+'admin_logs_action_67'	=>	"Criação de novo template:",
+'admin_logs_action_68'	=>	"Eliminação do template:",
+'admin_logs_action_69'	=>	"Criação de ficheiro de template:",
+'admin_logs_action_70'	=>	"Edição de ficheiro de template:",
+'admin_logs_action_71'	=>	"Eliminação de campo personalizado para perfis de utilizadores:",
+'admin_logs_action_72'	=>	"Adição/edição de campo personalizado para perfis de utilizadores:",
+'admin_logs_action_73'	=>	"Eliminação de campo personalizado para notícias:",
+'admin_logs_action_74'	=>	"Adição/edição de campo personalizado para notícias:",
+'admin_logs_action_75'	=>	"Eliminação de grupo de utilizadores, ID:",
+'admin_logs_action_76'	=>	"Adição de novo grupo de utilizadores:",
+'admin_logs_action_77'	=>	"Edição de grupo de utilizadores:",
+'admin_logs_action_78'	=>	"Edição das definições dos leitores de vídeo.",
+'admin_logs_action_79'	=>	"Adição de nova palavra ao filtro de palavras:",
+'admin_logs_action_80'	=>	"Eliminação de palavras do filtro.",
+'admin_logs_action_81'	=>	"Edição de palavra no filtro de palavras:",
+'admin_logs_action_82'	=>	"Autenticação no painel de administração do site (introdução de login e palavra-passe).",
+'admin_logs_action_83'	=>	"Edição de pergunta na secção de Perguntas e Respostas:",
+'admin_logs_action_84'	=>	"Adição de pergunta na secção de Perguntas e Respostas:",
+'admin_logs_action_85'	=>	"Eliminação de pergunta na secção de Perguntas e Respostas, ID:",
+'admin_logs_action_86'	=>	"Autenticação no painel de administração do site (autenticação por cookies). Referência da página:",
+// 9.4
+
+);

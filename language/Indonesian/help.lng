@@ -1,0 +1,111 @@
+<?php
+
+$help_sections['title']['templates'] ="Template";
+$help_sections['body']['templates'] = <<<HTML
+Template digunakan untuk mengubah tampilan berita dengan mudah. Anda dapat mengubah berbagai bagian template yang digunakan untuk bagian penayangan berita yang berbeda. Misalnya, bagian template "Deskripsi singkat" digunakan untuk mengubah tampilan berita aktif, "Artikel lengkap" untuk mengubah tampilan artikel penuh, "Komentar" untuk mengubah tampilan komentar, dan seterusnya.<br><br>
+Saat mengedit bagian template, Anda dapat menggunakan HTML untuk mengubah berbagai struktur dan sebagainya. Anda juga perlu menambahkan penanda khusus ke dalam template untuk menentukan tempat judul berita, nama penulis, tanggal, dan sebagainya akan ditampilkan. Setiap bagian template memiliki penandanya sendiri.<br>
+Nilai variabel dapat dilihat di halaman pengeditan template dengan mengklik nama bagian template. Sebagai contoh, <b>{title}</b> akan menampilkan judul artikel, dan <b>{author}</b> akan menampilkan nama penulis, dan seterusnya.<br><br>
+Anda dapat menggunakan beberapa template yang berbeda.
+HTML;
+
+$help_sections['title']['xfields'] ="Bidang tambahan";
+$help_sections['body']['xfields'] = <<<HTML
+Bidang tambahan dihubungkan melalui menu <b>Pengaturan</b> &gt; <b>Bidang tambahan</b>. Fitur ini berguna ketika Anda mempublikasikan artikel bersama informasi tambahan, misalnya tautan ke sumber asli.<br>
+Anda dapat menambahkan bidang baru dengan menekan tombol "Tambah bidang". Pada halaman yang terbuka, Anda harus memasukkan nama bidang yang unik, deskripsi bidang, dan nilai default bidang. Anda juga perlu memilih apakah bidang ini akan bersifat opsional. Artinya, jika Anda tidak ingin menggunakan bidang tambahan untuk suatu artikel, cukup biarkan bidang tersebut kosong saat menambah/mengedit berita dan modul tidak akan diaktifkan.<br><br>
+Untuk menggunakan bidang pada halaman berita, Anda harus menambahkan variabel <b>[xfvalue_X]</b> ke template, di mana <b>X</b> adalah nilai bidang (nama yang Anda masukkan saat menambahkan bidang baru). Anda juga dapat menggunakan pasangan tag <b>[xfgiven_X]...[/xfgiven_X]</b>, yang menampilkan teks di dalamnya jika bidang tambahan telah diisi. Selain itu, Anda dapat menggunakan pasangan tag <b>[xfnotgiven_X]...[/xfnotgiven_X]</b>, yang menampilkan teks di dalamnya jika bidang tambahan belum diisi.<br><br>
+Contoh penggunaan bidang:
+<div class="code">
+<b>1)</b>- Nama: stit<br>
+&nbsp;&nbsp;- Deskripsi: Sumber informasi<br>
+&nbsp;&nbsp;- Nilai default: Saya<br>
+&nbsp;&nbsp;- Opsional: ya<br>
+<b>2)</b>- Nama: source<br>
+&nbsp;&nbsp;- Deskripsi: Tautan ke sumber informasi<br>
+&nbsp;&nbsp;- Nilai default: http://server.com/<br>
+&nbsp;&nbsp;- Opsional: ya<br><br>
+<b>Di template tuliskan:</b><br>
+[xfgiven_source]Sumber - &lt;a href=[xfvalue_source] target=_blank&gt;[xfvalue_stit]&lt;/a&gt;.[/xfgiven_source]<br>
+[xfnotgiven_source]Sumber tidak ditentukan[/xfnotgiven_source]</div>
+Jika bidang diisi di publikasi, hasilnya akan berupa kode HTML berikut:
+<div class="code">Sumber - &lt;a href=http://server.com/ target=_blank&gt;Saya&lt;/a&gt;.</div>
+Jika sumber tidak diisi, hasilnya akan berupa pesan:
+<div class="code">Sumber tidak ditentukan</div>
+Ingat, untuk nama bidang Anda hanya boleh menggunakan huruf Latin dan angka.
+HTML;
+
+$help_sections['title']['xprofile'] ="Bidang tambahan di profil pengguna";
+$help_sections['body']['xprofile'] = <<<HTML
+Fitur ini ditujukan untuk menambahkan bidang baru ke profil pengguna selain bidang utama yang sudah ada.<br><br>
+Anda dapat menambahkan bidang baru dengan mengklik tautan "Tambah bidang". Pada halaman yang terbuka, Anda harus memasukkan nama bidang yang unik dan deskripsi bidang. Anda juga perlu memilih apakah pengguna dapat menambahkan informasi tambahan saat registrasi, apakah bidang tersebut bersifat pribadi, serta apakah pengguna nantinya dapat mengedit isi bidang tersebut.<br><br>
+Bidang tambahan tersedia saat melihat komentar dan profil pengguna. Anda perlu menambahkan tag [xfvalue_X] ke template yang diperlukan, di mana X adalah nilai bidang (nama yang Anda masukkan saat menambahkan bidang baru). Anda juga dapat menggunakan pasangan tag [xfgiven_X]...[/xfgiven_X].<br><br>
+Contoh penggunaan bidang:
+<div class="code">
+&nbsp;&nbsp;- Nama: city<br>
+&nbsp;&nbsp;- Deskripsi: Kota<br>
+&nbsp;&nbsp;- Jenis bidang: Satu baris<br>
+&nbsp;&nbsp;- Tambahkan ke halaman registrasi: ya<br>
+&nbsp;&nbsp;- Bidang dapat diubah oleh pengguna: ya<br>
+&nbsp;&nbsp;- Jadikan bidang ini pribadi: tidak<br><br>
+tambahkan ke template comments.tpl dan userinfo.tpl<br>
+[xfgiven_city] Kota: [xfvalue_city] [/xfgiven_city]</div>
+Jika pengguna menambahkan kota, misalnya "Jakarta", di profilnya, hasilnya akan berupa kode HTML berikut:
+<div class="code">Kota: Jakarta</div>
+Ingat, untuk nama bidang Anda hanya boleh menggunakan huruf Latin dan angka.
+HTML;
+
+$help_sections['title']['banners'] ="Manajemen iklan di situs";
+$help_sections['body']['banners'] = <<<HTML
+Modul ini dirancang untuk penempatan dan pengelolaan materi iklan di situs Anda secara cepat dan nyaman. Untuk menampilkan banner di situs, cukup tambahkan tag banner ke template satu kali, setelah itu Anda dapat dengan mudah mengubah atau mengedit kode banner dari panel admin tanpa menyentuh template.<br /><br />
+Setelah menambahkan banner, Anda dapat menempatkan tag-nya di template <b>main.tpl</b> atau <b>fullstory.tpl</b>. Jika Anda menambahkan banner untuk ditampilkan di antara berita singkat, Anda tidak perlu menambahkan tag ke template, karena banner akan disisipkan otomatis di antara berita.
+<br />Contoh penggunaan:
+<div class="code">
+&nbsp;&nbsp;- Nama: header<br>
+&nbsp;&nbsp;- Deskripsi: Banner atas<br>
+&nbsp;&nbsp;- Aktifkan penayangan banner: Ya<br>
+&nbsp;&nbsp;- Tampilkan hanya di halaman utama: Tidak<br>
+&nbsp;&nbsp;- Tetapkan posisi: Tidak<br>
+&nbsp;&nbsp;- Posisi di berita singkat: Tidak<br><br>
+Setelah itu Anda dapat menambahkan tag untuk menampilkan banner ke template <b>main.tpl</b> atau <b>fullstory.tpl</b>: <b>{banner_header}</b><br />
+</div>
+Anda dapat menggunakan HTML dan JavaScript saat menambahkan kode banner.
+HTML;
+
+$help_sections['title']['date'] ="Format waktu dan tanggal lokal";
+$help_sections['body']['date'] = <<<HTML
+Karakter berikut dikenali dalam baris format: 
+<ul>
+<li><b>a</b> - "am" atau "pm"</li>
+<li><b>A</b> - "AM" atau "PM"</li>
+<li><b>B</b> - waktu Swatch Internet</li>
+<li><b>d</b> - hari dalam bulan, 2 digit dengan nol di depan jika perlu; yaitu dari "01" sampai "31"</li>
+<li><b>D</b> - nama hari, bentuk singkat 3 huruf; misalnya, "Fri"</li>
+<li><b>F</b> - bulan, bentuk teks panjang; misalnya, "January"</li>
+<li><b>g</b> - jam, format 12 jam tanpa nol di depan; yaitu dari "1" sampai "12"</li>
+<li><b>G</b> - jam, format 24 jam tanpa nol di depan; yaitu dari "0" sampai "23"</li>
+<li><b>h</b> - jam, format 12 jam; yaitu dari "01" sampai "12"</li>
+<li><b>H</b> - jam, format 24 jam; yaitu dari "00" sampai "23"</li>
+<li><b>i</b> - menit; yaitu dari "00" sampai "59"</li>
+<li><b>I</b> (huruf i kapital) - "1" jika Daylight Savings Time aktif, "0" jika tidak.</li>
+<li><b>j</b> - hari dalam bulan tanpa nol di depan; yaitu dari "1" sampai "31"</li>
+<li><b>l</b> ('L' huruf kecil) - nama hari, bentuk teks panjang; misalnya, "Friday"</li>
+<li><b>L</b> - boolean yang menunjukkan apakah tahun kabisat; yaitu "0" atau "1"</li> 
+<li><b>m</b> - bulan; yaitu dari "01" sampai "12"</li>
+<li><b>M</b> - bulan, bentuk singkat 3 huruf; misalnya, "Jan"</li>
+<li><b>n</b> - bulan tanpa nol di depan; yaitu dari "1" sampai "12"</li>
+<li><b>O</b> - selisih terhadap waktu Greenwich dalam jam; misalnya, "+0200"</li>
+<li><b>r</b> - format tanggal RFC 822; misalnya, "Thu, 21 Dec 2000 16:01:07 +0200" (diperkenalkan di PHP 4.0.4)</li>
+<li><b>s</b> - detik; yaitu dari "00" sampai "59"</li>
+<li><b>S</b> - sufiks bahasa Inggris sederhana untuk hari dalam bulan, 2 karakter; yaitu "st", "nd", "rd", atau "th"</li>
+<li><b>t</b> - jumlah hari dalam bulan ini; yaitu dari "28" sampai "31"</li>
+<li><b>T</b> - pengaturan timezone/zona waktu pada mesin ini; misalnya, "EST" atau 
+"MDT"</li>
+<li><b>U</b> - detik sejak Unix Epoch (dimulai dari January 1 1970 00:00:00 GMT)</li>
+<li><b>w</b> - hari dalam minggu dalam bentuk angka; yaitu dari "0" (Sunday) sampai "6" (Saturday)</li>
+<li><b>W</b> - nomor minggu ISO-8601 dalam satu tahun, minggu dimulai pada hari Monday 
+(diperkenalkan di PHP 4.1.0)</li>
+<li><b>Y</b> - tahun, 4 digit; misalnya, "1999"</li>
+<li><b>y</b> - tahun, 2 digit; misalnya, "99"</li>
+<li><b>z</b> - hari dalam tahun; yaitu dari "0" sampai "365"</li>
+<li><b>Z</b> - offset zona waktu dalam detik (yaitu dari "-43200" sampai "43200"). </li>
+Offset zona waktu ke barat dari UTC selalu bernilai negatif, sedangkan untuk zona waktu di timur UTC selalu bernilai positif.</li></ul>
+HTML;

@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script src="../../../ace/code_editor.js?v=1.43.6"></script>
+        <script>
+
+var tinymce,     // Reference to TinyMCE
+	editor,      // Reference to TinyMCE editor
+	aceEditor,   // Ace Editor instance
+	chr = 0,     // Unused utf-8 character, placeholder for cursor
+	isMac = /macintosh|mac os/i.test(navigator.userAgent);
+
+function inArray(key, arr)
+{
+	"use strict";
+	arr = '|' + arr.join('|') + '|';
+	return arr.indexOf('|'+key+'|') != -1;
+}
+
+(function()
+{// Initialise (before load)
+	"use strict";
+
+	tinymce = parent.tinymce;
+	editor = tinymce.activeEditor;
+
+	window.onload = start;
+}());
+
+function start()
+{// Initialise (on load)
+	"use strict";
+
+	if (typeof(window.ace) !== 'object') {
+		alert('Ace Editor not found, aborting...');
+		return;
+	}
+
+    var parentDoc = window.parent.document;
+    var root = parentDoc.documentElement;
+    var fontSize = window.parent.getComputedStyle(root).getPropertyValue('--font-size-base').trim();
+    var isPageRtl = String(root.getAttribute('dir') || '').toLowerCase() === 'rtl';
+
+    if (fontSize) {
+        
+        const tempElement = parentDoc.createElement('div');
+
+        Object.assign(tempElement.style, {
+            position: 'absolute',
+            left: '-9999px',
+            visibility: 'hidden',
+            fontSize: 'var(--font-size-base)',
+            fontFamily: 'system-ui'
+        });
+
+        parentDoc.body.appendChild(tempElement);
+        const computedStyles = getComputedStyle(tempElement);
+        fontSize = computedStyles.fontSize;
+
+        parentDoc.body.removeChild(tempElement);
+
+    } else {
+        fontSize = '0.9rem';
+    }
+
+    document.body.style.fontSize = fontSize;
+
+	// Create legend for keyboard shortcuts for find & replace:
+	var head = parent.document.querySelectorAll((tinymce.majorVersion < 5) ? '.mce-foot': '.tox-dialog__footer')[0],
+		div = parent.document.createElement('div'),
+		td1 = '<td style="font-size:80%;background:#777;color:#fff;padding:0 0.29em;vertical-align: middle;">',
+		td2 = '<td style="padding-left:0.364em;padding-right:0.313rem;vertical-align: middle;" class="tox-checkbox__label">';
+	div.innerHTML = '<table cellspacing="0" cellpadding="0" class="table-footer"><tr>' + td1 + (isMac ? '&#8984;-F' : 'Ctrl-F</td>') + td2 + tinymce.translate('Start search') + '</td>' + td2 + '<label class="tox-checkbox"><input type="checkbox" class="tox-checkbox__input" id="ace-usewordwrap" value="1"><div class="tox-checkbox__icons"><span class="tox-icon tox-checkbox-icon__checked"><svg width="24" height="24" focusable="false"><path fill-rule="nonzero" d="M6 4h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6c0-1.1.9-2 2-2Zm3.6 10.9L7 12.3a.7.7 0 0 0-1 1L9.6 17 18 8.6a.7.7 0 0 0 0-1 .7.7 0 0 0-1 0l-7.4 7.3Z"></path></svg></span><span class="tox-icon tox-checkbox-icon__unchecked"><svg width="24" height="24" focusable="false"><path fill-rule="nonzero" d="M6 4h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6c0-1.1.9-2 2-2Zm0 1a1 1 0 0 0-1 1v12c0 .6.4 1 1 1h12c.6 0 1-.4 1-1V6c0-.6-.4-1-1-1H6Z"></path></svg></span></div><span unselectable="on" class="tox-checkbox__label" for="ace-usewordwrap" style="user-select: none;">' + tinymce.translate('Word Wrap') + '</span></label>' + '</td></tr></table>';
+	div.className = 'helpsource';
+	head.appendChild(div);
+
+	var html = editor.getContent();
+    
+    html = html.replace(/<br>/g, "\n<br>");
+	html = html.replace(/<span\b(?=[^>]*\bid=(["'])CmCaReT\1)[^>]*>[\s\S]*?<\/span>/i, String.fromCharCode(chr));
+	html = html_beautify(html, { indent_size: 2 } );
+    
+	editor.dom.remove(editor.dom.select('span#CmCaReT'));
+
+    tinymce.each(editor.contextToolbars, function(toolbar) {
+        if (toolbar.panel) { 
+            toolbar.panel.hide(); 
+        } 
+    });
+
+    var use_wrap = true;
+    var p = parent;
+    var savedData = null;
+    var wrapToggle = parentDoc.getElementById('ace-usewordwrap');
+    
+    try {
+        savedData = localStorage.getItem('ace-usewordwrap');
+        savedData = JSON.parse(savedData);
+    } catch (e) { 
+        savedData = true;
+    }
+    
+    if (savedData === false) {
+        use_wrap = false;
+    }
+
+    if (wrapToggle) {
+        wrapToggle.checked = use_wrap;
+    }
+
+	// Initialize Ace Editor
+	aceEditor = ace.edit("editor", {
+            mode: 'ace/mode/html',
+    		indentedSoftWrap: false, 
+            wrap: use_wrap,
+            tabSize: 2,
+            showPrintMargin: false,
+            enableBasicAutocompletion: true,
+        	enableLiveAutocompletion: true,
+        	enableSnippets: false,
+        	behavioursEnabled: false,
+            useSvgGutterIcons: true,
+            value: html
+          });
+
+    if (aceEditor.completer) delete aceEditor.completer.autoSelect
+    var Autocomplete = ace.require("ace/autocomplete").Autocomplete;
+    Autocomplete.prototype.__defineSetter__("autoSelect", function () { })
+    Autocomplete.prototype.__defineGetter__("autoSelect", function () { })
+    
+    if (isPageRtl) {
+        aceEditor.setOptions({rtlText: true});
+        document.documentElement.setAttribute('dir', 'rtl');
+    }
+
+    if (parentDoc.body && parentDoc.body.classList.contains('dle_theme_dark')) {
+        aceEditor.setTheme("ace/theme/github_dark");
+        document.body.classList.add("dle_theme_dark");
+    } else {
+    	 aceEditor.setTheme("ace/theme/github_light_default");
+    }
+
+	if ( typeof(p.editor_messages) === 'object' ) {
+		ace.config.setMessages(p.editor_messages);
+	}
+
+    if (use_wrap) {
+        aceEditor.session.setOption('wrapMethod', 'text');
+    }
+    
+    if (wrapToggle) {
+        wrapToggle.addEventListener('change', function () {
+            if (wrapToggle.type === 'checkbox') {
+               var key = wrapToggle.id;
+               var value = wrapToggle.checked;
+
+               aceEditor.setOption("wrap", value);
+
+               if( value ) {
+                    aceEditor.session.setOption('wrapMethod', 'text');
+               }
+
+               try {
+                   localStorage.setItem(key, value);
+                } catch (e) { }
+
+             }
+
+        });
+    }
+
+	aceEditor.focus();
+    
+	// Set cursor position
+	var position = html.indexOf(String.fromCharCode(chr));
+	if(position > -1) {
+		var pos = aceEditor.session.doc.indexToPosition(position);
+		aceEditor.gotoLine(pos.row + 1, pos.column);
+		const startPos = aceEditor.session.doc.indexToPosition(position);
+    	const endPos = aceEditor.session.doc.indexToPosition(position + String.fromCharCode(chr).length);
+    	aceEditor.session.remove({ start: startPos, end: endPos });
+        setTimeout(() => {
+            aceEditor.renderer.scrollCursorIntoView(pos, 0.5);
+        }, 50);
+	} 
+
+}
+
+function isEmptyBlockWithOnlyCaretMarker(parent, marker) {
+    if (!parent || !marker || !editor.dom.isBlock(parent)) {
+        return false;
+    }
+
+    for (var i = 0; i < parent.childNodes.length; i++) {
+        var node = parent.childNodes[i];
+
+        if (node === marker) {
+            continue;
+        }
+
+        if (node.nodeType === 3) {
+            if (node.nodeValue.replace(/[\s\uFEFF\u00A0]/g, '') !== '') {
+                return false;
+            }
+            continue;
+        }
+
+        if (node.nodeType === 1 && node.nodeName === 'BR') {
+            continue;
+        }
+
+        return false;
+    }
+
+    return true;
+}
+
+function isEmptyTableCell(cell) {
+    for (var i = 0; i < cell.childNodes.length; i++) {
+        var node = cell.childNodes[i];
+
+        if (node.nodeType === 3) {
+            if (node.nodeValue.replace(/[\s\uFEFF\u00A0]/g, '') !== '') {
+                return false;
+            }
+            continue;
+        }
+
+        if (node.nodeType === 8) {
+            continue;
+        }
+
+        if (node.nodeType === 1) {
+            if (node.nodeName === 'BR' && editor.dom.getAttrib(node, 'data-mce-bogus')) {
+                continue;
+            }
+
+            return false;
+        }
+
+        return false;
+    }
+
+    return true;
+}
+
+function padEmptyTableCells() {
+    tinymce.each(editor.dom.select('td,th'), function(cell) {
+        if (cell.querySelector && cell.querySelector('span#CmCaReT')) {
+            return;
+        }
+
+        if (isEmptyTableCell(cell)) {
+            cell.innerHTML = '';
+            editor.dom.add(cell, 'br', {
+                'data-mce-bogus': '1'
+            });
+        }
+    });
+}
+
+const cursorTextTags = new Set([
+    'a', 'abbr', 'acronym', 'address', 'article', 'aside', 'b', 'bdi', 'bdo', 'big',
+    'blockquote', 'body', 'button', 'caption', 'center', 'cite', 'code', 'dd', 'del',
+    'dfn', 'div', 'dt', 'em', 'figcaption', 'font', 'footer', 'h1', 'h2', 'h3',
+    'h4', 'h5', 'h6', 'header', 'i', 'ins', 'kbd', 'label', 'legend', 'li', 'main',
+    'mark', 'nav', 'p', 'pre', 'q', 'rp', 'rt', 'ruby', 's', 'samp', 'section',
+    'small', 'span', 'strike', 'strong', 'sub', 'summary', 'sup', 'td', 'th', 'time',
+    'u', 'var'
+]);
+
+const cursorBlockedTags = new Set([
+    'math', 'svg', 'script', 'style', 'textarea', 'title', 'iframe', 'object',
+    'embed', 'canvas', 'audio', 'video'
+]);
+
+const cursorVoidTags = new Set([
+    'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta',
+    'param', 'source', 'track', 'wbr'
+]);
+
+function findTagEnd(html, start) {
+    let quote = '';
+
+    for (let i = start + 1; i < html.length; i++) {
+        const chr = html[i];
+
+        if (quote) {
+            if (chr === quote) {
+                quote = '';
+            }
+            continue;
+        }
+
+        if (chr === '"' || chr === "'") {
+            quote = chr;
+            continue;
+        }
+
+        if (chr === '>') {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+function readHtmlTag(html, start) {
+    if (html.slice(start, start + 4) === '<!--') {
+        const commentEnd = html.indexOf('-->', start + 4);
+
+        return { end: commentEnd === -1 ? html.length - 1 : commentEnd + 2, skip: true };
+    }
+
+    if (html.slice(start, start + 9) === '<![CDATA[') {
+        const cdataEnd = html.indexOf(']]>', start + 9);
+
+        return { end: cdataEnd === -1 ? html.length - 1 : cdataEnd + 2, skip: true };
+    }
+
+    const end = findTagEnd(html, start);
+
+    if (end === -1) {
+        return null;
+    }
+
+    let i = start + 1;
+
+    if (html[i] === '!' || html[i] === '?') {
+        return { end: end, skip: true };
+    }
+
+    let closing = false;
+
+    if (html[i] === '/') {
+        closing = true;
+        i++;
+    }
+
+    while (i < end && /\s/.test(html[i])) {
+        i++;
+    }
+
+    const nameStart = i;
+
+    while (i < end && !/[\s/>]/.test(html[i])) {
+        i++;
+    }
+
+    const name = html.slice(nameStart, i).toLowerCase();
+
+    if (!name) {
+        return { end: end, skip: true };
+    }
+
+    const tagHtml = html.slice(start, end + 1);
+
+    return {
+        name: name,
+        closing: closing,
+        end: end,
+        skip: false,
+        start: start,
+        hardBlocked: !closing && cursorBlockedTags.has(name),
+        editState: closing ? 0 : getCursorEditState(tagHtml),
+        selfClosing: !closing && (cursorVoidTags.has(name) || /\/\s*$/.test(html.slice(start + 1, end)))
+    };
+}
+
+function getCursorTagAttribute(tagHtml, name) {
+    let i = 1;
+    const searchName = name.toLowerCase();
+
+    while (i < tagHtml.length && !/[\s/>]/.test(tagHtml[i])) {
+        i++;
+    }
+
+    while (i < tagHtml.length) {
+        while (i < tagHtml.length && /[\s/]/.test(tagHtml[i])) {
+            i++;
+        }
+
+        if (i >= tagHtml.length || tagHtml[i] === '>') {
+            break;
+        }
+
+        const attrStart = i;
+
+        while (i < tagHtml.length && !/[\s=/>]/.test(tagHtml[i])) {
+            i++;
+        }
+
+        const attrName = tagHtml.slice(attrStart, i).toLowerCase();
+
+        while (i < tagHtml.length && /\s/.test(tagHtml[i])) {
+            i++;
+        }
+
+        let value = '';
+
+        if (tagHtml[i] === '=') {
+            i++;
+
+            while (i < tagHtml.length && /\s/.test(tagHtml[i])) {
+                i++;
+            }
+
+            if (tagHtml[i] === '"' || tagHtml[i] === "'") {
+                const quote = tagHtml[i++];
+                const valueStart = i;
+
+                while (i < tagHtml.length && tagHtml[i] !== quote) {
+                    i++;
+                }
+
+                value = tagHtml.slice(valueStart, i);
+
+                if (tagHtml[i] === quote) {
+                    i++;
+                }
+            } else {
+                const valueStart = i;
+
+                while (i < tagHtml.length && !/[\s/>]/.test(tagHtml[i])) {
+                    i++;
+                }
+
+                value = tagHtml.slice(valueStart, i);
+            }
+        }
+
+        if (attrName === searchName) {
+            return value;
+        }
+    }
+
+    return null;
+}
+
+function hasNonEditableCursorClass(tagHtml) {
+    const className = getCursorTagAttribute(tagHtml, 'class');
+
+    if (className === null) {
+        return false;
+    }
+
+    return /(?:^|\s)noncontenteditable(?:\s|$)/.test(className);
+}
+
+function hasEditableCursorClass(tagHtml) {
+    const className = getCursorTagAttribute(tagHtml, 'class');
+
+    if (className === null) {
+        return false;
+    }
+
+    return /(?:^|\s)contenteditable(?:\s|$)/.test(className);
+}
+
+function hasFalseContentEditable(tagHtml) {
+    const value = getCursorTagAttribute(tagHtml, 'contenteditable');
+
+    return value !== null && value.toLowerCase() === 'false';
+}
+
+function hasTrueContentEditable(tagHtml) {
+    const value = getCursorTagAttribute(tagHtml, 'contenteditable');
+
+    return value !== null && (value === '' || value.toLowerCase() === 'true' || value.toLowerCase() === 'plaintext-only');
+}
+
+function getCursorEditState(tagHtml) {
+    if (hasNonEditableCursorClass(tagHtml) || hasFalseContentEditable(tagHtml)) {
+        return -1;
+    }
+
+    if (hasEditableCursorClass(tagHtml) || hasTrueContentEditable(tagHtml)) {
+        return 1;
+    }
+
+    return 0;
+}
+
+function isCursorPositionAllowed(stack) {
+    if (stack.some(tag => tag.hardBlocked)) {
+        return false;
+    }
+
+    for (let i = stack.length - 1; i >= 0; i--) {
+        if (stack[i].editState !== 0) {
+            return stack[i].editState > 0;
+        }
+    }
+
+    return true;
+}
+
+function hasBlockedCursorParent(stack) {
+    return !isCursorPositionAllowed(stack);
+}
+
+function isCursorTextParent(stack) {
+    return isCursorPositionAllowed(stack) && (stack.length === 0 || cursorTextTags.has(stack[stack.length - 1].name));
+}
+
+function findOpenCursorTag(stack, name) {
+    for (let i = stack.length - 1; i >= 0; i--) {
+        if (stack[i].name === name) {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+function closeCursorTag(stack, name) {
+    const index = findOpenCursorTag(stack, name);
+
+    if (index !== -1) {
+        stack.length = index;
+    }
+}
+
+function findCursorInsertPositions(html) {
+    let positions = [];
+    let stack = [];
+    let i = 0;
+
+    while (i < html.length) {
+        const tagStart = html.indexOf('<', i);
+
+        if (tagStart === -1) {
+            break;
+        }
+
+        const tag = readHtmlTag(html, tagStart);
+
+        if (!tag) {
+            break;
+        }
+
+        if (!tag.skip) {
+            if (tag.closing) {
+                const index = findOpenCursorTag(stack, tag.name);
+
+                if (index !== -1) {
+                    const closingStack = stack.slice(0, index + 1);
+
+                    if (isCursorPositionAllowed(closingStack) && cursorTextTags.has(tag.name)) {
+                        positions.push(tag.start);
+                    }
+
+                    stack.length = index;
+                }
+            } else {
+                const cursorStack = tag.selfClosing ? stack : stack.concat(tag);
+
+                if (isCursorPositionAllowed(cursorStack) && cursorTextTags.has(tag.name)) {
+                    positions.push(tag.end + 1);
+                }
+
+                if (!tag.selfClosing) {
+                    stack.push(tag);
+                }
+            }
+        }
+
+        i = tag.end + 1;
+    }
+
+    return positions;
+}
+
+function adjustCursor(cursor, html) {
+    const cursorLength = cursor.length;
+    const cursorPos = html.indexOf(cursor);
+    if (cursorPos === -1) return html;
+
+    const ranges = findTextRanges(html);
+    const isInsideValidRange = ranges.some(range => cursorPos >= range.start && cursorPos < range.end);
+    if (isInsideValidRange) return html;
+
+    const cleanHtml = html.slice(0, cursorPos) + html.slice(cursorPos + cursorLength);
+    const newRanges = findTextRanges(cleanHtml);
+    const adjustedPos = Math.min(cursorPos, cleanHtml.length);
+    let closest = { distance: Infinity, pos: -1 };
+    let candidates = findCursorInsertPositions(cleanHtml);
+
+    for (const range of newRanges) {
+        candidates.push(range.start, range.end);
+    }
+
+    for (const insertPos of candidates) {
+        const minDist = Math.abs(insertPos - adjustedPos);
+
+        if (minDist < closest.distance) {
+            closest = { distance: minDist, pos: insertPos };
+        }
+    }
+
+    return closest.pos === -1 ? cleanHtml : cleanHtml.slice(0, closest.pos) + cursor + cleanHtml.slice(closest.pos);
+}
+
+function fixCursorInEntity(cursor, html) {
+    const cursorPos = html.indexOf(cursor);
+    if (cursorPos === -1) return html;
+
+    const cursorLength = cursor.length;
+    const cursorEnd = cursorPos + cursorLength;
+   
+    let ampPos = html.lastIndexOf('&', cursorPos - 1);
+    if (ampPos === -1 || ampPos > cursorPos) return html;
+
+    let semiPos = html.indexOf(';', cursorEnd);
+    if (semiPos === -1) return html;
+
+    const entity = html.slice(ampPos, cursorPos) + html.slice(cursorEnd, semiPos + 1);
+
+    if (!/^&(?:#[0-9]+|#x[0-9a-fA-F]+|[a-zA-Z][a-zA-Z0-9]+);$/.test(entity)) return html;
+
+    return html.slice(0, cursorPos) +
+           html.slice(cursorEnd, semiPos + 1) +
+           cursor +
+           html.slice(semiPos + 1);
+}
+
+function findTextRanges(html) {
+    let stack = [];
+    let ranges = [];
+    let i = 0;
+
+    while (i < html.length) {
+        const tagStart = html.indexOf('<', i);
+
+        if (tagStart === -1) {
+            if (i < html.length && isCursorTextParent(stack)) {
+                ranges.push({ start: i, end: html.length });
+            }
+            break;
+        }
+
+        if (tagStart > i && isCursorTextParent(stack)) {
+            ranges.push({ start: i, end: tagStart });
+        }
+
+        const tag = readHtmlTag(html, tagStart);
+
+        if (!tag) {
+            break;
+        }
+
+        if (!tag.skip) {
+            if (tag.closing) {
+                closeCursorTag(stack, tag.name);
+            } else if (!tag.selfClosing) {
+                stack.push(tag);
+            }
+        }
+
+        i = tag.end + 1;
+    }
+
+    return ranges;
+}
+
+function isInsideTag(cc, text) {
+	var pos = text.indexOf(cc);
+    var i = 0;
+
+    if (pos === -1) {
+        return false;
+    }
+
+    while (i < pos) {
+        var tagStart = text.indexOf('<', i);
+
+        if (tagStart === -1 || tagStart > pos) {
+            return false;
+        }
+
+        var tag = readHtmlTag(text, tagStart);
+
+        if (!tag) {
+            return false;
+        }
+
+        if (tag.end >= pos) {
+            return true;
+        }
+
+        i = tag.end + 1;
+    }
+
+    return false;
+}
+
+function submit() {
+	"use strict";
+
+	var cc = '&#x0;';
+
+	// Insert cursor placeholder
+	var cursor = aceEditor.getCursorPosition();
+	var pos = aceEditor.session.insert(cursor, cc);
+
+	var code = aceEditor.getValue();
+
+	if (code.search(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi) !== -1 || code.search(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi) !== -1) {
+		code = code.replace(cc, '');
+	}
+
+	code = fixCursorInEntity(cc, code);
+	code = adjustCursor(cc, code);
+
+	if(isInsideTag(cc, code)) {
+		code = code.replace(cc, '');
+	}
+
+	if( code.slice(-5) == cc ) {
+		code = code.slice(0, -5);
+		var index = code.lastIndexOf("</");
+
+		code = code.slice(0, index) + cc + code.slice(index);
+	}
+
+	code = code.replace(cc, '<span id="CmCaReT"></span>');
+
+	// Submit HTML to TinyMCE
+	editor.setContent(code);
+	
+	editor.nodeChanged();
+
+    var target = editor.dom.get('CmCaReT');
+
+    if (target) {
+        var parent = target.parentNode;
+        var emptyBlock = isEmptyBlockWithOnlyCaretMarker(parent, target);
+
+        editor.selection.scrollIntoView(target);
+
+        if (emptyBlock) {
+            target.remove();
+
+            parent.innerHTML = '';
+
+            editor.dom.add(parent, 'br', {
+                'data-mce-bogus': '1'
+            });
+
+            editor.selection.setCursorLocation(parent, 0);
+        } else {
+            editor.selection.setCursorLocation(parent, Array.prototype.indexOf.call(parent.childNodes, target) + 1);
+            target.remove();
+        }
+
+        editor.nodeChanged();
+    }
+    
+    padEmptyTableCells();
+    editor.nodeChanged();
+}
+
+</script>
+        <style type="text/css">
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#editor {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    font-size: 0.92em;
+    font-family: 'Menlo', 'Monaco', 'Ubuntu Mono', 'Lucida Console', 'Consolas', 'Source Code Pro', 'source-code-pro', monospace;
+    line-height: 1.6;
+    white-space: pre-wrap;
+}
+html[dir="rtl"] #editor {
+    font-family: 'Lucida Console', 'Consolas', 'Source Code Pro', 'source-code-pro', monospace;
+}
+.ace_icon_svg.ace_warning, .ace_icon_svg.ace_info {
+	display: none;
+}
+.ace_gutter-cell.ace_info, .ace_dark .ace_gutter-cell.ace_info, .ace_dark .ace_icon.ace_info, .ace_dark .ace_gutter-cell.ace_hint, .ace_dark .ace_icon.ace_hint {
+	background-image: none;
+}
+.ace_search {
+	background-color: #f5f5f5;
+	border: 1px solid #ddd;
+}
+.dle_theme_dark #editor {
+    color: rgba(255,255,255,.9);
+    background-color: #282c39;
+}
+.dle_theme_dark .ace_search {
+    background-color: #848a96;
+    border: 1px solid #7a7c7f;
+	color: #ffffff;
+}
+
+.dle_theme_dark .ace_search_field, .dle_theme_dark .ace_searchbtn {
+    background-color: rgba(0,0,0,.2);
+    color: rgb(255, 255, 255);
+}
+.dle_theme_dark .ace_button {
+ color: rgb(255, 255, 255);
+}
+.dle_theme_dark  .ace_button:hover {
+    background-color: rgba(0,0,0,.2);
+}
+</style>
+    </head>
+    <body>
+        <div id="editor"></div>
+    </body>
+</html>

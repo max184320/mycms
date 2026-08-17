@@ -1,0 +1,204 @@
+<?php
+
+$lang_logs = array (
+
+// 19.1
+'admin_logs_action_149'	    =>	"Bidang tambahan dinonaktifkan:",
+'admin_logs_action_150'	    =>	"Bidang tambahan diaktifkan:",
+// 19.1
+
+// 19.0
+'admin_logs_action_138'	    =>	"Penghapusan file template:",
+'admin_logs_action_139'	    =>	"Pembuatan folder template:",
+'admin_logs_action_140'	    =>	"Pengurutan aturan URL ramah",
+'admin_logs_action_141'	    =>	"Menambahkan aturan URL ramah baru:",
+'admin_logs_action_142'	    =>	"Mengedit aturan URL ramah:",
+'admin_logs_action_143'	    =>	"Reset aturan URL ramah",
+'admin_logs_action_144'	    =>	"Menghapus aturan URL ramah:",
+'admin_logs_action_145'	    =>	"Memindahkan file template ke lokasi baru:",
+'admin_logs_action_146'	    =>	"Tab baru untuk bidang tambahan telah ditambahkan:",
+'admin_logs_action_147'	    =>	"Mengedit tab untuk bidang tambahan:",
+'admin_logs_action_148'	    =>	"Tab untuk bidang tambahan dihapus:",
+// 19.0
+
+// 17.0
+'admin_logs_action_122'		=>	"Menonaktifkan tautan dalam modul 'Redirect'",
+'admin_logs_action_123'		=>	"Mengaktifkan tautan dalam modul 'Redirect'",
+'admin_logs_action_124'		=>	"Menonaktifkan tautan dalam modul 'Meta tag'",
+'admin_logs_action_125'		=>	"Mengaktifkan tautan dalam modul 'Meta tag'",
+'admin_logs_action_126'		=>	"Menonaktifkan tautan dalam modul 'Tautan silang'",
+'admin_logs_action_127'		=>	"Mengaktifkan tautan dalam modul 'Tautan silang'",
+'admin_logs_action_128'		=>	"Menambahkan penyimpanan baru:",
+'admin_logs_action_129'		=>	"Mengedit penyimpanan:",
+'admin_logs_action_130'		=>	"Menonaktifkan penyimpanan eksternal",
+'admin_logs_action_131'		=>	"Mengaktifkan penyimpanan eksternal",
+'admin_logs_action_132'		=>	"Menghapus penyimpanan eksternal secara massal",
+'admin_logs_action_133'		=>	"Mengaktifkan penyimpanan eksternal secara massal",
+'admin_logs_action_134'		=>	"Menonaktifkan penyimpanan eksternal secara massal",
+'admin_logs_action_135'		=>	"Mengganti penyimpanan default",
+'admin_logs_action_136'		=>	"Menghapus penyimpanan:",
+'admin_logs_action_137'		=>	"Penghapusan mandiri akun sendiri",
+// 17.0
+
+// 14.0
+'admin_logs_action_120'		=>	"Menonaktifkan kategori, ID:",
+'admin_logs_action_121'		=>	"Mengaktifkan kategori, ID:",
+// 14.0
+
+// 13.3
+'admin_logs_action_119'		=>	"Mengubah urutan plugin",
+// 13.3
+
+// 13.1
+'admin_logs_action_118'		=>	"Mengedit blokir di filter pengguna:",
+// 13.1
+
+
+// 13.0
+'admin_logs_action_116'		=>	"Menambahkan plugin baru:",
+'admin_logs_action_117'		=>	"Mengedit plugin:",
+'admin_logs_action_115'		=>	"Menghapus plugin, ID:",
+'admin_logs_action_1140'	=>	"Menonaktifkan plugin, ID:",
+'admin_logs_action_1141'	=>	"Mengaktifkan plugin, ID:",
+// 13.0
+
+// 12.1
+'admin_logs_action_109'	=>	"Membersihkan tayangan banner iklan, ID:",
+'admin_logs_action_110'	=>	"Membersihkan klik banner iklan, ID:",
+'admin_logs_action_111'	=>	"Menambahkan rubrik untuk materi iklan:",
+'admin_logs_action_112'	=>	"Mengedit rubrik dalam materi iklan:",
+'admin_logs_action_113'	=>	"Menghapus rubrik dalam materi iklan, ID:",
+// 12.1
+
+// 12.0
+'admin_logs_action_105'	=>	"Menambahkan meta tag untuk tautan:",
+'admin_logs_action_106'	=>	"Mengedit meta tag untuk tautan:",
+'admin_logs_action_107'	=>	"Menghapus tautan dalam modul 'Meta tag'",
+'admin_logs_action_108'	=>	"Ekspor pengguna",
+// 12.0
+
+// 11.3
+'admin_logs_action_102'	=>	"Menambahkan redirect untuk tautan:",
+'admin_logs_action_103'	=>	"Mengedit redirect untuk tautan:",
+'admin_logs_action_104'	=>	"Menghapus tautan dalam modul 'Redirect'",
+// 11.3
+
+// 11.2
+'admin_logs_action_99'	=>	"Input kode PIN salah setelah otorisasi",
+'admin_logs_action_100'	=>	"Otorisasi dikonfirmasi dengan kode PIN",
+'admin_logs_action_101'	=>	"Otorisasi di situs (input login dan kata sandi).",
+// 11.2
+
+// 10.4
+'admin_logs_action_96'	=>	"Penghapusan otomatis berita setelah masa berlaku yang ditentukan di pengaturan berita berakhir:",
+'admin_logs_action_97'	=>	"Menghapus semua komentar milik pengguna:",
+'admin_logs_action_98'	=>	"Menghapus semua berita milik pengguna:",
+// 10.4
+
+// 10.1
+'admin_logs_action_93'	=>	"Menambahkan tautan silang baru untuk kata kunci:",
+'admin_logs_action_94'	=>	"Mengedit tautan silang untuk kata kunci:",
+'admin_logs_action_95'	=>	"Mengedit tautan dalam modul 'Tautan silang'",
+// 10.1
+
+// 10.0
+'admin_logs_action_89'	=>	"Percobaan otorisasi yang gagal di panel admin dengan kata sandi yang salah.",
+'admin_logs_action_90'	=>	"Percobaan otorisasi yang gagal di panel admin dengan cookie browser yang salah.",
+'admin_logs_action_91'	=>	"Percobaan otorisasi yang gagal di situs dengan kata sandi yang salah.",
+'admin_logs_action_92'	=>	"Percobaan otorisasi yang gagal di situs dengan cookie browser yang salah.",
+// 10.0
+
+// 9.8
+'admin_logs_action_87'	=>	"Pengguna ditandai sebagai spammer:",
+'admin_logs_action_88'	=>	"Tamu tidak terdaftar ditandai sebagai spammer:",
+// 9.8
+
+// 9.4
+'admin_logs_action_1'	=>	"Menambahkan berita baru:",
+'admin_logs_action_2'	=>	"Menambahkan polling baru ke situs:",
+'admin_logs_action_3'	=>	"Mengedit polling:",
+'admin_logs_action_4'	=>	"Menambahkan banner iklan baru:",
+'admin_logs_action_5'	=>	"Mengedit banner iklan:",
+'admin_logs_action_6'	=>	"Menonaktifkan banner iklan, ID:",
+'admin_logs_action_7'	=>	"Mengaktifkan banner iklan, ID:",
+'admin_logs_action_8'	=>	"Menghapus banner iklan, ID:",
+'admin_logs_action_9'	=>	"Menambahkan blokir ke filter pengguna.",
+'admin_logs_action_10'	=>	"Menghapus blokir di filter pengguna.",
+'admin_logs_action_11'	=>	"Mengubah urutan kategori.",
+'admin_logs_action_12'	=>	"Menambahkan kategori:",
+'admin_logs_action_13'	=>	"Menghapus kategori, ID:",
+'admin_logs_action_14'	=>	"Mengedit kategori:",
+'admin_logs_action_15'	=>	"Menghapus berita di wizard optimasi yang lebih lama dari:",
+'admin_logs_action_16'	=>	"Menghapus komentar di wizard optimasi yang lebih lama dari:",
+'admin_logs_action_17'	=>	"Membersihkan pesan pribadi di wizard optimasi.",
+'admin_logs_action_18'	=>	"Membersihkan log di wizard optimasi.",
+'admin_logs_action_19'	=>	"Moderasi komentar.",
+'admin_logs_action_20'	=>	"Menghapus semua komentar pada berita, ID:",
+'admin_logs_action_21'	=>	"Menghapus komentar dari situs.",
+'admin_logs_action_22'	=>	"Menghapus laporan.",
+'admin_logs_action_23'	=>	"Optimasi/Perbaikan basis data.",
+'admin_logs_action_24'	=>	"Membuat backup basis data.",
+'admin_logs_action_25'	=>	"Mengedit berita:",
+'admin_logs_action_26'	=>	"Menghapus berita:",
+'admin_logs_action_27'	=>	"Menghapus polling di situs, ID:",
+'admin_logs_action_28'	=>	"Membersihkan hasil pemungutan suara untuk polling ID:",
+'admin_logs_action_29'	=>	"Menjeda polling, ID:",
+'admin_logs_action_30'	=>	"Mengaktifkan polling, ID:",
+'admin_logs_action_31'	=>	"Mengedit template pesan E-mail.",
+'admin_logs_action_32'	=>	"Menghapus gambar yang diunggah untuk berita, ID:",
+'admin_logs_action_33'	=>	"Menghapus gambar dan file yang diunggah untuk halaman statis, ID:",
+'admin_logs_action_34'	=>	"Menghapus file yang diunggah untuk berita, ID:",
+'admin_logs_action_36'	=>	"Mengunggah file:",
+'admin_logs_action_37'	=>	"Menghapus file:",
+'admin_logs_action_38'	=>	"Membuat sitemap.",
+'admin_logs_action_39'	=>	"Menggunakan pengeditan massal halaman statis.",
+'admin_logs_action_40'	=>	"Menggunakan penghapusan massal halaman statis.",
+'admin_logs_action_41'	=>	"Menghapus pengguna:",
+'admin_logs_action_42'	=>	"Menghapus komentar pengguna dengan ID:",
+'admin_logs_action_43'	=>	"Mengubah grup pengguna:",
+'admin_logs_action_44'	=>	"Memblokir pengguna:",
+'admin_logs_action_45'	=>	"Menghapus pesan pribadi pengguna:",
+'admin_logs_action_46'	=>	"Menggunakan pengeditan massal berita.",
+'admin_logs_action_47'	=>	"Pengiriman pesan massal",
+'admin_logs_action_48'	=>	"Mengubah pengaturan skrip",
+'admin_logs_action_49'	=>	"Kemungkinan membangun ulang publikasi",
+'admin_logs_action_50'	=>	"Menghapus kanal RSS, ID:",
+'admin_logs_action_51'	=>	"Menambahkan kanal RSS:",
+'admin_logs_action_52'	=>	"Mengedit kanal RSS:",
+'admin_logs_action_53'	=>	"Menambahkan RSS Informer:",
+'admin_logs_action_54'	=>	"Mengedit RSS Informer:",
+'admin_logs_action_55'	=>	"Menonaktifkan RSS Informer, ID:",
+'admin_logs_action_56'	=>	"Mengaktifkan RSS Informer, ID:",
+'admin_logs_action_57'	=>	"Menghapus RSS Informer, ID:",
+'admin_logs_action_58'	=>	"Cari dan ganti di basis data:",
+'admin_logs_action_59'	=>	"Menambahkan halaman statis:",
+'admin_logs_action_60'	=>	"Mengedit halaman statis:",
+'admin_logs_action_61'	=>	"Menghapus dari Cloud Tag, tag:",
+'admin_logs_action_62'	=>	"Mengedit Cloud Tag, tag:",
+'admin_logs_action_63'	=>	"Menambahkan pengguna baru:",
+'admin_logs_action_64'	=>	"Mengedit pengguna:",
+'admin_logs_action_65'	=>	"Menghapus pengguna:",
+'admin_logs_action_66'	=>	"Mengubah paket bahasa untuk template:",
+'admin_logs_action_67'	=>	"Membuat template baru:",
+'admin_logs_action_68'	=>	"Menghapus template:",
+'admin_logs_action_69'	=>	"Membuat file template:",
+'admin_logs_action_70'	=>	"Mengedit file template:",
+'admin_logs_action_71'	=>	"Menghapus bidang tambahan untuk profil pengguna:",
+'admin_logs_action_72'	=>	"Menambahkan/mengedit bidang tambahan untuk profil pengguna:",
+'admin_logs_action_73'	=>	"Menghapus bidang tambahan untuk berita:",
+'admin_logs_action_74'	=>	"Menambahkan/mengedit bidang tambahan untuk berita:",
+'admin_logs_action_75'	=>	"Menghapus grup pengguna, ID:",
+'admin_logs_action_76'	=>	"Menambahkan grup pengguna baru:",
+'admin_logs_action_77'	=>	"Mengedit grup pengguna:",
+'admin_logs_action_78'	=>	"Mengedit pengaturan pemutar video.",
+'admin_logs_action_79'	=>	"Menambahkan kata baru ke filter kata:",
+'admin_logs_action_80'	=>	"Menghapus kata dari filter.",
+'admin_logs_action_81'	=>	"Mengedit kata di filter kata:",
+'admin_logs_action_82'	=>	"Otorisasi di panel admin situs (input login dan kata sandi).",
+'admin_logs_action_83'	=>	"Mengedit pertanyaan di bagian Tanya Jawab:",
+'admin_logs_action_84'	=>	"Menambahkan pertanyaan di bagian Tanya Jawab:",
+'admin_logs_action_85'	=>	"Menghapus pertanyaan di bagian Tanya Jawab, ID:",
+'admin_logs_action_86'	=>	"Otorisasi di panel admin situs (otorisasi melalui cookie). Berpindah dari halaman:",
+// 9.4
+
+);

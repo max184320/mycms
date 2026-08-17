@@ -1,0 +1,112 @@
+<?php
+
+$help_sections['title']['templates'] ="Mẫu giao diện";
+$help_sections['body']['templates'] = <<<HTML
+Mẫu giao diện được dùng để thay đổi cách hiển thị bài viết một cách linh hoạt. Bạn có thể chỉnh sửa các phần khác nhau của mẫu, mỗi phần tương ứng với một khu vực hiển thị khác nhau của bài viết. Ví dụ, phần mẫu &laquo;Tóm tắt ngắn&raquo; được dùng để thay đổi giao diện bài viết đang hoạt động, &laquo;Bài viết đầy đủ&raquo; để thay đổi giao diện bài viết hoàn chỉnh, &laquo;Bình luận&raquo; để thay đổi giao diện bình luận, v.v.<br><br>
+Khi chỉnh sửa các phần của mẫu, bạn có thể sử dụng HTML để thay đổi các cấu trúc khác nhau, v.v. Ngoài ra, bạn cũng cần thêm một số ký hiệu đặc biệt vào mẫu để xác định vị trí hiển thị tiêu đề bài viết, tên tác giả, ngày tháng, v.v. Mỗi phần của mẫu tương ứng với một ký hiệu cụ thể.<br>
+Giá trị của biến có thể xem trên trang chỉnh sửa mẫu khi nhấp vào tên của phần mẫu. Ví dụ <b>{title}</b> sẽ hiển thị tiêu đề bài viết, còn <b>{author}</b> sẽ hiển thị tác giả bài viết, v.v.<br><br>
+Bạn có thể sử dụng nhiều mẫu giao diện khác nhau.
+HTML;
+
+$help_sections['title']['xfields'] ="Trường bổ sung";
+$help_sections['body']['xfields'] = <<<HTML
+Việc kết nối các trường bổ sung được thực hiện qua menu <b>Cài đặt</b> &gt; <b>Trường bổ sung</b>. Chức năng này rất tiện khi xuất bản kèm theo bài viết, ví dụ như liên kết tới nguồn gốc ban đầu.<br>
+Bạn có thể thêm trường mới bằng cách nhấn nút &laquo;Thêm trường&raquo;. Trên trang mở ra, bạn cần nhập tên trường duy nhất, mô tả trường và nội dung mặc định của trường. Bạn cũng cần chọn xem trường này có được sử dụng tùy chọn hay không. Tức là nếu bạn không muốn dùng trường bổ sung cho một bài viết nào đó, chỉ cần để trống trường khi thêm/chỉnh sửa bài viết và mô-đun sẽ không được kích hoạt.<br><br>
+Để sử dụng trường trên trang bài viết, bạn cần thêm biến <b>[xfvalue_X]</b> vào mẫu, trong đó <b>X</b> là giá trị của trường (tên bạn đã nhập khi thêm trường mới). Bạn cũng có thể dùng cặp thẻ <b>[xfgiven_X]...[/xfgiven_X]</b>, chúng sẽ hiển thị văn bản bên trong nếu trường bổ sung đã được điền. Tương tự, bạn có thể dùng cặp thẻ <b>[xfnotgiven_X]...[/xfnotgiven_X]</b>, chúng sẽ hiển thị văn bản bên trong nếu trường bổ sung chưa được điền.<br><br>
+Ví dụ hoạt động của các trường:
+<div class="code">
+<b>1)</b>- Tên: stit<br>
+&nbsp;&nbsp;- Mô tả: Nguồn thông tin<br>
+&nbsp;&nbsp;- Giá trị mặc định: Tôi<br>
+&nbsp;&nbsp;- Tùy chọn: có<br>
+<b>2)</b>- Tên: source<br>
+&nbsp;&nbsp;- Mô tả: Liên kết tới nguồn thông tin<br>
+&nbsp;&nbsp;- Giá trị mặc định: http://server.com/<br>
+&nbsp;&nbsp;- Tùy chọn: có<br><br>
+<b>Trong mẫu viết:</b><br>
+[xfgiven_source]Nguồn - &lt;a href=[xfvalue_source] target=_blank&gt;[xfvalue_stit]&lt;/a&gt;.[/xfgiven_source]<br>
+[xfnotgiven_source]Không chỉ định nguồn[/xfnotgiven_source]</div>
+Trong trường hợp trường đã được điền trong bài viết, kết quả sẽ là đoạn mã HTML sau:
+<div class="code">Nguồn - &lt;a href=http://server.com/ target=_blank&gt;Tôi&lt;/a&gt;.</div>
+Nếu nguồn chưa được chỉ định, kết quả sẽ là thông báo:
+<div class="code">Không chỉ định nguồn</div>
+Hãy nhớ rằng tên trường chỉ được dùng chữ cái Latin và chữ số.
+HTML;
+
+$help_sections['title']['xprofile'] ="Trường bổ sung trong hồ sơ người dùng";
+$help_sections['body']['xprofile'] = <<<HTML
+Chức năng này dùng để thêm các trường mới vào hồ sơ người dùng ngoài các trường cơ bản đã có.<br><br>
+Bạn có thể thêm trường mới bằng cách nhấn liên kết &laquo;Thêm trường&raquo;. Trên trang mở ra, bạn cần nhập tên trường duy nhất và mô tả trường. Bạn cũng cần chọn xem người dùng có thể thêm thông tin bổ sung khi đăng ký hay không, trường này có mang tính riêng tư hay không, cũng như người dùng có thể chỉnh sửa nội dung của trường này về sau hay không.<br><br>
+Các trường bổ sung có sẵn khi xem bình luận và hồ sơ người dùng, bạn cần thêm thẻ [xfvalue_X] vào đúng mẫu, trong đó X là giá trị của trường (tên bạn đã nhập khi thêm trường mới). Bạn cũng có thể dùng cặp thẻ [xfgiven_X]...[/xfgiven_X].<br><br>
+Ví dụ hoạt động của các trường:
+<div class="code">
+&nbsp;&nbsp;- Tên: city<br>
+&nbsp;&nbsp;- Mô tả: Thành phố<br>
+&nbsp;&nbsp;- Kiểu trường: Một dòng<br>
+&nbsp;&nbsp;- Thêm vào trang đăng ký: có<br>
+&nbsp;&nbsp;- Người dùng có thể chỉnh sửa trường này: có<br>
+&nbsp;&nbsp;- Đặt trường này là riêng tư: không<br><br>
+thêm vào mẫu comments.tpl và userinfo.tpl<br>
+[xfgiven_city] Thành phố: [xfvalue_city] [/xfgiven_city]</div>
+Nếu người dùng thêm vào hồ sơ của mình thành phố, ví dụ &laquo;Moskva&raquo;, thì kết quả sẽ là đoạn mã HTML sau:
+<div class="code">Thành phố: Moskva</div>
+Hãy nhớ rằng tên trường chỉ được dùng chữ cái Latin và chữ số.
+HTML;
+
+$help_sections['title']['banners'] ="Quản lý quảng cáo trên trang web";
+$help_sections['body']['banners'] = <<<HTML
+Mô-đun này được thiết kế để triển khai và quản lý tài liệu quảng cáo của bạn trên trang web một cách nhanh chóng và thuận tiện. Để đặt banner của bạn trên trang web, bạn chỉ cần thêm thẻ banner vào mẫu một lần, sau đó có thể thay đổi hoặc chỉnh sửa mã banner trong bảng quản trị mà không cần đụng tới các mẫu giao diện.<br /><br />
+Sau khi thêm banner, bạn có thể đặt thẻ của nó trong các mẫu <b>main.tpl</b> hoặc <b>fullstory.tpl</b>. Nếu bạn thêm banner để hiển thị giữa các tin ngắn, thì không cần thêm thẻ vào mẫu, banner sẽ tự động được chèn giữa các bài viết.
+<br />Ví dụ hoạt động:
+<div class="code">
+&nbsp;&nbsp;- Tên: header<br>
+&nbsp;&nbsp;- Mô tả: Banner trên cùng<br>
+&nbsp;&nbsp;- Bật hiển thị banner: Có<br>
+&nbsp;&nbsp;- Chỉ hiển thị ở trang chủ: Không<br>
+&nbsp;&nbsp;- Ghim vị trí hiển thị: Không<br>
+&nbsp;&nbsp;- Vị trí trong tin ngắn: Không<br><br>
+Sau đó bạn có thể thêm vào mẫu <b>main.tpl</b> hoặc <b>fullstory.tpl</b> thẻ để hiển thị banner: <b>{banner_header}</b><br />
+</div>
+Bạn có thể sử dụng HTML và JavaScript khi thêm mã banner.
+HTML;
+
+$help_sections['title']['date'] ="Định dạng thời gian và ngày tháng cục bộ";
+$help_sections['body']['date'] = <<<HTML
+Trong chuỗi định dạng, các ký tự sau sẽ được nhận diện: 
+<ul>
+<li><b>a</b> - "am" hoặc "pm"</li>
+<li><b>A</b> - "AM" hoặc "PM"</li>
+<li><b>B</b> - thời gian Internet Swatch </li>
+<li><b>d</b> - ngày trong tháng, 2 chữ số có số 0 ở đầu nếu cần; tức là từ "01" đến "31"</li>
+<li><b>D</b> - ngày trong tuần, dạng chữ, 3 ký tự; ví dụ "Fri"</li>
+<li><b>F</b> - tháng, dạng chữ đầy đủ; ví dụ "January"</li>
+<li><b>g</b> - giờ, định dạng 12 giờ không có số 0 ở đầu; tức là từ "1" đến "12"</li>
+<li><b>G</b> - giờ, định dạng 24 giờ không có số 0 ở đầu; tức là từ "0" đến "23"</li>
+<li><b>h</b> - giờ, định dạng 12 giờ; tức là từ "01" đến "12"</li>
+<li><b>H</b> - giờ, định dạng 24 giờ; tức là từ "00" đến "23"</li>
+<li><b>i</b> - phút; tức là từ "00" đến "59"</li>
+<li><b>I</b> (chữ i viết hoa) - "1" nếu là Daylight Savings Time, "0" trong trường hợp ngược lại.</li>
+<li><b>j</b> - ngày trong tháng không có số 0 ở đầu; tức là từ "1" đến "31" </li>
+<li><b>l</b> (&#039;L&#039; viết thường) - ngày trong tuần, dạng chữ đầy đủ; ví dụ "Friday" </li>
+<li><b>L</b> - giá trị boolean cho biết năm đó có phải năm nhuận hay không; tức là "0" hoặc "1"</li> 
+<li><b>m</b> - tháng; tức là từ "01" đến "12"</li>
+<li><b>M</b> - tháng, dạng chữ, 3 ký tự; ví dụ "Jan" </li>
+<li><b>n</b> - tháng không có số 0 ở đầu; tức là từ "1" đến "12" </li>
+<li><b>O</b> - chênh lệch với giờ Greenwich theo giờ; ví dụ "+0200" </li>
+<li><b>r</b> - định dạng ngày RFC 822; ví dụ "Thu, 21 Dec 2000 16:01:07 +0200" (được thêm từ PHP 4.0.4) </li>
+<li><b>s</b> - giây; tức là từ "00" đến "59"</li>
+<li><b>S</b> - hậu tố tiếng Anh đơn giản cho ngày trong tháng, 2 ký tự; tức là "st", "nd", "rd" hoặc "th"</li>
+<li><b>t</b> - số ngày trong tháng hiện tại; tức là từ "28" đến "31" </li>
+<li><b>T</b> - thiết lập Timezone/Múi giờ của máy hiện tại; ví dụ "EST" hoặc 
+"MDT" </li>
+<li><b>U</b> - số giây của Unix Epoch (bắt đầu từ January 1 1970 00:00:00 GMT) </li>
+<li><b>w</b> - ngày trong tuần dạng số; tức là từ "0" (Sunday) đến "6" (Saturday) </li>
+<li><b>W</b> - số tuần trong năm theo ISO-8601, các tuần bắt đầu từ thứ Hai/Monday 
+(được thêm từ PHP 4.1.0) </li>
+<li><b>Y</b> - năm, 4 chữ số; ví dụ "1999"</li>
+<li><b>y</b> - năm, 2 chữ số; ví dụ "99" </li>
+<li><b>z</b> - ngày trong năm; tức là từ "0" đến "365"</li>
+<li><b>Z</b> - độ lệch múi giờ tính bằng giây (tức là từ "-43200" đến "43200"). </li>
+Độ lệch múi giờ về phía tây của UTC luôn là số âm, còn với các múi giờ ở phía 
+đông UTC thì luôn là số dương.</li></ul>
+HTML;

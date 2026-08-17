@@ -1,0 +1,109 @@
+<?php
+
+$help_sections['title']['templates'] ="Szablony";
+$help_sections['body']['templates'] = <<<HTML
+Szablony są używane do łatwej zmiany sposobu wyświetlania nowości. Możesz zmieniać różne części szablonu, które są wykorzystywane dla różnych elementów prezentacji treści. Na przykład, część szablonu "Krótka treść" służy do zmiany wyglądu aktywnych nowości, "Cały artykuł" do zmiany wyglądu pełnej publikacji, "Komentarz" do zmiany wyglądu komentarzy itp.<br><br>
+Podczas edycji części szablonu możesz używać kodu HTML, aby modyfikować strukturę elementów. Będziesz musiał również dodać specjalne znaczniki w swoich szablonach, aby określić miejsce, w którym zostanie wyświetlony tytuł nowości, nazwa autora, data itp. Każdej części szablonu odpowiada określone oznaczenie.<br>
+Wartości zmiennych można sprawdzić na stronie edycji szablonów po kliknięciu w nazwę danej części szablonu. Na przykład <b>{title}</b> wyświetli tytuł artykułu, a <b>{author}</b> autora artykułu itp.<br><br>
+Możesz korzystać z wielu różnych szablonów.
+HTML;
+
+$help_sections['title']['xfields'] ="Dodatkowe pola";
+$help_sections['body']['xfields'] = <<<HTML
+Podłączenie dodatkowych pól odbywa się poprzez menu <b>Ustawienia</b> &gt; <b>Dodatkowe pola</b>. Funkcja ta jest wygodna przy publikacji wraz z artykułem, na przykład, linku do pierwotnego źródła.<br>
+Dodanie nowego pola jest możliwe po kliknięciu przycisku "Dodaj pole". Na otwartej stronie należy wprowadzić unikalną nazwę pola, opis pola oraz domyślną treść pola. Musisz również wybrać, czy chcesz używać pól opcjonalnie. Tj. jeśli dla jakiegoś artykułu nie będziesz chciał użyć dodatkowego pola, wystarczy zostawić je puste podczas dodawania/edycji nowości, a moduł nie zostanie aktywowany.<br><br>
+Aby użyć pola na stronie z nowościami, musisz dodać do szablonu zmienną <b>[xfvalue_X]</b>, gdzie <b>X</b> to nazwa pola (nazwa wprowadzona podczas dodawania nowego pola). Można również użyć konstrukcji <b>[xfgiven_X]...[/xfgiven_X]</b>, która wyświetla zawarty w niej tekst, jeśli dodatkowe pole zostało wypełnione. Dostępna jest również konstrukcja <b>[xfnotgiven_X]...[/xfnotgiven_X]</b>, wyświetlająca tekst, gdy dodatkowe pole nie zostało wypełnione.<br><br>
+Przykład działania pól:
+<div class="code">
+<b>1)</b>- Nazwa: stit<br>
+&nbsp;&nbsp;- Opis: Źródło informacji<br>
+&nbsp;&nbsp;- Wartość domyślna: Ja<br>
+&nbsp;&nbsp;- Opcjonalnie: tak<br>
+<b>2)</b>- Nazwa: source<br>
+&nbsp;&nbsp;- Opis: Link do źródła informacji<br>
+&nbsp;&nbsp;- Wartość domyślna: http://server.com/<br>
+&nbsp;&nbsp;- Opcjonalnie: tak<br><br>
+<b>W szablonie wpisujemy:</b><br>
+[xfgiven_source]Źródło - &lt;a href=[xfvalue_source] target=_blank&gt;[xfvalue_stit]&lt;/a&gt;.[/xfgiven_source]<br>
+[xfnotgiven_source]Źródło nie podane[/xfnotgiven_source]</div>
+W przypadku, gdy pole zostało wypełnione w publikacji, wynikiem będzie następujący kod HTML:
+<div class="code">Źródło - &lt;a href=http://server.com/ target=_blank&gt;Ja&lt;/a&gt;.</div>
+W przypadku, gdy źródło nie zostało podane, wynikiem będzie komunikat:
+<div class="code">Źródło nie podane</div>
+Pamiętaj, aby w nazwie pola używać wyłącznie liter alfabetu łacińskiego oraz cyfr.
+HTML;
+
+$help_sections['title']['xprofile'] ="Dodatkowe pola w profilu użytkownika";
+$help_sections['body']['xprofile'] = <<<HTML
+Ta funkcja służy do dodawania nowych pól do profilu użytkownika, obok istniejących pól podstawowych.<br><br>
+Nowe pole można dodać, klikając link "Dodaj pole". Na otwartej stronie należy wprowadzić unikalną nazwę pola oraz opis pola. Musisz również zdecydować, czy użytkownik ma mieć możliwość dodania tych informacji podczas rejestracji, czy pole jest prywatne oraz czy użytkownik może później edytować zawartość tego pola.<br><br>
+Dodatkowe pola są dostępne podczas przeglądania komentarzy i profilu użytkownika. W odpowiednich szablonach należy dodać tag [xfvalue_X], gdzie X to nazwa pola (nazwa wprowadzona przy dodawaniu pola). Można również użyć konstrukcji [xfgiven_X]...[/xfgiven_X].<br><br>
+Przykład działania pól:
+<div class="code">
+&nbsp;&nbsp;- Nazwa: city<br>
+&nbsp;&nbsp;- Opis: Miasto<br>
+&nbsp;&nbsp;- Typ pola: Jeden wiersz<br>
+&nbsp;&nbsp;- Dodaj do strony rejestracji: tak<br>
+&nbsp;&nbsp;- Pole może być zmienione przez użytkownika: tak<br>
+&nbsp;&nbsp;- Ustaw to pole jako prywatne: nie<br><br>
+Do szablonu comments.tpl i userinfo.tpl dodać:<br>
+[xfgiven_city] Miasto: [xfvalue_city] [/xfgiven_city]</div>
+Jeśli użytkownik wpisał w swoim profilu miasto, np. "Warszawa", wynikiem działania będzie następujący kod HTML:
+<div class="code">Miasto: Warszawa</div>
+Pamiętaj, aby w nazwie pola używać wyłącznie liter alfabetu łacińskiego oraz cyfr.
+HTML;
+
+$help_sections['title']['banners'] ="Zarządzanie reklamą na stronie";
+$help_sections['body']['banners'] = <<<HTML
+Ten moduł służy do szybkiego i wygodnego umieszczania oraz zarządzania materiałami reklamowymi na stronie. Aby umieścić baner na stronie, wystarczy raz dodać tag banera do szablonu, po czym możesz bez problemu zmieniać lub edytować kod banera w panelu administracyjnym, nie modyfikując przy tym plików szablonów.<br /><br />
+Po dodaniu banera możesz umieścić jego tag w szablonach <b>main.tpl</b> lub <b>fullstory.tpl</b>. Jeśli dodajesz baner do wyświetlania między krótkimi nowościami, nie ma potrzeby dodawania tagu do szablonu – baner zostanie wstawiony między nowościami automatycznie.
+<br />Przykład działania:
+<div class="code">
+&nbsp;&nbsp;- Nazwa: header<br>
+&nbsp;&nbsp;- Opis: Górny baner<br>
+&nbsp;&nbsp;- Włącz wyświetlanie banera: Tak<br>
+&nbsp;&nbsp;- Pokazuj tylko na głównej: Nie<br>
+&nbsp;&nbsp;- Przypnij w lokalizacji: Nie<br>
+&nbsp;&nbsp;- Lokalizacja w krótkich nowościach: Nie<br><br>
+Po tym możesz dodać do swojego szablonu w <b>main.tpl</b> lub <b>fullstory.tpl</b> tag wyświetlający baner: <b>{banner_header}</b><br />
+</div>
+Przy dodawaniu kodu banera możesz używać HTML oraz JavaScript.
+HTML;
+
+$help_sections['title']['date'] ="Formaty lokalnego czasu i daty";
+$help_sections['body']['date'] = <<<HTML
+W ciągu formatu rozpoznawane są następujące symbole: 
+<ul>
+<li><b>a</b> - &#39;am&#39; lub &#39;pm&#39;</li>
+<li><b>A</b> - &#39;AM&#39; lub &#39;PM&#39;</li>
+<li><b>B</b> - czas Swatch Internet </li>
+<li><b>d</b> - dzień (liczba) miesiąca, 2 cyfry z wiodącym zerem, jeśli to konieczne; tj. od &#39;01&#39; do &#39;31&#39;</li>
+<li><b>D</b> - dzień tygodnia, tekstowy, 3 litery; na przykład, &#39;Fri&#39;</li>
+<li><b>F</b> - miesiąc, tekstowy, pełny; na przykład, &#39;January&#39;</li>
+<li><b>g</b> - godzina, format 12-godzinny bez wiodących zer; tj. od &#39;1&#39; do &#39;12&#39;</li>
+<li><b>G</b> - godzina, format 24-godzinny bez wiodących zer; tj. od &#39;0&#39; do &#39;23&#39;</li>
+<li><b>h</b> - godzina, format 12-godzinny; tj. od &#39;01&#39; do &#39;12&#39;</li>
+<li><b>H</b> - godzina, format 24-godzinny; tj. od &#39;00&#39; do &#39;23&#39;</li>
+<li><b>i</b> - minuty; tj. od &#39;00&#39; do &#39;59&#39;</li>
+<li><b>I</b> (duże i) - &#39;1&#39;, jeśli jest czas letni (Daylight Savings Time), &#39;0&#39; - w przeciwnym razie.</li>
+<li><b>j</b> - dzień (liczba) miesiąca bez wiodących zer; tj. od &#39;1&#39; do &#39;31&#39; </li>
+<li><b>l</b> (małe &#39;L&#39;) - dzień tygodnia, tekstowy, pełny; na przykład, &#39;Friday&#39; </li>
+<li><b>L</b> - wartość logiczna, wskazująca, czy rok jest przestępny; tj. &#39;0&#39; lub &#39;1&#39;</li> 
+<li><b>m</b> - miesiąc; tj. od &#39;01&#39; do &#39;12&#39;</li>
+<li><b>M</b> - miesiąc, tekstowy, 3 litery; na przykład, &#39;Jan&#39; </li>
+<li><b>n</b> - miesiąc bez wiodących zer; tj. od &#39;1&#39; do &#39;12&#39; </li>
+<li><b>O</b> - różnica względem czasu Greenwich, w godzinach; na przykład, &#39;+0200&#39; </li>
+<li><b>r</b> - format daty RFC 822; na przykład, &#39;Thu, 21 Dec 2000 16:01:07 +0200&#39; (wprowadzony w PHP 4.0.4) </li>
+<li><b>s</b> - sekundy; tj. od &#39;00&#39; do &#39;59&#39;</li>
+<li><b>S</b> - prosty angielski sufiks dla dnia (liczby) miesiąca, 2 znaki; tj. &#39;st&#39;, &#39;nd&#39;, &#39;rd&#39; lub &#39;th&#39;</li>
+<li><b>t</b> - liczba dni w danym miesiącu; tj. od &#39;28&#39; do &#39;31&#39; </li>
+<li><b>T</b> - ustawienie strefy czasowej (Timezone) na danej maszynie; na przykład, &#39;EST&#39; lub &#39;MDT&#39; </li>
+<li><b>U</b> - sekundy epoki Unix (Unix Epoch, od 1 stycznia 1970 00:00:00 GMT) </li>
+<li><b>w</b> - dzień tygodnia, numeryczny, tj. od &#39;0&#39; (niedziela) do &#39;6&#39; (sobota) </li>
+<li><b>W</b> - numer tygodnia w roku ISO-8601, tygodnie zaczynają się od poniedziałku (wprowadzone w PHP 4.1.0) </li>
+<li><b>Y</b> - rok, 4 cyfry; na przykład, &#39;1999&#39;</li>
+<li><b>y</b> - rok, 2 cyfry; na przykład, &#39;99&#39; </li>
+<li><b>z</b> - dzień roku; tj. od &#39;0&#39; do &#39;365&#39;</li>
+<li><b>Z</b> - przesunięcie strefy czasowej w sekundach (tj. od &#39;-43200&#39; do &#39;43200&#39;). </li>
+Przesunięcie stref czasowych na zachód od UTC jest zawsze ujemne, a dla stref na wschód od UTC - zawsze dodatnie.</li></ul>
+HTML;

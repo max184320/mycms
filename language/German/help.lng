@@ -1,0 +1,109 @@
+<?php
+
+$help_sections['title']['templates'] = "Vorlagen";
+$help_sections['body']['templates'] = <<<HTML
+Vorlagen werden verwendet, um die Anzeige von Nachrichten einfach zu ändern. Sie können verschiedene Teile der Vorlage ändern, die für verschiedene Teile der Nachrichtenanzeige verwendet werden. Zum Beispiel wird der Teil der Vorlage &#39;Kurzfassung&#39; verwendet, um das Erscheinungsbild aktiver Nachrichten zu ändern, &#39;Vollständiger Artikel&#39;, um das Erscheinungsbild des vollständigen Artikels zu ändern, &#39;Kommentar&#39;, um das Erscheinungsbild von Kommentaren zu ändern usw.<br><br>
+Beim Bearbeiten von Vorlagenteilen können Sie HTML verwenden, um verschiedene Strukturen usw. zu ändern. Außerdem müssen Sie einige spezielle Bezeichnungen in Ihren Vorlagen hinzufügen, um die Stelle zu bestimmen, an der der Nachrichtentitel, der Name des Autors, das Datum usw. angezeigt werden. Jedem Teil der Vorlage entspricht eine bestimmte Bezeichnung.<br>
+Die Werte der Variablen können auf der Seite zum Bearbeiten von Vorlagen eingesehen werden, indem Sie auf den Namen des Vorlagenteils klicken. Zum Beispiel gibt <b>{title}</b> den Titel des Artikels aus, und <b>{author}</b> den Autor des Artikels usw.<br><br>
+Sie können mehrere verschiedene Vorlagen verwenden.
+HTML;
+
+$help_sections['title']['xfields'] = "Zusatzfelder";
+$help_sections['body']['xfields'] = <<<HTML
+Die Einbindung von Zusatzfeldern erfolgt über das Menü <b>Einstellungen</b> &gt; <b>Zusatzfelder</b>. Diese Funktion ist praktisch, wenn Sie zusammen mit dem Artikel beispielsweise einen Link zur Originalquelle veröffentlichen möchten.<br>
+Ein neues Feld kann durch Klicken auf die Schaltfläche &#34;Feld hinzufügen&#34; hinzugefügt werden. Auf der sich öffnenden Seite müssen Sie einen eindeutigen Feldnamen, eine Feldbeschreibung und einen Standard-Feldinhalt eingeben. Außerdem müssen Sie auswählen, ob Sie Felder optional verwenden möchten. Das heißt, wenn Sie für einen Artikel kein Zusatzfeld verwenden möchten, lassen Sie das Feld beim Hinzufügen/Bearbeiten der Nachricht einfach leer, und das Modul wird nicht aktiviert.<br><br>
+Um das Feld auf der Nachrichtenseite zu verwenden, müssen Sie die Variable <b>[xfvalue_X]</b> in die Vorlage einfügen, wobei <b>X</b> der Wert des Feldes ist (der Name, den Sie beim Hinzufügen des neuen Feldes eingegeben haben). Sie können auch die Kombination <b>[xfgiven_X]...[/xfgiven_X]</b> verwenden, die den darin angegebenen Text ausgibt, wenn das Zusatzfeld festgelegt wurde. Ebenso kann die Kombination <b>[xfnotgiven_X]...[/xfnotgiven_X]</b> verwendet werden, die den darin angegebenen Text ausgibt, wenn das Zusatzfeld nicht festgelegt wurde.<br><br>
+Beispiel für die Funktionsweise von Feldern:
+<div class="code">
+<b>1)</b>- Name: stit<br>
+&nbsp;&nbsp;- Beschreibung: Informationsquelle<br>
+&nbsp;&nbsp;- Standardwert: Ich<br>
+&nbsp;&nbsp;- Optional: ja<br>
+<b>2)</b>- Name: source<br>
+&nbsp;&nbsp;- Beschreibung: Link zur Informationsquelle<br>
+&nbsp;&nbsp;- Standardwert: http://server.com/<br>
+&nbsp;&nbsp;- Optional: ja<br><br>
+<b>In der Vorlage schreiben wir:</b><br>
+[xfgiven_source]Quelle - &lt;a href=[xfvalue_source] target=_blank&gt;[xfvalue_stit]&lt;/a&gt;.[/xfgiven_source]<br>
+[xfnotgiven_source]Quelle nicht angegeben[/xfnotgiven_source]</div>
+Wenn das Feld in der Veröffentlichung festgelegt wurde, ist das Ergebnis des HTML-Codes:
+<div class="code">Quelle - &lt;a href=http://server.com/ target=_blank&gt;Ich&lt;/a&gt;.</div>
+Falls die Quelle nicht angegeben wurde, ist das Ergebnis die Nachricht:
+<div class="code">Quelle nicht angegeben</div>
+Beachten Sie, dass für den Feldnamen nur lateinische Buchstaben und Zahlen verwendet werden dürfen.
+HTML;
+
+$help_sections['title']['xprofile'] = "Zusatzfelder im Benutzerprofil";
+$help_sections['body']['xprofile'] = <<<HTML
+Diese Funktion ist dazu gedacht, dem Benutzerprofil neue Felder hinzuzufügen, zusätzlich zu den bestehenden Hauptfeldern.<br><br>
+Ein neues Feld kann durch Klicken auf den Link &#34;Feld hinzufügen&#34; hinzugefügt werden. Auf der sich öffнenden Seite müssen Sie einen eindeutigen Feldnamen und eine Feldbeschreibung eingeben. Außerdem müssen Sie auswählen, ob der Benutzer bei der Registrierung zusätzliche Informationen hinzufügen darf, ob dieses Feld rein privat ist und ob der Benutzer den Inhalt dieses Feldes später bearbeiten kann.<br><br>
+Zusatzfelder sind beim Anzeigen von Kommentaren und dem Benutzerprofil verfügbar. Sie müssen den Tag [xfvalue_X] in die entsprechenden Vorlagen einfügen, wobei X der Wert des Feldes ist (der Name, den Sie beim Hinzufügen des neuen Feldes eingegeben haben). Sie können auch die Kombination [xfgiven_X]...[/xfgiven_X] verwenden.<br><br>
+Beispiel für die Funktionsweise von Feldern:
+<div class="code">
+&nbsp;&nbsp;- Name: city<br>
+&nbsp;&nbsp;- Beschreibung: Stadt<br>
+&nbsp;&nbsp;- Feldtyp: Eine Zeile<br>
+&nbsp;&nbsp;- Zur Registrierungsseite hinzufügen: ja<br>
+&nbsp;&nbsp;- Feld kann vom Benutzer geändert werden: ja<br>
+&nbsp;&nbsp;- Dieses Feld privat machen: nein<br><br>
+In die Vorlage comments.tpl und userinfo.tpl einfügen:<br>
+[xfgiven_city] Stadt: [xfvalue_city] [/xfgiven_city]</div>
+Wenn der Benutzer in seinem Profil als Stadt beispielsweise &#34;Moskau&#34; angegeben hat, ist das Ergebnis der folgende HTML-Code:
+<div class="code">Stadt: Moskau</div>
+Beachten Sie, dass für den Feldnamen nur lateinische Buchstaben und Zahlen verwendet werden dürfen.
+HTML;
+
+$help_sections['title']['banners'] = "Werbeverwaltung auf der Website";
+$help_sections['body']['banners'] = <<<HTML
+Dieses Modul ist für die schnelle und bequeme Platzierung und Verwaltung Ihrer Werbematerialien auf der Website konzipiert. Um Ihr Banner auf der Website zu platzieren, müssen Sie den Banner-Tag nur einmal in die Vorlage einfügen. Danach können Sie den Banner-Code problemlos im Admin-Panel ändern oder bearbeiten, ohne die Vorlagen zu berühren.<br /><br />
+Nachdem Sie Ihr Banner hinzugefügt haben, können Sie dessen Tag in den Vorlagen <b>main.tpl</b> oder <b>fullstory.tpl</b> platzieren. Wenn Sie ein Banner für die Anzeige zwischen Kurznachrichten hinzufügen, müssen Sie den Tag nicht in die Vorlage einfügen; das Banner wird automatisch zwischen den Nachrichten hinzugefügt.
+<br />Beispiel für die Funktionsweise:
+<div class="code">
+&nbsp;&nbsp;- Name: header<br>
+&nbsp;&nbsp;- Beschreibung: Oberes Banner<br>
+&nbsp;&nbsp;- Banneranzeige aktivieren: Ja<br>
+&nbsp;&nbsp;- Nur auf der Startseite anzeigen: Nein<br>
+&nbsp;&nbsp;- An Position fixieren: Nein<br>
+&nbsp;&nbsp;- Position in Kurznachrichten: Nein<br><br>
+Danach können Sie in Ihre Vorlage in <b>main.tpl</b> oder <b>fullstory.tpl</b> den Tag für die Banner-Ausgabe einfügen: <b>{banner_header}</b><br />
+</div>
+Sie können HTML und JavaScript beim Hinzufügen des Banner-Codes verwenden.
+HTML;
+
+$help_sections['title']['date'] = "Formate für lokale Zeit und Datum";
+$help_sections['body']['date'] = <<<HTML
+Folgende Zeichen werden in der Formatzeichenfolge erkannt: 
+<ul>
+<li><b>a</b> - &#34;am&#34; oder &#34;pm&#34;</li>
+<li><b>A</b> - &#34;AM&#34; oder &#34;PM&#34;</li>
+<li><b>B</b> - Swatch Internetzeit</li>
+<li><b>d</b> - Tag des Monats, 2 Ziffern mit führender Null, falls erforderlich; d. h. von &#34;01&#34; bis &#34;31&#34;</li>
+<li><b>D</b> - Wochentag, buchstäblich, 3 Buchstaben; zum Beispiel &#34;Fri&#34;</li>
+<li><b>F</b> - Monat, buchstäblich, lang; zum Beispiel &#34;January&#34;</li>
+<li><b>g</b> - Stunde, 12-Stunden-Format ohne führende Nullen; d. h. von &#34;1&#34; bis &#34;12&#34;</li>
+<li><b>G</b> - Stunde, 24-Stunden-Format ohne führende Nullen; d. h. von &#34;0&#34; bis &#34;23&#34;</li>
+<li><b>h</b> - Stunde, 12-Stunden-Format; d. h. von &#34;01&#34; bis &#34;12&#34;</li>
+<li><b>H</b> - Stunde, 24-Stunden-Format; d. h. von &#34;00&#34; bis &#34;23&#34;</li>
+<li><b>i</b> - Minuten; d. h. von &#34;00&#34; bis &#34;59&#34;</li>
+<li><b>I</b> (großes i) - &#34;1&#34;, wenn Sommerzeit (Daylight Savings Time), ansonsten &#34;0&#34;.</li>
+<li><b>j</b> - Tag des Monats ohne führende Nullen; d. h. von &#34;1&#34; bis &#34;31&#34; </li>
+<li><b>l</b> (kleines &#39;L&#39;) - Wochentag, buchstäblich, lang; zum Beispiel &#34;Friday&#34; </li>
+<li><b>L</b> - boolescher Wert, der angibt, ob es ein Schaltjahr ist; d. h. &#34;0&#34; oder &#34;1&#34;</li> 
+<li><b>m</b> - Monat; d. h. von &#34;01&#34; bis &#34;12&#34;</li>
+<li><b>M</b> - Monat, buchstäblich, 3 Buchstaben; zum Beispiel &#34;Jan&#34; </li>
+<li><b>n</b> - Monat ohne führende Nullen; d. h. von &#34;1&#34; bis &#34;12&#34; </li>
+<li><b>O</b> - Differenz zur Greenwich-Zeit in Stunden; zum Beispiel &#34;+0200&#34; </li>
+<li><b>r</b> - RFC 822 Datumsformat; zum Beispiel &#34;Thu, 21 Dec 2000 16:01:07 +0200&#34; (eingeführt in PHP 4.0.4) </li>
+<li><b>s</b> - Sekunden; d. h. von &#34;00&#34; bis &#34;59&#34;</li>
+<li><b>S</b> - einfaches englisches Suffix für den Tag des Monats, 2 Zeichen; d. h. &#34;st&#34;, &#34;nd&#34;, &#34;rd&#34; oder &#34;th&#34;</li>
+<li><b>t</b> - Anzahl der Tage im jeweiligen Monat; d. h. von &#34;28&#34; bis &#34;31&#34; </li>
+<li><b>T</b> - Zeitzoneneinstellung auf dieser Maschine; zum Beispiel &#34;EST&#34; oder &#34;MDT&#34; </li>
+<li><b>U</b> - Sekunden seit der Unix-Epoche (Beginn am 1. Januar 1970 00:00:00 GMT) </li>
+<li><b>w</b> - Wochentag, numerisch, d. h. von &#34;0&#34; (Sonntag) bis &#34;6&#34; (Samstag) </li>
+<li><b>W</b> - ISO-8601 Wochennummer im Jahr, Wochen beginnen am Montag (eingeführt in PHP 4.1.0) </li>
+<li><b>Y</b> - Jahr, 4 Ziffern; zum Beispiel &#34;1999&#34;</li>
+<li><b>y</b> - Jahr, 2 Ziffern; zum Beispiel &#34;99&#34; </li>
+<li><b>z</b> - Tag des Jahres; d. h. von &#34;0&#34; bis &#34;365&#34;</li>
+<li><b>Z</b> - Zeitzonen-Offset in Sekunden (d. h. von &#34;-43200&#34; bis &#34;43200&#34;). </li>
+Der Offset für Zeitzonen westlich von UTC ist immer negativ, für Zeitzonen östlich von UTC immer positiv.</li></ul>
+HTML;

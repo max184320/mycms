@@ -1,0 +1,109 @@
+<?php
+
+$help_sections['title']['templates'] ="Plantillas";
+$help_sections['body']['templates'] = <<<HTML
+Las plantillas se utilizan para cambiar fácilmente la visualización de las noticias. Puede cambiar varias partes de la plantilla que se utilizan para diferentes partes de la visualización de noticias. Por ejemplo, la parte de la plantilla &#39;Resumen&#39; se utiliza para cambiar el aspecto de las noticias activas, &#39;Artículo completo&#39; para cambiar el aspecto del artículo completo, &#39;Comentario&#39; para cambiar el aspecto de los comentarios, etc.<br><br>
+Al editar partes de la plantilla, puede utilizar HTML para cambiar diversas estructuras, etc. También deberá añadir algunas etiquetas especiales en sus plantillas para definir el lugar donde se mostrará el título de la noticia, el nombre del autor, la fecha, etc. A cada parte de la plantilla le corresponde una etiqueta específica.<br>
+Los valores de las variables se pueden ver en la página de edición de plantillas al hacer clic en el nombre de la parte de la plantilla. Por ejemplo <b>{title}</b> mostrará el título del artículo, y <b>{author}</b> el autor del artículo, etc.<br><br>
+Puede utilizar varias plantillas diferentes.
+HTML;
+
+$help_sections['title']['xfields'] ="Campos adicionales";
+$help_sections['body']['xfields'] = <<<HTML
+La conexión de campos adicionales se realiza a través del menú <b>Configuración</b> &gt; <b>Campos adicionales</b>. Esta función es conveniente al publicar, junto con el artículo, por ejemplo, un enlace a la fuente original.<br>
+Puede añadir un nuevo campo haciendo clic en el botón &#34;Añadir campo&#34;. En la página que se abre, debe introducir un nombre de campo único, una descripción del campo y el contenido predeterminado del campo. También debe elegir si desea utilizar los campos de forma opcional. Es decir, si desea no utilizar un campo adicional para algún artículo, simplemente deje el campo vacío al añadir/editar la noticia y el módulo no se activará.<br><br>
+Para utilizar el campo en la página de noticias, debe añadir la variable <b>[xfvalue_X]</b> a la plantilla, donde <b>X</b> es el valor del campo (el nombre que introdujo al añadir el nuevo campo). También puede utilizar la combinación <b>[xfgiven_X]...[/xfgiven_X]</b>, que muestra el texto indicado en ellos si se especificó el campo adicional. Y también puede utilizar la combinación <b>[xfnotgiven_X]...[/xfnotgiven_X]</b>, que muestra el texto indicado en ellos si no se especificó el campo adicional.<br><br>
+Ejemplo de funcionamiento de los campos:
+<div class="code">
+<b>1)</b>- Nombre: stit<br>
+&nbsp;&nbsp;- Descripción: Fuente de información<br>
+&nbsp;&nbsp;- Valor predeterminado: Yo<br>
+&nbsp;&nbsp;- Opcional: sí<br>
+<b>2)</b>- Nombre: source<br>
+&nbsp;&nbsp;- Descripción: Enlace a la fuente de información<br>
+&nbsp;&nbsp;- Valor predeterminado: http://server.com/<br>
+&nbsp;&nbsp;- Opcional: sí<br><br>
+<b>En la plantilla escribimos:</b><br>
+[xfgiven_source]Fuente - &lt;a href=[xfvalue_source] target=_blank&gt;[xfvalue_stit]&lt;/a&gt;.[/xfgiven_source]<br>
+[xfnotgiven_source]Fuente no especificada[/xfnotgiven_source]</div>
+En caso de que el campo se haya especificado en la publicación, el resultado del funcionamiento será el siguiente código HTML:
+<div class="code">Fuente - &lt;a href=http://server.com/ target=_blank&gt;Yo&lt;/a&gt;.</div>
+En caso de que la fuente no se haya especificado, el resultado será el mensaje:
+<div class="code">Fuente no especificada</div>
+Recuerde que para el nombre del campo solo debe utilizar letras latinas y números.
+HTML;
+
+$help_sections['title']['xprofile'] ="Campos adicionales en el perfil de usuario";
+$help_sections['body']['xprofile'] = <<<HTML
+Esta función está diseñada para añadir nuevos campos al perfil de los usuarios, además de los campos básicos existentes.<br><br>
+Puede añadir un nuevo campo haciendo clic en el enlace &#34;Añadir campo&#34;. En la página que se abre, debe introducir un nombre de campo único y una descripción del campo. También debe elegir si desea que el usuario pueda añadir información adicional durante el registro, si este campo es estrictamente personal y si el usuario puede editar el contenido de este campo en el futuro.<br><br>
+Los campos adicionales están disponibles al ver los comentarios y el perfil del usuario, debe añadir la etiqueta [xfvalue_X] a las plantillas necesarias, donde X es el valor del campo (el nombre que introdujo al añadir el nuevo campo). También puede utilizar la combinación [xfgiven_X]...[/xfgiven_X].<br><br>
+Ejemplo de funcionamiento de los campos:
+<div class="code">
+&nbsp;&nbsp;- Nombre: city<br>
+&nbsp;&nbsp;- Descripción: Ciudad<br>
+&nbsp;&nbsp;- Tipo de campo: Una línea<br>
+&nbsp;&nbsp;- Añadir a la página de registro: sí<br>
+&nbsp;&nbsp;- El campo puede ser modificado por el usuario: sí<br>
+&nbsp;&nbsp;- Hacer este campo personal: no<br><br>
+añadir a la plantilla comments.tpl y userinfo.tpl<br>
+[xfgiven_city] Ciudad: [xfvalue_city] [/xfgiven_city]</div>
+Si el usuario añadió en su perfil una ciudad, por ejemplo &#34;Moscu&#34;, el resultado será el siguiente código HTML:
+<div class="code">Ciudad: Moscu</div>
+Recuerde que para el nombre del campo solo debe utilizar letras latinas y números.
+HTML;
+
+$help_sections['title']['banners'] ="Gestión de publicidad en el sitio";
+$help_sections['body']['banners'] = <<<HTML
+Este módulo está diseñado para la colocación y gestión rápida y conveniente de sus materiales publicitarios en el sitio. Para colocar su banner en el sitio, basta con añadir la etiqueta del banner a la plantilla una vez, después de lo cual puede cambiar o editar el código del banner en el panel de administración sin problemas, sin afectar las plantillas.<br /><br />
+Después de añadir su banner, puede colocar su etiqueta en las plantillas <b>main.tpl</b> o <b>fullstory.tpl</b>. Si está añadiendo un banner para mostrarlo entre noticias cortas, no es necesario añadir la etiqueta a la plantilla, el banner se añadirá entre las noticias automáticamente.
+<br />Ejemplo de funcionamiento:
+<div class="code">
+&nbsp;&nbsp;- Nombre: header<br>
+&nbsp;&nbsp;- Descripción: Banner superior<br>
+&nbsp;&nbsp;- Habilitar visualización del banner: Sí<br>
+&nbsp;&nbsp;- Mostrar solo en la página principal: No<br>
+&nbsp;&nbsp;- Fijar en la ubicación: No<br>
+&nbsp;&nbsp;- Ubicación en noticias cortas: No<br><br>
+Después de esto, puede añadir a su plantilla en <b>main.tpl</b> o <b>fullstory.tpl</b> la etiqueta para mostrar el banner: <b>{banner_header}</b><br />
+</div>
+Puede utilizar HTML y JavaScript al añadir el código del banner.
+HTML;
+
+$help_sections['title']['date'] ="Formatos de fecha y hora local";
+$help_sections['body']['date'] = <<<HTML
+En la cadena de formato se reconocen los siguientes caracteres: 
+<ul>
+<li><b>a</b> - &#34;am&#34; o &#34;pm&#34;</li>
+<li><b>A</b> - &#34;AM&#34; o &#34;PM&#34;</li>
+<li><b>B</b> - hora Swatch Internet </li>
+<li><b>d</b> - día (número) del mes, 2 dígitos con cero inicial si es necesario; es decir, de &#34;01&#34; a &#34;31&#34;</li>
+<li><b>D</b> - día de la semana, textual, 3 letras; por ejemplo, &#34;Fri&#34;</li>
+<li><b>F</b> - mes, textual, largo; por ejemplo, &#34;January&#34;</li>
+<li><b>g</b> - hora, formato de 12 horas sin ceros iniciales; es decir, de &#34;1&#34; a &#34;12&#34;</li>
+<li><b>G</b> - hora, formato de 24 horas sin ceros iniciales; es decir, de &#34;0&#34; a &#34;23&#34;</li>
+<li><b>h</b> - hora, formato de 12 horas; es decir, de &#34;01&#34; a &#34;12&#34;</li>
+<li><b>H</b> - hora, formato de 24 horas; es decir, de &#34;00&#34; a &#34;23&#34;</li>
+<li><b>i</b> - minutos; es decir, de &#34;00&#34; a &#34;59&#34;</li>
+<li><b>I</b> (i mayúscula) - &#34;1&#34; si es Horario de Verano, &#34;0&#34; en caso contrario.</li>
+<li><b>j</b> - día (número) del mes sin ceros iniciales; es decir, de &#34;1&#34; a &#34;31&#34; </li>
+<li><b>l</b> (&#39;L&#39; en minúscula) - día de la semana, textual, largo; por ejemplo, &#34;Friday&#34; </li>
+<li><b>L</b> - booleano, indicando si es año bisiesto; es decir, &#34;0&#34; o &#34;1&#34;</li> 
+<li><b>m</b> - mes; es decir, de &#34;01&#34; a &#34;12&#34;</li>
+<li><b>M</b> - mes, textual, 3 letras; por ejemplo, &#34;Jan&#34; </li>
+<li><b>n</b> - mes sin ceros iniciales; es decir, de &#34;1&#34; a &#34;12&#34; </li>
+<li><b>O</b> - Diferencia con la hora del meridiano de Greenwich, en horas; por ejemplo, &#34;+0200&#34; </li>
+<li><b>r</b> - formato de fecha RFC 822; por ejemplo, &#34;Thu, 21 Dec 2000 16:01:07 +0200&#34; (introducido en PHP 4.0.4) </li>
+<li><b>s</b> - segundos; es decir, de &#34;00&#34; a &#34;59&#34;</li>
+<li><b>S</b> - sufijo ordinal inglés para el día (número) del mes, 2 caracteres; es decir, &#34;st&#34;, &#34;nd&#34;, &#34;rd&#34; o &#34;th&#34;</li>
+<li><b>t</b> - número de días en el mes dado; es decir, de &#34;28&#34; a &#34;31&#34; </li>
+<li><b>T</b> - ajuste de Timezone/Zona horaria en esta máquina; por ejemplo, &#34;EST&#34; o &#34;MDT&#34; </li>
+<li><b>U</b> - segundos de la época Unix (comenzando el 1 de enero de 1970 00:00:00 GMT) </li>
+<li><b>w</b> - día de la semana, numérico, es decir, de &#34;0&#34; (Sunday) a &#34;6&#34; (Saturday) </li>
+<li><b>W</b> - número de semana ISO-8601 del año, las semanas comienzan el lunes/Monday (introducido en PHP 4.1.0) </li>
+<li><b>Y</b> - año, 4 dígitos; por ejemplo, &#34;1999&#34;</li>
+<li><b>y</b> - año, 2 dígitos; por ejemplo, &#34;99&#34; </li>
+<li><b>z</b> - día del año; es decir, de &#34;0&#34; a &#34;365&#34;</li>
+<li><b>Z</b> - desplazamiento de la zona horaria, en segundos (es decir, de &#34;-43200&#34; a &#34;43200&#34;). </li>
+El desplazamiento de las zonas horarias al oeste de UTC siempre es negativo, y para las zonas al este de UTC siempre es positivo.</li></ul>
+HTML;

@@ -1,0 +1,112 @@
+<?php
+
+$help_sections['title']['templates'] ="Sablonlar";
+$help_sections['body']['templates'] = <<<HTML
+Sablonlar, haberlerin gorunumunu kolayca degistirmek icin kullanilir. Haber gorunumunun farkli bolumlerinde kullanilan cesitli sablon parcalarini degistirebilirsiniz. Ornegin "Kisa Icerik" sablon parcasi aktif haberlerin gorunumunu, "Tam Makale" tam makalenin gorunumunu, "Yorum" ise yorumlarin gorunumunu degistirmek icin kullanilir.<br><br>
+Sablon bolumlerini duzenlerken farkli yapilari degistirmek icin HTML kullanabilirsiniz. Ayrica, haber basliginin, yazar adinin, tarihin vb. hangi yerde gosterilecegini belirtmek icin sablonlariniza bazi ozel isaretler eklemeniz gerekir. Her sablon parcasi belirli bir isarete karsilik gelir.<br>
+Degisken degerlerini, sablon parcasi adina tikladiginizda sablon duzenleme sayfasinda gorebilirsiniz. Ornegin <b>{title}</b> makale basligini, <b>{author}</b> ise makalenin yazarini gosterir.<br><br>
+Birden fazla farkli sablon kullanabilirsiniz.
+HTML;
+
+$help_sections['title']['xfields'] ="Ek alanlar";
+$help_sections['body']['xfields'] = <<<HTML
+Ek alanlar, <b>Ayarlar</b> &gt; <b>Ek Alanlar</b> menusu uzerinden etkinlestirilir. Bu islev, makaleyle birlikte ornegin orijinal kaynaga ait bir baglanti yayimlarken kullanislidir.<br>
+Yeni bir alan eklemek icin "Alan Ekle" dugmesine tiklayin. Acilan sayfada benzersiz bir alan adi, alan aciklamasi ve varsayilan alan icerigi girmeniz gerekir. Ayrica, alani istege bagli kullanip kullanmak istemediginizi secmeniz gerekir. Yani herhangi bir makale icin ek alan kullanmak istemezseniz, haber eklerken/duzenlerken bu alani bos birakmaniz yeterlidir ve modul etkinlesmez.<br><br>
+Haberlere ait sayfada alan kullanmak icin sablona <b>[xfvalue_X]</b> degiskenini eklemeniz gerekir; burada <b>X</b> alanin degeridir (yeni alan eklerken girdiginiz ad). Ayrica ek alan tanimlandiysa icindeki metni gosteren <b>[xfgiven_X]...[/xfgiven_X]</b> bagini ve ek alan tanimlanmadiysa icindeki metni gosteren <b>[xfnotgiven_X]...[/xfnotgiven_X]</b> bagini kullanabilirsiniz.<br><br>
+Alanlarin kullanim ornegi:
+<div class="code">
+<b>1)</b>- Ad: stit<br>
+&nbsp;&nbsp;- Aciklama: Bilgi kaynagi<br>
+&nbsp;&nbsp;- Varsayilan deger: Ben<br>
+&nbsp;&nbsp;- Istege bagli: evet<br>
+<b>2)</b>- Ad: source<br>
+&nbsp;&nbsp;- Aciklama: Bilgi kaynagina baglanti<br>
+&nbsp;&nbsp;- Varsayilan deger: http://server.com/<br>
+&nbsp;&nbsp;- Istege bagli: evet<br><br>
+<b>Sablonda sunu yazariz:</b><br>
+[xfgiven_source]Kaynak - &lt;a href=[xfvalue_source] target=_blank&gt;[xfvalue_stit]&lt;/a&gt;.[/xfgiven_source]<br>
+[xfnotgiven_source]Kaynak belirtilmedi[/xfnotgiven_source]</div>
+Eger alan yayinda tanimlandiysa sonuc olarak asagidaki HTML kodu olusur:
+<div class="code">Kaynak - &lt;a href=http://server.com/ target=_blank&gt;Ben&lt;/a&gt;.</div>
+Eger kaynak belirtilmediyse sonuc olarak asagidaki mesaj gosterilir:
+<div class="code">Kaynak belirtilmedi</div>
+Alan adi icin yalnizca Latin harfleri ve rakamlar kullanmaniz gerektigini unutmayin.
+HTML;
+
+$help_sections['title']['xprofile'] ="Kullanici profilindeki ek alanlar";
+$help_sections['body']['xprofile'] = <<<HTML
+Bu islev, mevcut temel alanlara ek olarak kullanici profiline yeni alanlar eklemek icin tasarlanmistir.<br><br>
+Yeni bir alan eklemek icin "Alan Ekle" baglantisina tiklayin. Acilan sayfada benzersiz bir alan adi ve alan aciklamasi girmeniz gerekir. Ayrica, kullanicinin kayit sirasinda ek bilgi girebilip giremeyecegini, bu alanin tamamen ozel olup olmayacagini ve kullanicinin ileride bu alanin icerigini duzenleyip duzenleyemeyecegini secmeniz gerekir.<br><br>
+Ek alanlar yorumlar ve kullanici profili goruntulenirken kullanilabilir; gerekli sablonlara [xfvalue_X] etiketini eklemeniz gerekir; burada X alanin degeridir (yeni alan eklerken girdiginiz ad). Ayrica [xfgiven_X]...[/xfgiven_X] bagini da kullanabilirsiniz.<br><br>
+Alanlarin kullanim ornegi:
+<div class="code">
+&nbsp;&nbsp;- Ad: city<br>
+&nbsp;&nbsp;- Aciklama: Sehir<br>
+&nbsp;&nbsp;- Alan tipi: Tek satir<br>
+&nbsp;&nbsp;- Kayit sayfasina ekle: evet<br>
+&nbsp;&nbsp;- Alan kullanici tarafindan degistirilebilir: evet<br>
+&nbsp;&nbsp;- Bu alani ozel yap: hayir<br><br>
+comments.tpl ve userinfo.tpl sablonlarina ekleyin<br>
+[xfgiven_city] Sehir: [xfvalue_city] [/xfgiven_city]</div>
+Eger kullanici profilinde ornegin "Moskova" sehrini eklediyse sonuc olarak asagidaki HTML kodu olusur:
+<div class="code">Sehir: Moskova</div>
+Alan adi icin yalnizca Latin harfleri ve rakamlar kullanmaniz gerektigini unutmayin.
+HTML;
+
+$help_sections['title']['banners'] ="Sitede reklam yonetimi";
+$help_sections['body']['banners'] = <<<HTML
+Bu modul, sitedeki reklam materyallerinizi hizli ve kullanisli sekilde yerlestirmek ve yonetmek icin tasarlanmistir. Sitenize banner yerlesirmek icin sablona banner etiketini bir kez eklemeniz yeterlidir; bundan sonra sablonlara dokunmadan banner kodunu yonetim panelinden kolayca degistirebilir veya duzenleyebilirsiniz.<br /><br />
+Bannerinizi ekledikten sonra etiketini <b>main.tpl</b> veya <b>fullstory.tpl</b> sablonlarina yerlestirebilirsiniz. Banneri kisa haberler arasinda gostermek icin ekliyorsaniz, etiketi sablona eklemeniz gerekmez; banner haberlerin arasina otomatik olarak yerlesir.
+<br />Calisma ornegi:
+<div class="code">
+&nbsp;&nbsp;- Ad: header<br>
+&nbsp;&nbsp;- Aciklama: Ust banner<br>
+&nbsp;&nbsp;- Banner gosterimini etkinlestir: Evet<br>
+&nbsp;&nbsp;- Yalnizca ana sayfada goster: Hayir<br>
+&nbsp;&nbsp;- Konumda sabitle: Hayir<br>
+&nbsp;&nbsp;- Kisa haberlerde konum: Hayir<br><br>
+Bundan sonra banneri gostermek icin <b>main.tpl</b> veya <b>fullstory.tpl</b> sablonunuza <b>{banner_header}</b> etiketini ekleyebilirsiniz.<br />
+</div>
+Banner kodu eklerken HTML ve JavaScript kullanabilirsiniz.
+HTML;
+
+$help_sections['title']['date'] ="Yerel tarih ve saat bicimleri";
+$help_sections['body']['date'] = <<<HTML
+Format dizgesinde asagidaki karakterler taninir: 
+<ul>
+<li><b>a</b> - "am" veya "pm"</li>
+<li><b>A</b> - "AM" veya "PM"</li>
+<li><b>B</b> - Swatch Internet saati </li>
+<li><b>d</b> - ayin gunu, gerekirse basinda sifir olacak sekilde 2 hane; yani "01" ile "31" arasi</li>
+<li><b>D</b> - haftanin gunu, metin olarak, 3 harf; ornegin "Fri"</li>
+<li><b>F</b> - ay, metin olarak, long; ornegin "January"</li>
+<li><b>g</b> - saat, 12 saatlik bicim, basinda sifir olmadan; yani "1" ile "12" arasi</li>
+<li><b>G</b> - saat, 24 saatlik bicim, basinda sifir olmadan; yani "0" ile "23" arasi</li>
+<li><b>h</b> - saat, 12 saatlik bicim; yani "01" ile "12" arasi</li>
+<li><b>H</b> - saat, 24 saatlik bicim; yani "00" ile "23" arasi</li>
+<li><b>i</b> - dakika; yani "00" ile "59" arasi</li>
+<li><b>I</b> (buyuk i) - yaz saati uygulamasi varsa "1", aksi halde "0".</li>
+<li><b>j</b> - ayin gunu, basinda sifir olmadan; yani "1" ile "31" arasi </li>
+<li><b>l</b> (kucuk 'L') - haftanin gunu, metin olarak, long; ornegin "Friday" </li>
+<li><b>L</b> - yilin artik yil olup olmadigini belirten boolean; yani "0" veya "1"</li> 
+<li><b>m</b> - ay; yani "01" ile "12" arasi</li>
+<li><b>M</b> - ay, metin olarak, 3 harf; ornegin "Jan" </li>
+<li><b>n</b> - ay, basinda sifir olmadan; yani "1" ile "12" arasi </li>
+<li><b>O</b> - Greenwich saatine gore fark, saat cinsinden; ornegin "+0200" </li>
+<li><b>r</b> - RFC 822 tarih bicimi; ornegin "Thu, 21 Dec 2000 16:01:07 +0200" (PHP 4.0.4 ile eklendi) </li>
+<li><b>s</b> - saniye; yani "00" ile "59" arasi</li>
+<li><b>S</b> - ayin gunu icin basit Ingilizce sonek, 2 karakter; yani "st", "nd", "rd" veya "th"</li>
+<li><b>t</b> - ilgili aydaki gun sayisi; yani "28" ile "31" arasi </li>
+<li><b>T</b> - bu makinedeki Timezone/Saat dilimi ayari; ornegin "EST" veya 
+"MDT" </li>
+<li><b>U</b> - Unix Epoch saniyeleri (January 1 1970 00:00:00 GMT baslangicindan itibaren) </li>
+<li><b>w</b> - haftanin gunu, sayisal; yani "0" (Sunday) ile "6" (Saturday) arasi </li>
+<li><b>W</b> - yil icindeki ISO-8601 hafta numarasi, haftalar pazartesi/Monday gunu baslar 
+(PHP 4.1.0 ile eklendi) </li>
+<li><b>Y</b> - yil, 4 hane; ornegin "1999"</li>
+<li><b>y</b> - yil, 2 hane; ornegin "99" </li>
+<li><b>z</b> - yilin gunu; yani "0" ile "365" arasi</li>
+<li><b>Z</b> - saat dilimi kaymasi, saniye cinsinden (yani "-43200" ile "43200" arasi). </li>
+UTC'nin batısındaki saat dilimlerinde kayma her zaman negatiftir, UTC'nin 
+dogusundaki saat dilimlerinde ise her zaman pozitiftir.</li></ul>
+HTML;
