@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Marketplace">
+  <rect width="64" height="64" rx="14" fill="#0f766e"/>
+  <path d="M15 23h34l-3 26H18l-3-26Z" fill="#fff" opacity=".96"/>
+  <path d="M22 25v-4a10 10 0 0 1 20 0v4" fill="none" stroke="#0f766e" stroke-width="4" stroke-linecap="round"/>
+  <path d="M25 35h14M25 42h9" stroke="#0f766e" stroke-width="4" stroke-linecap="round"/>
+</svg>

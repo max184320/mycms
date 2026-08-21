@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dleplugin>
+    <name>dle_marketplace</name>
+    <description>Маркетплейс цифровых товаров для отдельной страницы DLE 20</description>
+    <icon>plugins/dle_marketplace/icon.svg</icon>
+    <version>1.0.0</version>
+    <dleversion>20.0</dleversion>
+    <versioncompare>greater</versioncompare>
+    <upgradeurl></upgradeurl>
+    <filedelete>1</filedelete>
+    <needplugin></needplugin>
+    <mnotice>1</mnotice>
+
+    <mysqlinstall><![CDATA[
+CREATE TABLE IF NOT EXISTS `{prefix}_marketplace_products` (
+    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `title` VARCHAR(180) NOT NULL DEFAULT '',
+    `category` VARCHAR(100) NOT NULL DEFAULT '',
+    `short_description` VARCHAR(500) NOT NULL DEFAULT '',
+    `description` MEDIUMTEXT NOT NULL,
+    `price` DECIMAL(12,2) NOT NULL DEFAULT '0.00',
+    `currency` VARCHAR(8) NOT NULL DEFAULT 'RUB',
+    `file_path` VARCHAR(255) NOT NULL DEFAULT '',
+    `file_name` VARCHAR(255) NOT NULL DEFAULT '',
+    `file_size` BIGINT UNSIGNED NOT NULL DEFAULT '0',
+    `preview_image` VARCHAR(255) NOT NULL DEFAULT '',
+    `status` TINYINT(1) NOT NULL DEFAULT '1',
+    `featured` TINYINT(1) NOT NULL DEFAULT '0',
+    `downloads` INT UNSIGNED NOT NULL DEFAULT '0',
+    `sales` INT UNSIGNED NOT NULL DEFAULT '0',
+    `author_id` INT UNSIGNED NOT NULL DEFAULT '0',
+    `created_at` INT UNSIGNED NOT NULL DEFAULT '0',
+    `updated_at` INT UNSIGNED NOT NULL DEFAULT '0',
+    PRIMARY KEY (`id`),
+    KEY `status_featured` (`status`, `featured`),
+    KEY `category` (`category`),
+    KEY `created_at` (`created_at`)
+) ENGINE={engine} DEFAULT CHARACTER SET {charset} COLLATE {charset}_general_ci;
+
+CREATE TABLE IF NOT EXISTS `{prefix}_marketplace_orders` (
+    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `order_token` CHAR(64) NOT NULL DEFAULT '',
+    `user_id` INT UNSIGNED NOT NULL DEFAULT '0',
+    `product_id` INT UNSIGNED NOT NULL DEFAULT '0',
+    `amount` DECIMAL(12,2) NOT NULL DEFAULT '0.00',
+    `currency` VARCHAR(8) NOT NULL DEFAULT 'RUB',
+    `status` VARCHAR(20) NOT NULL DEFAULT 'pending',
+    `created_at` INT UNSIGNED NOT NULL DEFAULT '0',
+    `paid_at` INT UNSIGNED NOT NULL DEFAULT '0',
+    `ip` VARCHAR(46) NOT NULL DEFAULT '',
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `order_token` (`order_token`),
+    UNIQUE KEY `user_product` (`user_id`, `product_id`),
+    KEY `user_status` (`user_id`, `status`),
+    KEY `product_id` (`product_id`)
+) ENGINE={engine} DEFAULT CHARACTER SET {charset} COLLATE {charset}_general_ci;
+
+CREATE TABLE IF NOT EXISTS `{prefix}_marketplace_wallets` (
+    `user_id` INT UNSIGNED NOT NULL,
+    `balance` DECIMAL(12,2) NOT NULL DEFAULT '0.00',
+    `updated_at` INT UNSIGNED NOT NULL DEFAULT '0',
+    PRIMARY KEY (`user_id`)
+) ENGINE={engine} DEFAULT CHARACTER SET {charset} COLLATE {charset}_general_ci;
+
+CREATE TABLE IF NOT EXISTS `{prefix}_marketplace_wallet_log` (
+    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `user_id` INT UNSIGNED NOT NULL DEFAULT '0',
+    `amount` DECIMAL(12,2) NOT NULL DEFAULT '0.00',
+    `balance_after` DECIMAL(12,2) NOT NULL DEFAULT '0.00',
+    `type` VARCHAR(32) NOT NULL DEFAULT '',
+    `order_id` INT UNSIGNED NOT NULL DEFAULT '0',
+    `admin_id` INT UNSIGNED NOT NULL DEFAULT '0',
+    `note` VARCHAR(255) NOT NULL DEFAULT '',
+    `created_at` INT UNSIGNED NOT NULL DEFAULT '0',
+    PRIMARY KEY (`id`),
+    KEY `user_id` (`user_id`),
+    KEY `created_at` (`created_at`)
+) ENGINE={engine} DEFAULT CHARACTER SET {charset} COLLATE {charset}_general_ci;
+
+INSERT IGNORE INTO `{prefix}_admin_sections` (`name`, `title`, `descr`, `icon`, `allow_groups`) VALUES ('dle_marketplace', 'Маркетплейс', 'Управление цифровыми товарами, заказами и балансами', 'plugins/dle_marketplace/icon.svg', '1');
+    ]]></mysqlinstall>
+
+    <mysqlupgrade><![CDATA[
+CREATE TABLE IF NOT EXISTS `{prefix}_marketplace_products` (
+    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `title` VARCHAR(180) NOT NULL DEFAULT '',
+    `category` VARCHAR(100) NOT NULL DEFAULT '',
+    `short_description` VARCHAR(500) NOT NULL DEFAULT '',
+    `description` MEDIUMTEXT NOT NULL,
+    `price` DECIMAL(12,2) NOT NULL DEFAULT '0.00',
+    `currency` VARCHAR(8) NOT NULL DEFAULT 'RUB',
+    `file_path` VARCHAR(255) NOT NULL DEFAULT '',
+    `file_name` VARCHAR(255) NOT NULL DEFAULT '',
+    `file_size` BIGINT UNSIGNED NOT NULL DEFAULT '0',
+    `preview_image` VARCHAR(255) NOT NULL DEFAULT '',
+    `status` TINYINT(1) NOT NULL DEFAULT '1',
+    `featured` TINYINT(1) NOT NULL DEFAULT '0',
+    `downloads` INT UNSIGNED NOT NULL DEFAULT '0',
+    `sales` INT UNSIGNED NOT NULL DEFAULT '0',
+    `author_id` INT UNSIGNED NOT NULL DEFAULT '0',
+    `created_at` INT UNSIGNED NOT NULL DEFAULT '0',
+    `updated_at` INT UNSIGNED NOT NULL DEFAULT '0',
+    PRIMARY KEY (`id`),
+    KEY `status_featured` (`status`, `featured`),
+    KEY `category` (`category`),
+    KEY `created_at` (`created_at`)
+) ENGINE={engine} DEFAULT CHARACTER SET {charset} COLLATE {charset}_general_ci;
+CREATE TABLE IF NOT EXISTS `{prefix}_marketplace_orders` (
+    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `order_token` CHAR(64) NOT NULL DEFAULT '',
+    `user_id` INT UNSIGNED NOT NULL DEFAULT '0',
+    `product_id` INT UNSIGNED NOT NULL DEFAULT '0',
+    `amount` DECIMAL(12,2) NOT NULL DEFAULT '0.00',
+    `currency` VARCHAR(8) NOT NULL DEFAULT 'RUB',
+    `status` VARCHAR(20) NOT NULL DEFAULT 'pending',
+    `created_at` INT UNSIGNED NOT NULL DEFAULT '0',
+    `paid_at` INT UNSIGNED NOT NULL DEFAULT '0',
+    `ip` VARCHAR(46) NOT NULL DEFAULT '',
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `order_token` (`order_token`),
+    UNIQUE KEY `user_product` (`user_id`, `product_id`),
+    KEY `user_status` (`user_id`, `status`),
+    KEY `product_id` (`product_id`)
+) ENGINE={engine} DEFAULT CHARACTER SET {charset} COLLATE {charset}_general_ci;
+CREATE TABLE IF NOT EXISTS `{prefix}_marketplace_wallets` (
+    `user_id` INT UNSIGNED NOT NULL,
+    `balance` DECIMAL(12,2) NOT NULL DEFAULT '0.00',
+    `updated_at` INT UNSIGNED NOT NULL DEFAULT '0',
+    PRIMARY KEY (`user_id`)
+) ENGINE={engine} DEFAULT CHARACTER SET {charset} COLLATE {charset}_general_ci;
+CREATE TABLE IF NOT EXISTS `{prefix}_marketplace_wallet_log` (
+    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `user_id` INT UNSIGNED NOT NULL DEFAULT '0',
+    `amount` DECIMAL(12,2) NOT NULL DEFAULT '0.00',
+    `balance_after` DECIMAL(12,2) NOT NULL DEFAULT '0.00',
+    `type` VARCHAR(32) NOT NULL DEFAULT '',
+    `order_id` INT UNSIGNED NOT NULL DEFAULT '0',
+    `admin_id` INT UNSIGNED NOT NULL DEFAULT '0',
+    `note` VARCHAR(255) NOT NULL DEFAULT '',
+    `created_at` INT UNSIGNED NOT NULL DEFAULT '0',
+    PRIMARY KEY (`id`),
+    KEY `user_id` (`user_id`),
+    KEY `created_at` (`created_at`)
+) ENGINE={engine} DEFAULT CHARACTER SET {charset} COLLATE {charset}_general_ci;
+INSERT IGNORE INTO `{prefix}_admin_sections` (`name`, `title`, `descr`, `icon`, `allow_groups`) VALUES ('dle_marketplace', 'Маркетплейс', 'Управление цифровыми товарами, заказами и балансами', 'plugins/dle_marketplace/icon.svg', '1');
+    ]]></mysqlupgrade>
+
+    <mysqlenable><![CDATA[
+INSERT IGNORE INTO `{prefix}_admin_sections` (`name`, `title`, `descr`, `icon`, `allow_groups`) VALUES ('dle_marketplace', 'Маркетплейс', 'Управление цифровыми товарами, заказами и балансами', 'plugins/dle_marketplace/icon.svg', '1');
+    ]]></mysqlenable>
+
+    <mysqldisable><![CDATA[
+DELETE FROM `{prefix}_admin_sections` WHERE `name`='dle_marketplace';
+    ]]></mysqldisable>
+
+    <mysqldelete><![CDATA[
+DROP TABLE IF EXISTS `{prefix}_marketplace_wallet_log`;
+DROP TABLE IF EXISTS `{prefix}_marketplace_wallets`;
+DROP TABLE IF EXISTS `{prefix}_marketplace_orders`;
+DROP TABLE IF EXISTS `{prefix}_marketplace_products`;
+DELETE FROM `{prefix}_admin_sections` WHERE `name`='dle_marketplace';
+    ]]></mysqldelete>
+
+    <phpinstall><![CDATA[
+$marketplace_dirs = array(ROOT_DIR . '/uploads/dle_marketplace', ROOT_DIR . '/uploads/dle_marketplace/files', ROOT_DIR . '/uploads/dle_marketplace/previews');
+foreach ($marketplace_dirs as $marketplace_dir) {
+    if (!is_dir($marketplace_dir)) { @mkdir($marketplace_dir, 0775, true); }
+    if (is_dir($marketplace_dir)) { @chmod($marketplace_dir, 0775); }
+}
+$marketplace_deny_all = "<IfModule mod_authz_core.c>\n  Require all denied\n</IfModule>\n<IfModule !mod_authz_core.c>\n  Order allow,deny\n  Deny from all\n</IfModule>\n";
+$marketplace_deny_php = "<FilesMatch \"\\.([Pp][Hh][Pp]|[Pp][Hh][Tt][Mm][Ll]|[Cc][Gg][Ii])\.?\">\n  <IfModule mod_authz_core.c>\n    Require all denied\n  </IfModule>\n  <IfModule !mod_authz_core.c>\n    Order allow,deny\n    Deny from all\n  </IfModule>\n</FilesMatch>\n";
+if (is_dir(ROOT_DIR . '/uploads/dle_marketplace/files')) { @file_put_contents(ROOT_DIR . '/uploads/dle_marketplace/files/.htaccess', $marketplace_deny_all, LOCK_EX); }
+if (is_dir(ROOT_DIR . '/uploads/dle_marketplace/previews')) { @file_put_contents(ROOT_DIR . '/uploads/dle_marketplace/previews/.htaccess', $marketplace_deny_php, LOCK_EX); }
+    ]]></phpinstall>
+
+    <phpupgrade><![CDATA[
+$marketplace_dirs = array(ROOT_DIR . '/uploads/dle_marketplace', ROOT_DIR . '/uploads/dle_marketplace/files', ROOT_DIR . '/uploads/dle_marketplace/previews');
+foreach ($marketplace_dirs as $marketplace_dir) { if (!is_dir($marketplace_dir)) { @mkdir($marketplace_dir, 0775, true); } }
+    ]]></phpupgrade>
+    <phpenable><![CDATA[]]></phpenable>
+    <phpdisable><![CDATA[]]></phpdisable>
+
+    <phpdelete><![CDATA[
+$marketplace_root = ROOT_DIR . '/uploads/dle_marketplace';
+if (is_dir($marketplace_root)) {
+    $marketplace_iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($marketplace_root, FilesystemIterator::SKIP_DOTS), RecursiveIteratorIterator::CHILD_FIRST);
+    foreach ($marketplace_iterator as $marketplace_file) {
+        if ($marketplace_file->isDir()) { @rmdir($marketplace_file->getPathname()); } else { @unlink($marketplace_file->getPathname()); }
+    }
+    @rmdir($marketplace_root);
+}
+    ]]></phpdelete>
+
+    <notice><![CDATA[
+<div class="alert alert-info alert-styled-left alert-component"><strong>Маркетплейс установлен.</strong><br>Создайте отдельную статическую страницу DLE и вставьте в её содержимое тег:<br><code>{include file="engine/modules/dle_marketplace.php"}</code><br>Товары и пополнение встроенного баланса доступны в разделе «Маркетплейс» административной панели.</div>
+    ]]></notice>
+</dleplugin>
